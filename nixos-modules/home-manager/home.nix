@@ -1,10 +1,44 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
+
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "heifee";
-  home.homeDirectory = "/home/heifee";
+
+  imports = [
+    ./directories.nix
+  ];
+
+  options = {
+  
+      userName = lib.mkOption {
+        type = lib.types.string;
+        default = "l";
+        description = "kjkj";
+      };
+    
+  };
+
+  config = {
+
+    test = "ifeatud";
+  
+
+
+  #home.username = "heifee";
+  #home.homeDirectory = "/home/heifee";
+
+  # options = {
+
+  #   onPC = 
+  #     lib.mkEnableOption "home-manager config for my PC";
+
+  #   onLenovoLaptop = 
+  #     lib.mkEnableOption "home-manager confifg for my Lenovo Laptop";
+
+  # };
+
+  
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -21,7 +55,7 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; import ./nixos-modules/home-packages.nix { inherit pkgs; };
+  home.packages = with pkgs; import ../packages/home-packages.nix { inherit pkgs; };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
@@ -90,5 +124,6 @@
       "ALT_L, K, exec, kitty"
     ];
   
+  };
   };
 }

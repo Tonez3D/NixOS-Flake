@@ -8,14 +8,20 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../nixos-modules/hardwareModules/hardware.nix
+      ../nixos-modules/hardware-modules/hardware.nix
       inputs.home-manager.nixosModules.default
     ];
 
-  # Bootloader.
+  ### SECTION [Bootloader] ###
+  
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  ### SECTION [Nix Settings] ###
+  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nixpkgs.config.allowUnfree = true;
+
+  ### SECTION [Networking] ###
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -23,29 +29,16 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
   # Enable networking
   networking.networkmanager.enable = true;
 
-  # Enable hardware
+  ### SECTION [Hardware] ###
+  nvidia-gpu.enable = true;
 
-  # Enable bluetooth
-  #hardware.bluetooth.enable = true;
-
-  #hardware.opengl.enable = true;
-
-  # Nvidia Driver's T-T
-  hardware.graphics.enable = true;
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-  hardware.nvidia.open = true;
-
-  # Set your time zone.
+  ### SECTION [Locale Settings] ###
   time.timeZone = "America/Chicago";
-
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
-
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -57,6 +50,7 @@
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
   };
+
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
@@ -72,11 +66,16 @@
     variant = "";
   };
 
+
+  ### SECTION [Services] ###
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable drivers?
   services.xserver.videoDrivers =  ["nvidia"];
+
+  # Enable the OpenSSH daemon.
+  services.openssh.enable = true;
 
   # Enable blueman for managing bluetooth devices
   services.blueman.enable = true;
@@ -111,18 +110,18 @@
     ];
   };
   
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
-
+  ### SECTION [Home Manager] ###
   home-manager = {
    extraSpecialArgs = {inherit inputs; };
     users = {
-      "heifee" = import ../home.nix; 
+      "heifee" = import ../nixos-modules/home-manager/home.nix; 
     };
   };
 
   home-manager.useUserPackages = true;
+  home-manager.options.test "red";
   #home-manager.useGlobalPkgs = true;
+
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -155,8 +154,7 @@
 
   # List services that you want to enable:
 
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
