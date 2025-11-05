@@ -31,13 +31,13 @@
         ];
 
       };
-	#	nixosConfigurations.lenovo-nixos = nixpkgs.lib.nixosSystem { 
-	#	sepcialArgs = {inherit inputs; };
-	#	modules = [
-	#	./lenovo-laptop/configuration.nix
-	#	inputs.home-manager.nixosModules.default
-	#	];
-  #};
+		nixosConfigurations.lenovo-nixos = nixpkgs.lib.nixosSystem { 
+		sepcialArgs = {inherit inputs; };
+		modules = [
+		./lenovo-laptop/configuration.nix
+		inputs.home-manager.nixosModules.default
+		];
+  };
 
     };
   

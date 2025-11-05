@@ -139,7 +139,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; import ./nixos-modules/packages.nix { inherit pkgs; };
+  environment.systemPackages = with pkgs; import ../nixos-modules/packages.nix { inherit pkgs; };
 
   systemd.tmpfiles.rules = [
       "d /etc/nixos 0755 heifee nixos"
