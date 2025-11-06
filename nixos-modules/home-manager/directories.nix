@@ -4,7 +4,7 @@
   options = {
     test = lib.mkOption {
       default = "default";
-      type = lib.types.string;
+      type = lib.types.str;
       description = ''
         ghg
         '';

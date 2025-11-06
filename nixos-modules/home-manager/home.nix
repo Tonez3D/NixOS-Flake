@@ -6,22 +6,21 @@
   # manage.
 
   imports = [
-    ./directories.nix
+    #./directories.nix
   ];
 
-  options = {
-  
-      userName = lib.mkOption {
-        type = lib.types.string;
-        default = "l";
-        description = "kjkj";
-      };
-    
-  };
+  #options = {
+  #
+  #    userName = lib.mkOption {
+  #      type = lib.types.string;
+  #      description = "kjkj";
+  #    };
+  #  
+  #};
 
   config = {
 
-    test = "ifeatud";
+    #test = "ifeatud";
   
 
 
@@ -51,7 +50,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  #enviornment.systemPackages = with pkgs; import ./packages.nix {inherit pkgs;};
 
   # The home.packages option allows you to install Nix packages into your
   # environment.

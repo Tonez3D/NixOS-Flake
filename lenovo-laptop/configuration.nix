@@ -14,6 +14,7 @@
     ];
 
   ### SECTION [Bootloader] ###  
+  boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   ### SECTION [Nix Settings] ###
@@ -122,8 +123,8 @@
 
 
   # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; import ../nixos-modules/packages.nix { inherit pkgs; };
+  # $ nix search wget                               
+  environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
