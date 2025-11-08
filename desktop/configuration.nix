@@ -38,6 +38,8 @@
   
 
   ### SECTION [Hardware] ###
+  bluetooth.enable = true;
+  drawing-tablet.enable = true;
   nvidia-gpu.enable = true;
 
   ### SECTION [Locale Settings] ###
@@ -121,7 +123,10 @@
   
   ### SECTION [Home Manager] ###
   home-manager = {
-   extraSpecialArgs = {inherit inputs; };
+   extraSpecialArgs = {
+    inherit inputs; 
+    hostName = config.networking.hostName;
+    };
     users = {
       "heifee" = import ../nixos-modules/home-manager/home.nix; 
     };

@@ -9,6 +9,7 @@ with pkgs; [
   spotify
   kicad
   dunst
+  gnuradio
   jetbrains.rust-rover
   jetbrains.idea-ultimate
   jetbrains.clion

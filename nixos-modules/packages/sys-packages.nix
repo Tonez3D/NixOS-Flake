@@ -10,6 +10,7 @@ with pkgs; [
   usbutils
   kitty
   gtk3
+  gtk4
   overskride
   neovim-unwrapped
 ]
