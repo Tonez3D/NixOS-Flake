@@ -6,39 +6,17 @@
   # manage.
 
   imports = [
-    #./directories.nix
+    ./hyprland/binds.nix
+    ./hyprland/plugins.nix
+    ./hyprland/hyprbar.nix
+    ./hyprland/monitor.nix
+    ./hyprland/borders.nix
+    ./waybar.nix
   ];
-
-  #options = {
-  #
-  #    userName = lib.mkOption {
-  #      type = lib.types.string;
-  #      description = "kjkj";
-  #    };
-  #  
-  #};
 
   config = {
 
-    #test = "ifeatud";
-  
-
-
-  #home.username = "heifee";
-  #home.homeDirectory = "/home/heifee";
-
-  # options = {
-
-  #   onPC = 
-  #     lib.mkEnableOption "home-manager config for my PC";
-
-  #   onLenovoLaptop = 
-  #     lib.mkEnableOption "home-manager confifg for my Lenovo Laptop";
-
-  # };
-
-  
-
+ 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.
@@ -70,8 +48,15 @@
     # '';
   };
 
-  programs.kitty.enable = true;
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
+  #wayland.windowManager.hyprland.package = pkgs.hyprland;
+  
+  wayland.windowManager.hyprland.xwayland.enable = true;
+  
+
+  programs.kitty = {
+    enable = true;
+  };
 
   programs.git = {
     enable = true;
@@ -86,7 +71,6 @@
     };
   };
   
-
 
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
@@ -110,18 +94,7 @@
 
 
   # Let Home Manager install and manage itself.
-  #programs.home-manager.enable = true;
-
-
+  # programs.home-manager.enable = true;
   
-  wayland.windowManager.hyprland.settings = {
-    #"@mod" = "SUPER"; 
-    bind = 
-    [
-      "SUPER_SHIFT, Q, exec, firefox"
-      "ALT_L, K, exec, kitty"
-    ];
-  
-  };
-  };
+};
 }

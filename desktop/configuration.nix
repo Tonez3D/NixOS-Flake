@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ../nixos-modules/hardware-modules/hardware.nix
+      ../nixos-modules/hardware-modules/hardware-config.nix
       inputs.home-manager.nixosModules.default
     ];
 
@@ -18,19 +18,24 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   ### SECTION [Nix Settings] ###
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = 
+  {
+    experimental-features = ["nix-command" "flakes"];
+    trusted-users = ["heifee"];
+
+    substituters = [
+      "https://cache.nixos.org"
+    ];
+
+
+  };
   nixpkgs.config.allowUnfree = true;
 
   ### SECTION [Networking] ###
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Enable networking
   networking.networkmanager.enable = true;
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  
 
   ### SECTION [Hardware] ###
   nvidia-gpu.enable = true;
@@ -58,6 +63,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
@@ -96,6 +102,9 @@
     #media-session.enable = true;
   };
 
+  environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; };
+
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -119,7 +128,7 @@
   };
 
   home-manager.useUserPackages = true;
-  home-manager.options.test "red";
+ 
   #home-manager.useGlobalPkgs = true;
 
 
@@ -127,18 +136,16 @@
   programs.firefox.enable = true;
   programs.hyprland = {
     enable = true;
-    withUWSM = true; # recommended for most users
-    xwayland.enable = true; # Xwayland can be disabled.
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   };
+
+  
   
   xdg.portal = {
     enable = true;
-    extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+    #extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; };
 
   systemd.tmpfiles.rules = [
       "d /etc/nixos 0755 heifee nixos"

@@ -8,7 +8,11 @@ with pkgs; [
   google-chrome
   spotify
   kicad
-  jetbrains-toolbox
+  dunst
+  jetbrains.rust-rover
+  jetbrains.idea-ultimate
+  jetbrains.clion
+  rofi
   blender
   
   # # It is sometimes useful to fine-tune packages, for example, by applying

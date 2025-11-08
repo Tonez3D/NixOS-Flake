@@ -18,24 +18,39 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   ### SECTION [Nix Settings] ###
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings = 
+  {
+    experimental-features = ["nix-command" "flakes"];
+    trusted-users = ["heifee"];
+
+    substituters = [
+      "https://cache.nixos.org"
+    ];
+
+
+  };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   ### SECTION [Networking] ###
   networking.hostName = "lenovo-laptop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
+  # Enable networking
+  networking.networkmanager.enable = true;
+  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.wireless.settings = {
+    General = {
+      EnableNetworkConfiguration = true;
+    };
+  };
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
   ### SECTION [Hardware] ###
   bluetooth.enable = true;
-  drawing-tablet.enable = true;
+  drawing-tablet.enable = false;
 
-  # Enable networking
-  networking.networkmanager.enable = true;
+  
 
 
   ### SECTION [Locale Settings] ###
@@ -68,6 +83,12 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  # Enable fingerprint scanner
+  services.fprintd = {
+    enable = true;
+    tod.enable = true;
+    tod.driver = pkgs.libfprint-2-tod1-goodix-550a;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {

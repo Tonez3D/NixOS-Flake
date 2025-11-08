@@ -3,8 +3,13 @@
 with pkgs; [
   vim
   #git
-  kitty
   cmake
+  clang
+  gcc
   rustup
+  usbutils
+  kitty
+  gtk3
+  overskride
   neovim-unwrapped
 ]
