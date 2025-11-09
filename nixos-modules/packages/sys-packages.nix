@@ -11,6 +11,7 @@ with pkgs; [
   kitty
   gtk3
   gtk4
+  gparted
   overskride
   neovim-unwrapped
 ]

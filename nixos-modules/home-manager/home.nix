@@ -12,6 +12,7 @@
     ./hyprland/monitor.nix
     ./hyprland/borders.nix
     ./waybar.nix
+    ./bash.nix
   ];
 
   config = {

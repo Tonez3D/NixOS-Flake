@@ -79,6 +79,7 @@
 
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
+  services.displayManager.sddm.wayland.enable = true;
   services.desktopManager.plasma6.enable = true;
   # Enable fingerprint scanner
   services.fprintd = {
@@ -156,6 +157,17 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  };
+
+  xdg.portal = {
+    enable = true;
+    #extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
+  };
 
   # List services that you want to enable:
 
