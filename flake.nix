@@ -20,12 +20,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
+    hyprland = {
+      url = "github:hyprwm/Hyprland"; 
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    stylix = {
+          url = "github:nix-community/stylix";
+          inputs.nixpkgs.follows = "nixpkgs";
+        };
 
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";

@@ -23,10 +23,9 @@
     experimental-features = ["nix-command" "flakes"];
     trusted-users = ["heifee"];
 
-    substituters = [
-      "https://cache.nixos.org"
-    ];
-
+    # substituters = [
+    #   "https://cache.nixos.org"
+    # ];
 
   };
   # Allow unfree packages
@@ -141,6 +140,7 @@
   };
 
   home-manager.useUserPackages = true;
+  home-manager.backupFileExtension = "backup"; 
 
   # Install firefox.
   programs.firefox.enable = true;

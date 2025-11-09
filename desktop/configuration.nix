@@ -23,11 +23,6 @@
     experimental-features = ["nix-command" "flakes"];
     trusted-users = ["heifee"];
 
-    substituters = [
-      "https://cache.nixos.org"
-    ];
-
-
   };
   nixpkgs.config.allowUnfree = true;
 
@@ -133,7 +128,8 @@
   };
 
   home-manager.useUserPackages = true;
- 
+  home-manager.backupFileExtension = "backup" ; 
+
   #home-manager.useGlobalPkgs = true;
 
 
