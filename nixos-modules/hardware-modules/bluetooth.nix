@@ -1,4 +1,6 @@
-{pkgs, lib, config, ... } : {
+{pkgs, lib, config, ... } : 
+
+{
     options = {
         bluetooth.enable = 
             lib.mkEnableOption "enabless bluetooth device support using blueman";

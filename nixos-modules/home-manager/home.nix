@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
 
-
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -11,8 +10,10 @@
     ./hyprland/hyprbar.nix
     ./hyprland/monitor.nix
     ./hyprland/borders.nix
+    ./hyprland/general.nix
     ./waybar.nix
     ./bash.nix
+    ../packages/rofi.nix
   ];
 
   config = {
@@ -58,6 +59,8 @@
   programs.kitty = {
     enable = true;
   };
+
+  
 
   programs.git = {
     enable = true;

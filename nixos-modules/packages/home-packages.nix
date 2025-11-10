@@ -1,4 +1,5 @@
 {pkgs, ... } : 
+
 with pkgs; [
   vscode
   discord
@@ -9,11 +10,13 @@ with pkgs; [
   spotify
   kicad
   dunst
+  swww
   gnuradio
   jetbrains.rust-rover
   jetbrains.idea-ultimate
   jetbrains.clion
-  rofi
+  krita
+  rofi-wayland
   blender
   
   # # It is sometimes useful to fine-tune packages, for example, by applying

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, ... } :
 
 {
   imports =
@@ -59,16 +59,15 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  #services.displayManager.sddm.enable = true;
+  #services.displayManager.sddm.wayland.enable = true;
+  #services.desktopManager.plasma6.enable = true;
 
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
     variant = "";
   };
-
 
   ### SECTION [Services] ###
   # Enable CUPS to print documents.
@@ -98,6 +97,9 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
+  
+  services.xserver.displayManager.lightdm.enable = true;
+  services.gnome.gnome-keyring.enable = true;
 
   environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; };
 
