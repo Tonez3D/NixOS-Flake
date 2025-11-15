@@ -33,7 +33,12 @@ with pkgs; [
   noto-fonts-cjk-sans
   noto-fonts-emoji
   jetbrains-mono
+  nerd-fonts.jetbrains-mono
+  nerd-fonts.tinos
   gparted
+  fontfor
+  fontforge
+  font-awesome_4
   overskride
   neovim-unwrapped
 ]

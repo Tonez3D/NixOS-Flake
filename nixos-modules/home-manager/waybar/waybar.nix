@@ -2,6 +2,7 @@
 
 {
 
+
   wayland.windowManager.hyprland.settings = {
     exec-once = "waybar"; #&& hyprbar";
   };
@@ -110,86 +111,30 @@
     #   };
     # }]; 
      
-    settings = {
-      mainBar = {
-        layer = "top";
+    settings = let 
+      modconfig = import ./modules.nix;
+      conf = {layer = "top";
         position = "left";
         width = 50;
         spacing = 7;
+        #margin-left = 0;
+        #margin-right = 2;
+
         modules-left = [
           "custom/search"
-          "wlr/workspaces"
-          "custom/lock"
           
-          
-          
-          "battery"
+          #"custom/lock"
+          #"battery"
         ];
-        modules-center = [];
-        modules-right = ["pulseaudio" "network" "clock" "custom/power"];
-        "wlr/workspaces" = {
-          on-click = "activate";
-          format = "{icon}";
-          active-only = false;
-          format-icons = {
-            default = "";
-            active = " 󰮯";
-          };
-        };
-        "custom/search" = {
-          format = " ";
-          tooltip = false;
-          on-click = "killall rofi || rofi -show drun";
-        };
-        
 
-        
-        "custom/lock" = {
-          tooltip = false;
-          on-click = "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown";
-          format = "";
+        modules-center = ["hyprland/workspaces"];
+
+        modules-right = ["pulseaudio" "network" "clock" "power"];
         };
-        "custom/power" = {
-          tooltip = false;
-          on-click = "wlogout &";
-          format = "襤";
-        };
-        clock = {
-          format = ''
-            {:%I
-            %M}'';
-          tooltip-format = ''
-            <big>{:%Y %B}</big>
-            <tt><small>{calendar}</small></tt>'';
-        };
-        
-        battery = {
-          states = {
-            warning = 30;
-            critical = 15;
-          };
-          format = "{icon}";
-          format-charging = "";
-          format-plugged = "";
-          format-alt = "{icon}";
-          format-icons = ["" "" "" "" "" "" "" "" "" "" "" ""];
-        };
-        network = {
-          format-wifi = "󰤨";
-          format-ethernet = "󰤨";
-          format-alt = "󰤨";
-          format-disconnected = "󰤭";
-          tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
-        };
-        pulseaudio = {
-          scroll-step = 5;
-          tooltip = false;
-          format = "{icon}";
-          format-icons = {default = ["" "" "墳"];};
-          on-click = "killall pavucontrol || pavucontrol";
-        };
-      };
+    in {
+      mainBar = conf // modconfig;
     };
+
 
     style = import ./style.nix;
   };

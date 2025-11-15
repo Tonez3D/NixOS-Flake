@@ -5,7 +5,7 @@
     }
 
     window#waybar {
-      background-color: transparent;
+      background-color: #262536;
       color: #8A2BE2;
       opacity: 0.9;
     }
@@ -30,13 +30,22 @@
       padding-left: 20px;
     }
 
+    #workspaces {
+      background-color: #8ead1b;
+      margin: 5px 7px 6px 1px;
+      padding: 5px 0px;
+      border-radius: 15px;
+      border: 0px;
+      font-size: 26px;
+    }
+
     #workspaces button {
-      background-color: transparent;
+      background-color: #2b0a0a;
       padding-left: 6px;
       margin: 0px 7px;
       font-family: JetBrains Mono Nerd Font;
-      transition: all 0.5s cubic-bezier(.55,-0.68,.48,1.68);
-      color: #8A2BE2;
+      transition: all 0.5s cubic-bezier(.55,0.68,.48,1.68);
+      color: #a276ca;
     }
 
     #workspaces button.urgent {
@@ -45,7 +54,7 @@
 
     #clock {
       font-weight: 700;
-      font-size: 15px;
+      font-size: 35px;
       font-family: "Iosevka Term";
     }
 
@@ -58,12 +67,14 @@
       color: #7FFF00;
       background-color: inherit;
     }
+
     tooltip {
       font-family: 'Lato', sans-serif;
       border-radius: 15px;
       padding: 20px;
       margin: 30px;
     }
+    
     tooltip label {
       font-family: 'Lato', sans-serif;
       padding: 20px;

@@ -11,7 +11,8 @@
     ./hyprland/monitor.nix
     ./hyprland/borders.nix
     ./hyprland/general.nix
-    ./waybar.nix
+    ./hyprland/workspace.nix
+    ./waybar/waybar.nix
     ./bash.nix
     ../packages/rofi.nix
   ];
