@@ -17,6 +17,8 @@
 	    "$mainMod CTRL, V, exec, code"
       ", Print, exec, grimblast copy area"
 
+      ", tablet:1, mouse, 1"
+
 
       "$mainMod, 1, workspace, 1"
       "$mainMod, 2, workspace, 2"

@@ -20,4 +20,7 @@ with pkgs; [
   nerd-fonts.tinos
   font-awesome_4
   font-awesome_5
+  material-icons
+  material-design-icons
+  
 ]

@@ -149,6 +149,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget                               
   environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; };
+  fonts.packages = with pkgs; import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
+  fonts.fontDir.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
