@@ -16,29 +16,14 @@ with pkgs; [
   rofi-wayland
   gnome-keyring
   adwaita-icon-theme
-  material-icons
-  material-design-icons
-  roboto
-  work-sans
-  comic-neue
-  source-sans
-  twemoji-color-font
-  comfortaa
-  lato
-  inter
   opentabletdriver
-  dejavu_fonts
-  iosevka-bin
-  noto-fonts
-  noto-fonts-cjk-sans
-  noto-fonts-emoji
-  jetbrains-mono
-  nerd-fonts.jetbrains-mono
-  nerd-fonts.tinos
+  #agenix
   gparted
+  uv
+  wev
+  fzf
   fontfor
   fontforge
-  font-awesome_4
   overskride
   neovim-unwrapped
 ]
