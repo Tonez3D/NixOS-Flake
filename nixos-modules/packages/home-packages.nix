@@ -11,7 +11,7 @@ with pkgs; [
   kicad
   dunst
   swww
-  gnuradio
+  #gnuradio
   jetbrains.rust-rover
   jetbrains.idea-ultimate
   jetbrains.clion

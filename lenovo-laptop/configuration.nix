@@ -44,7 +44,7 @@
   ### SECTION [Hardware] ###
   bluetooth.enable = true;
   drawing-tablet.enable = false;
-  nvidia-gpu.enable = true;
+  nvidia-gpu.enable = false;
 
   
 
@@ -77,15 +77,15 @@
   ### SECTION [Services] ###
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  #services.displayManager.sddm.enable = true;
+  #services.displayManager.sddm.wayland.enable = true;
+  #services.desktopManager.plasma6.enable = true;
   # Enable fingerprint scanner
-  services.fprintd = {
-    enable = true;
-    tod.enable = true;
-    tod.driver = pkgs.libfprint-2-tod1-goodix-550a;
-  };
+  #services.fprintd = {
+    #enable = true;
+    #tod.enable = true;
+   # tod.driver = pkgs.libfprint-2-tod1-goodix-550a;
+  #};
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -146,6 +146,9 @@
   programs.firefox.enable = true;
 
 
+  services.xserver.displayManager.lightdm.enable = true;
+  services.gnome.gnome-keyring.enable = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget                               
   environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; };
@@ -164,7 +167,10 @@
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-  };
+	portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+};
+      hardware.graphics.enable = true;
+
 
   xdg.portal = {
     enable = true;

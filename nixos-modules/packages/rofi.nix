@@ -16,6 +16,14 @@
     package = pkgs.rofi-wayland;
     # Set terminal to kitty
     terminal = "${pkgs.kitty}/bin/kitty";
+    location = "center";
+    extraConfig = {
+        show-icons = true;
+        drun-display-format = "{icon} {name}";
+        disable-history = false;
+        hide-scrollbar = true;
+        display-drun = "Apps";
+      };
   };
 
 }

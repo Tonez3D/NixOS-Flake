@@ -1,5 +1,5 @@
 {inputs, ...} : {
-    wayland.windowManager.hyprctl.settings = {
+    #wayland.windowManager.hyprctl.settings = {
         
-    }
+    #}
 }
