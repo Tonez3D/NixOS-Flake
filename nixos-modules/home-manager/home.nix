@@ -51,6 +51,9 @@
     # '';
   };
 
+  #programs.waypaper.enable = true;
+#programs.awww.enable = true; 
+
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
   #wayland.windowManager.hyprland.package = pkgs.hyprland;
   

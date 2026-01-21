@@ -1,5 +1,5 @@
 
-{pkgs, ...} :
+{pkgs, inputs, ...} :
 
 with pkgs; [
   vim
@@ -26,4 +26,5 @@ with pkgs; [
   fontforge
   overskride
   neovim-unwrapped
+  inputs.awww
 ]

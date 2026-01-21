@@ -30,7 +30,14 @@
   };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+zramSwap.enable = true;
 
+programs.steam = {
+    enable = true;
+    gamescopeSession.enable = false;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
   ### SECTION [Networking] ###
   networking.hostName = "lenovo-laptop"; # Define your hostname.
   # Enable networking
@@ -151,7 +158,7 @@
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget                               
-  environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; };
+  environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; inherit inputs;};
   fonts.packages = with pkgs; import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
   fonts.fontDir.enable = true;
 

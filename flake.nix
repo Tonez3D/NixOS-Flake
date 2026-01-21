@@ -40,6 +40,14 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    awww = {
+      url = "git+https://codeberg.org/LGFae/awww";
+    };
+
+    matugen = {
+      url = "github:InioX/Matugen?ref=refs/tags/v3.1.0";
+    };
+
   };
 
   outputs = { self, nixpkgs, ... }@inputs: 
@@ -68,6 +76,7 @@
         modules = [
           ./lenovo-laptop/configuration.nix
           inputs.home-manager.nixosModules.default
+          
         ];
 
       };

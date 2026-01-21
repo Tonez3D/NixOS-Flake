@@ -101,7 +101,7 @@
   services.xserver.displayManager.lightdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
-  environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; };
+  environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; inherit inputs;};
   fonts.packages = with pkgs; import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
   fonts.fontDir.enable = true;
 
