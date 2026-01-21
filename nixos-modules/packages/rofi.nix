@@ -24,6 +24,8 @@
         hide-scrollbar = true;
         display-drun = "Apps";
       };
+
+      theme = ./theme.rafi;
   };
 
 }
