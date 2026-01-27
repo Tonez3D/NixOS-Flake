@@ -4,8 +4,7 @@
 
   "clock" = {
     format = ''
-      {:%I
-      %M}'';
+      {:%I:%M}'';
     tooltip-format = ''
       <big>{:%Y %B}</big>
       <tt><small>{calendar}</small></tt>'';
@@ -33,13 +32,16 @@
 
   "hyprland/workspaces" = {
     on-click = "activate";
-          format = "";
+          format = " {}";
           active-only = false;
           format-icons = {
             default = "";
             active = " 󰮯";
           };
-          persistent-workspaces = 5;
+          persistent-workspaces = {
+            "1" = [];
+            "2" = [];
+          };
   };
 
   "custom/search" = {

@@ -8,12 +8,16 @@ with pkgs; [
   clang
   gcc
   rustup
+  age
+  killall
   usbutils
   kitty
   gtk3
   lshw
   gtk4
   rofi-wayland
+  upower
+  godot-mono
   gnome-keyring
   adwaita-icon-theme
   opentabletdriver

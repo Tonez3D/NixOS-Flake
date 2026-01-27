@@ -3,10 +3,6 @@
 {
 
 
-  wayland.windowManager.hyprland.settings = {
-    exec-once = "waybar"; #&& hyprbar";
-  };
-
   programs.waybar = {
     enable = true; 
     # settings = [{
@@ -114,8 +110,9 @@
     settings = let 
       modconfig = import ./modules.nix;
       conf = {layer = "top";
-        position = "left";
-        width = 50;
+        position = "top";
+        width = 1000;
+        hieght = 10;
         spacing = 7;
         #margin-left = 0;
         #margin-right = 2;

@@ -16,9 +16,9 @@
       
     };
 
-    extraConfig = ''
-      exec-once = hyprbar
-    '';
+    #extraConfig = ''
+    #  exec-once = hyprbar
+    #'';
 
   };
 }

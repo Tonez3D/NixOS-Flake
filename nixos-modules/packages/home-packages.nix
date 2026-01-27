@@ -10,7 +10,9 @@ with pkgs; [
   spotify
   kicad
   dunst
-  swww
+  oh-my-posh
+  valgrind
+  soapysdr
   #gnuradio
   jetbrains.rust-rover
   jetbrains.idea-ultimate

@@ -10,7 +10,9 @@
       ./hardware-configuration.nix
       ../nixos-modules/hardware-modules/hardware-config.nix
       #../nixos-modules/home-manager/home.nix
+      inputs.sops-nix.nixosModules.sops
       inputs.home-manager.nixosModules.default
+      ../nixos-modules/services-modules/wifi.nix
     ];
 
   ### SECTION [Bootloader] ###  
@@ -79,6 +81,15 @@ programs.steam = {
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
+
+  sops.defaultSopsFile = ../secrets/secrets.yaml;
+  sops.defaultSopsFormat = "yaml";
+  sops.age.keyFile = "/home/ifeatud/.config/sops/age/keys.txt";
+  sops.secrets.example_key = { };
+  sops.secrets.home_wifi_ssid = {};
+  sops.secrets.home_wifi_psk = {};
+  sops.secrets."mys/subdir/secret" = {};
+
 
 
   ### SECTION [Services] ###

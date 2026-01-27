@@ -12,6 +12,9 @@
     ./hyprland/borders.nix
     ./hyprland/general.nix
     ./hyprland/workspace.nix
+    ./hyprland/hyprlock.nix
+        ./hyprland/exec-once.nix
+
     ./waybar/waybar.nix
     ./bash.nix
     ../packages/rofi.nix
