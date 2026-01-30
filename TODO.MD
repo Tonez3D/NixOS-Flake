@@ -1,0 +1,16 @@
+
+- [ ] Refactor
+  - [ ] Breakout Pkgs into different nix files
+  - [ ] Breakout Hyprland to only be for Latprop and PC
+- [ ] Hyprland
+  - [ ] Setup Waypaper
+  - [ ] Mutagen Color Gen
+  - [ ] Setup OhMyPosh
+  - [ ] Rofi
+  - [ ] Hyprlock
+- [ ] Setup sops-nix
+- [ ] Setup Cursor
+- [ ] Setup Wallpaper
+- [ ] Zen browser maybe
+- [ ] Fix Chrome issues
+

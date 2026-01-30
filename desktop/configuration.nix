@@ -98,7 +98,7 @@
     #media-session.enable = true;
   };
   
-  services.xserver.displayManager.lightdm.enable = true;
+  #services.xserver.displayManager.lightdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
   environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; inherit inputs;};

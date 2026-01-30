@@ -10,11 +10,13 @@
       "$mainMod, F, exec, firefox"
 	    "$mainMod, K, exec, kitty"
       "$mainMod, Q, killactive"
+      "$mainMod SHIFT, Q, exec, hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"
       "$mainMod, Z, exec, rofi -show drun"
       "$mainMod, O, exec, obsidian"
       "$mainMod SHIFT, F, fullscreen, 1"
       "$mainMod CTRL, L, exec, hyprctl dispatch exit"
 	    "$mainMod CTRL, V, exec, code"
+      "$mainMod SHIFT, T, workspaceopt, allfloat"
       ", Print, exec, grimblast copy area"
 
       #", tablet:1, mouse, 1"
@@ -31,6 +33,7 @@
       "$mainMod, 9, workspace, 9"
       "$mainMod, 0, workspace, 10"
 
+      # Only of multimoniter support
       "$mainMod SHIFT, 1, workspace, 11"
       "$mainMod SHIFT, 2, workspace, 12"
       "$mainMod SHIFT, 3, workspace, 13"
@@ -42,7 +45,13 @@
       "$mainMod SHIFT, 9, workspace, 19"
       "$mainMod SHIFT, 0, workspace, 20"
 
-      #"$mainMod SHIFT, 1, movetoworkspace, 1 " # Move active window to workspace 1
+      "$mainMod CRTL, j, workspace, e+1"
+      "$mainMod CTRL, k, workspace, e-1"
+
+      "$mainMod ALT, right, movetoworkspace, r+1"
+      "$mainMod ALT, left, movetoworkspace, r-1"
+
+      "$mainMod CTRL, 1, movetoworkspace, 1 " # Move active window to workspace 1
       #"$mainMod SHIFT, 2, movetoworkspace, 2 " # Move active window to workspace 2
       #"$mainMod SHIFT, 3, movetoworkspace, 3 " # Move active window to workspace 3
       #"$mainMod SHIFT, 4, movetoworkspace, 4 " # Move active window to workspace 4

@@ -39,7 +39,7 @@
       label = [
         # Time
         {
-          text = ''cmd[update:1000] echo "$(date +'%k:%M')"'';
+          text = ''cmd[update:1000] echo "$(date +'%I:%M')"'';
 
           font_size = 115;
           font_family = "lato";

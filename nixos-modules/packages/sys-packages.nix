@@ -18,6 +18,10 @@ with pkgs; [
   rofi-wayland
   upower
   godot-mono
+  hyprpolkitagent
+  mesa
+  libGLU
+  libGL
   gnome-keyring
   adwaita-icon-theme
   opentabletdriver

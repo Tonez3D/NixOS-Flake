@@ -6,6 +6,7 @@
 
   imports = [
     ./hyprland/binds.nix
+    ./hyprland/main.nix
     ./hyprland/plugins.nix
     ./hyprland/hyprbar.nix
     ./hyprland/monitor.nix
@@ -13,10 +14,11 @@
     ./hyprland/general.nix
     ./hyprland/workspace.nix
     ./hyprland/hyprlock.nix
-        ./hyprland/exec-once.nix
-
+    ./hyprland/exec-once.nix
+    ./hyprland/hypridle.nix
     ./waybar/waybar.nix
     ./bash.nix
+    ./wlogout/config.nix
     ../packages/rofi.nix
   ];
 
@@ -61,6 +63,7 @@
   #wayland.windowManager.hyprland.package = pkgs.hyprland;
   
   wayland.windowManager.hyprland.xwayland.enable = true;
+  
   
 
   programs.kitty = {

@@ -104,6 +104,7 @@ programs.steam = {
     #tod.enable = true;
    # tod.driver = pkgs.libfprint-2-tod1-goodix-550a;
   #};
+    services.displayManager.defaultSession = "hyprland";
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -164,7 +165,25 @@ programs.steam = {
   programs.firefox.enable = true;
 
 
-  services.xserver.displayManager.lightdm.enable = true;
+  services.getty = {
+    autologinUser = "ifeatud";
+  };
+  environment.loginShellInit = ''
+    if [ "$(tty)" = "/dev/tty1" ]; then
+      Hyprland
+    fi
+  '';
+  #services.greetd = {
+  #  enable = true;
+  #  settings = {
+  #    initial_session = {
+  #      command = "${pkgs.hyprland}/bin/Hyprland";
+  #      user = "ifeatud";
+  #    };
+  #  };
+  #};
+
+  #services.xserver.displayManager.lightdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
   # List packages installed in system profile. To search, run:

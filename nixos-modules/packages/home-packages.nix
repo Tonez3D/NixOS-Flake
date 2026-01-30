@@ -13,6 +13,9 @@ with pkgs; [
   oh-my-posh
   valgrind
   soapysdr
+  hypridle
+  hyprlock
+  nixfmt
   #gnuradio
   jetbrains.rust-rover
   jetbrains.idea-ultimate
