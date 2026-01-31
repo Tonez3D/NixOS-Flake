@@ -164,7 +164,7 @@ programs.steam = {
   # Install firefox.
   programs.firefox.enable = true;
 
-
+  stylix.enable = true;
   services.getty = {
     autologinUser = "ifeatud";
   };

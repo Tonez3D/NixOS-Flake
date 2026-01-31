@@ -2,6 +2,8 @@
 {pkgs, inputs, ...} :
 
 with pkgs; [
+    # TODO: Breakout the system-pkgs
+
   vim
   #git
   cmake

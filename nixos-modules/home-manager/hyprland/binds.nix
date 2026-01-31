@@ -1,26 +1,26 @@
-{inputs, ...} : 
+{ inputs, ... }:
 
 {
-  
+
   wayland.windowManager.hyprland.settings = {
 
     "$mainMod" = "SUPER";
-      
+
     bind = [
       "$mainMod, F, exec, firefox"
-	    "$mainMod, K, exec, kitty"
+      "$mainMod, K, exec, kitty"
       "$mainMod, Q, killactive"
       "$mainMod SHIFT, Q, exec, hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"
       "$mainMod, Z, exec, rofi -show drun"
       "$mainMod, O, exec, obsidian"
       "$mainMod SHIFT, F, fullscreen, 1"
       "$mainMod CTRL, L, exec, hyprctl dispatch exit"
-	    "$mainMod CTRL, V, exec, code"
+      "$mainMod CTRL, V, exec, code"
       "$mainMod SHIFT, T, workspaceopt, allfloat"
       ", Print, exec, grimblast copy area"
 
       #", tablet:1, mouse, 1"
-      
+
       # Switch to another workspace
       "$mainMod, 1, workspace, 1"
       "$mainMod, 2, workspace, 2"
@@ -71,8 +71,6 @@
       #"XF86AudioPrev, exec, playerctl previous"   
       #"XF86MonBrightnessUp, exec, brightnessctl -q s +10%"                                                                                                 # Increase brightness by 10%
       #"XF86MonBrightnessDown, exec, brightnessctl -q s 10%-"                                                                                                          # Audio previous
-
-
 
     ];
 

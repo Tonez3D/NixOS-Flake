@@ -1,4 +1,4 @@
-{pkgs, ...} : 
+{ pkgs, ... }:
 {
   #systemd.user.services.hyprpolkitagent = {
   #  description = "Hyprpolkitagent - Polkit authentication agent";

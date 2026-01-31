@@ -1,5 +1,4 @@
-{inputs, ... } : 
-{
+{ inputs, ... }: {
   services.hypridle = {
     enable = true;
     settings = {
@@ -10,12 +9,10 @@
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on";
       };
-      listener = [
-        {
-          timeout = 300; # 5 Minutes
-          on-timeout = "loginctl lock-session";
-        }
-      ];
+      listener = [{
+        timeout = 300; # 5 Minutes
+        on-timeout = "loginctl lock-session";
+      }];
     };
   };
 }

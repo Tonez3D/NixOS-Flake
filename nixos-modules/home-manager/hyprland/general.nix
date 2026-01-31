@@ -1,8 +1,8 @@
-{ ... } : 
+{ ... }:
 
 {
 
-  wayland.windowManager.hyprland.systemd.variables = ["--all"];
+  wayland.windowManager.hyprland.systemd.variables = [ "--all" ];
 
   wayland.windowManager.hyprland.settings = {
     general = {
@@ -27,7 +27,7 @@
       numlock_by_default = true;
 
       tablet = {
-        transform =0;
+        transform = 0;
         output = "HDMI-A-1";
       };
     };

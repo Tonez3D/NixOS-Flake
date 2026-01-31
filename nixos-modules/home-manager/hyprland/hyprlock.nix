@@ -1,5 +1,4 @@
-{...} : 
-{
+{ ... }: {
   programs.hyprlock = {
     enable = true;
 
@@ -10,15 +9,13 @@
         fractional_scaling = 0;
       };
 
-      background = [
-        {
-          path = "${../../../assets/54xhll4sbo.jpg}";
+      background = [{
+        path = "${../../../assets/54xhll4sbo.jpg}";
 
-          color = "rgba(29, 32, 33, 255)";
-          blur_passes = 2;
-          vibrancy_darkness = 0.0;
-        }
-      ];
+        color = "rgba(29, 32, 33, 255)";
+        blur_passes = 2;
+        vibrancy_darkness = 0.0;
+      }];
 
       shape = [
         # User box
@@ -80,33 +77,32 @@
         }
       ];
 
-      input-field = [
-        {
-          size = "300, 50";
-          rounding = 0;
-          outline_thickness = 2;
+      input-field = [{
+        size = "300, 50";
+        rounding = 0;
+        outline_thickness = 2;
 
-          dots_spacing = 0.4;
+        dots_spacing = 0.4;
 
-          font_color = "rgba(235, 219, 178, 0.9)";
-          font_family = "lato";
+        font_color = "rgba(235, 219, 178, 0.9)";
+        font_family = "lato";
 
-          outer_color = "rgba(168, 153, 132, 0.95)";
-          inner_color = "rgba(102, 92, 84, 0.33)";
-          check_color = "rgba(152, 151, 26, 0.95)";
-          fail_color = "rgba(204, 36, 29, 0.95)";
-          capslock_color = "rgba(215, 153, 33, 0.95)";
-          bothlock_color = "rgba(215, 153, 33, 0.95)";
+        outer_color = "rgba(168, 153, 132, 0.95)";
+        inner_color = "rgba(102, 92, 84, 0.33)";
+        check_color = "rgba(152, 151, 26, 0.95)";
+        fail_color = "rgba(204, 36, 29, 0.95)";
+        capslock_color = "rgba(215, 153, 33, 0.95)";
+        bothlock_color = "rgba(215, 153, 33, 0.95)";
 
-          hide_input = false;
-          fade_on_empty = false;
-          placeholder_text = ''<i><span foreground="##fbf1c7">Enter Password</span></i>'';
+        hide_input = false;
+        fade_on_empty = false;
+        placeholder_text =
+          ''<i><span foreground="##fbf1c7">Enter Password</span></i>'';
 
-          position = "0, 50";
-          halign = "center";
-          valign = "bottom";
-        }
-      ];
+        position = "0, 50";
+        halign = "center";
+        valign = "bottom";
+      }];
 
       animation = [ "inputFieldColors, 0" ];
     };

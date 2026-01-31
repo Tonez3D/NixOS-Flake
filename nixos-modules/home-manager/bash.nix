@@ -1,26 +1,24 @@
-{hostName, lib, ...} : 
-{
+{ hostName, lib, ... }: {
 
- 
+  programs.bash = (lib.mkMerge [
+    (lib.mkIf (hostName == "nixos") {
 
-  
-     programs.bash = (lib.mkMerge [
-      (lib.mkIf (hostName == "nixos") {
-         
-    enable = true;
-        bashrcExtra = ''eval "$(ssh-agent -s)"
-      ssh-add ~/.ssh/github-ssh
+      enable = true;
+      bashrcExtra = ''
+        eval "$(ssh-agent -s)"
+              ssh-add ~/.ssh/github-ssh
       '';
-      
-      })
-      (lib.mkIf (hostName == "lenovo-laptop"){
-        
-    enable = true;
-        bashrcExtra = ''eval "$(ssh-agent -s)"
-      ssh-add ~/.ssh/laptop-github-ssh
+
+    })
+    (lib.mkIf (hostName == "lenovo-laptop") {
+
+      enable = true;
+      bashrcExtra = ''
+        eval "$(ssh-agent -s)"
+              ssh-add ~/.ssh/laptop-github-ssh
       '';
-        
-      })
-    ]);
-  
+
+    })
+  ]);
+
 }

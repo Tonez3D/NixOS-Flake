@@ -1,4 +1,4 @@
-{ ... } : 
+{ ... }:
 
 {
   wayland.windowManager.hyprland = {
@@ -13,7 +13,7 @@
         bar_text_size = 10;
         #hyperbars-button = "rgb(ff4040), 10, U+32D2, hyrpctl dispatch fullscrren 1";
       };
-      
+
     };
 
     #extraConfig = ''
