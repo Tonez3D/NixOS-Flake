@@ -10,7 +10,7 @@
       };
 
       background = [{
-        path = "${../../../assets/54xhll4sbo.jpg}";
+        path = "${../../../assets/whats-your-best-lotm-wallpapers-donghua-v0-v4l2iwvwjd4f1.webp}";
 
         color = "rgba(29, 32, 33, 255)";
         blur_passes = 2;

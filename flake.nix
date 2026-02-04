@@ -32,7 +32,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix";
+      url = "github:danth/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -69,7 +69,6 @@
     in {
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-
         specialArgs = { inherit inputs; };
 
         modules = [
@@ -77,7 +76,6 @@
           inputs.home-manager.nixosModules.default
           #sops-nix.nixosModules.sops
         ];
-
       };
 
       nixosConfigurations.lenovo-nixos = nixpkgs.lib.nixosSystem {
@@ -85,16 +83,13 @@
         specialArgs = { inherit inputs; };
 
         modules = [
+
           ./lenovo-laptop/configuration.nix
           inputs.home-manager.nixosModules.default
-                    inputs.stylix.nixosModules.stylix
+          inputs.stylix.nixosModules.stylix
           #sops-nix.nixosModules.sops
         ];
       };
-
-
       # TODO: Add Homelab flake
-
     };
-
 }

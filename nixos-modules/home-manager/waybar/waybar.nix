@@ -111,22 +111,22 @@
       modconfig = import ./modules.nix;
       conf = {layer = "top";
         position = "top";
-        width = 1000;
-        hieght = 10;
-        spacing = 7;
+        width = 1920;
+        hieght = 2;
+        spacing = 4;
         #margin-left = 0;
         #margin-right = 2;
 
         modules-left = [
           "custom/search"
-          
+          #"custom/lock"
           #"custom/lock"
           #"battery"
         ];
 
         modules-center = ["hyprland/workspaces"];
 
-        modules-right = ["pulseaudio" "network" "clock" "power"];
+        modules-right = [ "clock" ];
         };
     in {
       mainBar = conf // modconfig;

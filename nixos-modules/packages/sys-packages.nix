@@ -10,6 +10,8 @@ with pkgs; [
   clang
   gcc
   rustup
+  libusb1
+  rustc
   age
   killall
   usbutils
@@ -20,9 +22,17 @@ with pkgs; [
   rofi-wayland
   upower
   godot-mono
+  brightnessctl
+  base16-schemes
   hyprpolkitagent
   mesa
   libGLU
+
+  bibata-cursors
+  zip
+  hellwal
+  #light
+  wev
   libGL
   gnome-keyring
   adwaita-icon-theme
@@ -30,7 +40,10 @@ with pkgs; [
   #agenix
   gparted
   uv
-  wev
+  waypaper
+  #wev
+  swww
+  fastfetch
   fzf
   fontfor
   fontforge

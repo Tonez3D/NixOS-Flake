@@ -128,6 +128,11 @@
     users = {
       "heifee" = import ../nixos-modules/home-manager/home.nix; 
     };
+    sharedModules = [
+    {
+      stylix.targets.kitty.enable = false;
+    }
+  ];
   };
 
   home-manager.useUserPackages = true;

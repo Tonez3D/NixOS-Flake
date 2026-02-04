@@ -13,4 +13,4 @@
 - [ ] Setup Wallpaper
 - [ ] Zen browser maybe
 - [ ] Fix Chrome issues
-
+- [ ] Add KiCad keybind

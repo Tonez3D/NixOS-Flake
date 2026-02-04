@@ -1,7 +1,6 @@
 
 {
 
-
   "clock" = {
     format = ''
       {:%I:%M}'';
@@ -10,17 +9,34 @@
       <tt><small>{calendar}</small></tt>'';
   };
 
-  "lock" = {
-    format = "";
-  };
-
   "network" = {
     format-wifi = "󰤨";
+    on-click = "nmuti";
     format-ethernet = "󰤨";
     format-alt = "󰤨";
     format-disconnected = "󰤭";
     tooltip-format = "{ipaddr}/{ifname} via {gwaddr} ({signalStrength}%)";
   };
+
+  "hyprland/workspaces" = {
+    on-click = "activate";
+    format = "{}";
+    active-only = false;
+    format-icons = {
+      default = "";
+      active = " 󰮯";
+    };
+    persistent-workspaces = {
+      "1" = [];
+    };
+  };
+
+  "custom/search" = {
+    format = " ";
+    tooltip = false;
+    on-click = "killall rofi || rofi -show drun";
+  };
+
 
   "pulseaudio" = {
     scroll-step = 5;
@@ -30,25 +46,6 @@
           on-click = "killall pavucontrol || pavucontrol";
   };
 
-  "hyprland/workspaces" = {
-    on-click = "activate";
-          format = " {}";
-          active-only = false;
-          format-icons = {
-            default = "";
-            active = " 󰮯";
-          };
-          persistent-workspaces = {
-            "1" = [];
-            "2" = [];
-          };
-  };
-
-  "custom/search" = {
-    format = " Apps";
-    tooltip = false;
-    on-click = "killall rofi || rofi -show drun";
-  };
 
   "hyprland/window" = {
     rewrite = {};
@@ -57,26 +54,21 @@
 
   "bluetooth" = {};
 
-  "power" = {
+  "custom/power" = {
+    format = "Power";
     tooltip = false;
-          on-click = "wlogout &";
-          format = "襤";
-          };
-
+    on-click = "wlogout &";
+  };
 
   "battery" = {
     states = {
-            warning = 30;
-            critical = 15;
-          };
-          format = "{icon}";
-          format-charging = "";
-          format-plugged = "";
-          format-alt = "{icon}";
-          format-icons = ["" "" "" "" "" "" "" "" "" "" "" ""];
-        
+      warning = 30;
+      critical = 15;
+    };
+    format = "{icon}";
+    format-charging = "!";
+    format-plugged = "@";
+    format-alt = "{icon}";
+    format-icons = ["A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L"];
   };
-
-  
-
 }

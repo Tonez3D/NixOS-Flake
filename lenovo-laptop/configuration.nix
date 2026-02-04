@@ -13,6 +13,7 @@
       inputs.sops-nix.nixosModules.sops
       inputs.home-manager.nixosModules.default
       ../nixos-modules/services-modules/wifi.nix
+    ../stylix.nix   
     ];
 
   ### SECTION [Bootloader] ###  
@@ -97,6 +98,7 @@ programs.steam = {
   # Enable the KDE Plasma Desktop Environment.
   #services.displayManager.sddm.enable = true;
   #services.displayManager.sddm.wayland.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   #services.desktopManager.plasma6.enable = true;
   # Enable fingerprint scanner
   #services.fprintd = {
@@ -131,14 +133,21 @@ programs.steam = {
     #media-session.enable = true;
   };
 
+  programs.light.enable = true;
+  #programs.brightnessctl.enable = true;
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-
+  services.udev.extraRules = ''
+    ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl1", MODE="0666"
+  '';
+  #services.udev.extraRules = ''
+  #  ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl1", MODE="0666"
+  #'';
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ifeatud = {
     isNormalUser = true;
     description = "Ifeatu Dunu";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
     packages = with pkgs; [
       kdePackages.kate
     #  thunderbird
@@ -154,6 +163,11 @@ programs.steam = {
     users = {
       "ifeatud" = import ../nixos-modules/home-manager/home.nix; 
     };
+    sharedModules = [
+    {
+      stylix.targets.kitty.enable = false;
+    }
+    ];
 
 
   };
@@ -165,6 +179,10 @@ programs.steam = {
   programs.firefox.enable = true;
 
   stylix.enable = true;
+  stylix.targets.gnome.enable = false;
+  #stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
+  #stylix.homeManagerIntegration.enable = true;
+  
   services.getty = {
     autologinUser = "ifeatud";
   };
@@ -185,7 +203,7 @@ programs.steam = {
 
   #services.xserver.displayManager.lightdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
-
+  #services.gnome.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget                               
   environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; inherit inputs;};

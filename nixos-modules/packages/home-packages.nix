@@ -6,13 +6,13 @@ with pkgs; [
   obsidian
   git
   gitu
-  google-chrome
+  #google-chrome
   spotify
   kicad
   dunst
   oh-my-posh
   valgrind
-  soapysdr
+  #soapysdr
   hypridle
   hyprlock
   nixfmt
@@ -29,3 +29,4 @@ with pkgs; [
   
   # TODO: Breakout the home-pkgs
 
+]

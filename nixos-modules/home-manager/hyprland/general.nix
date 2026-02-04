@@ -17,10 +17,13 @@
 
       resize_on_border = true;
 
-      gaps_in = 2;
-      gaps_out = 5;
+      gaps_in = 0;
+      gaps_out = 0;
 
     };
+    #cursor = {
+    #  enable_hyprcursor = false;
+    #};
 
     input = {
       kb_layout = "us";
@@ -30,6 +33,10 @@
         transform = 0;
         output = "HDMI-A-1";
       };
+    };
+    misc = {
+      disable_hyprland_logo = true;
+      disable_splash_rendering = true;
     };
   };
 }
