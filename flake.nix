@@ -78,7 +78,7 @@
         ];
       };
 
-      nixosConfigurations.lenovo-nixos = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.lenovo-laptop = nixpkgs.lib.nixosSystem {
 
         specialArgs = { inherit inputs; };
 

@@ -1,6 +1,6 @@
-{pkgs, ...} : 
+{ pkgs, ... }:
 
-let 
+let
   hypr-colors = ''
     $background = rgb(%%background.rgb%%)
     $foreground = rgb(%%foreground.rgb%%)
@@ -47,7 +47,7 @@ let
     --foreground: #%% foreground.hex %%;
     --cursor: #%% cursor.hex %%;
     --border: #%% border.hex %%;
-    
+
     --color0: #%% color0.hex %%;
     --color1: #%% color1.hex %%;
     --color2: #%% color2.hex %%;
@@ -87,51 +87,51 @@ let
     bright7=%%color15.rgb%%
   '';
   wofi-colors = ''
-      window {
-        margin: 0px;
-        border: 1px solid #%%foreground.rgb%%;
-        background-color: #%%background.rgb%%;
-      }
+    window {
+      margin: 0px;
+      border: 1px solid #%%foreground.rgb%%;
+      background-color: #%%background.rgb%%;
+    }
 
-      #input {
-        margin: 5px;
-        border: none;
-        background-color: #%%color8.rgb%%;
-      }
+    #input {
+      margin: 5px;
+      border: none;
+      background-color: #%%color8.rgb%%;
+    }
 
-      #inner-box {
-        margin: 5px;
-        border: none;
-        background-color: #%%background.rgb%%;
-      }
+    #inner-box {
+      margin: 5px;
+      border: none;
+      background-color: #%%background.rgb%%;
+    }
 
-      #outer-box {
-        margin: 5px;
-        border: none;
-        background-color: #%%background.rgb%%;
-      }
+    #outer-box {
+      margin: 5px;
+      border: none;
+      background-color: #%%background.rgb%%;
+    }
 
-      #scroll {
-        margin: 0px;
-        border: none;
-      }
+    #scroll {
+      margin: 0px;
+      border: none;
+    }
 
-      #text {
-        margin: 5px;
-        border: none;
-        color: #ffffff;
-      }
+    #text {
+      margin: 5px;
+      border: none;
+      color: #ffffff;
+    }
 
-      #entry:selected {
-        background-color: #%%color8.rgb%%;
-      }
-    '';
+    #entry:selected {
+      background-color: #%%color8.rgb%%;
+    }
+  '';
 in {
   home.file = {
-    ".config/wal/templates/colors-foot.ini".text = ''${foot-colors}'';
+    ".config/wal/templates/colors-foot.ini".text = "${foot-colors}";
     ##".config/wal/templates/colors-wofi.css".text = ''${wofi-colors}''; #somehow broken
-    ".config/waybar/colors-waybar.css".text = ''${waybar-colors}'';
-    ".config/wal/templates/colors-hyprland.conf".text = ''${hypr-colors}'';
-    ".config/wal/templates/colors-discord.css".text = ''${discord-colors}'';
+    ".config/waybar/colors-waybar.css".text = "${waybar-colors}";
+    ".config/wal/templates/colors-hyprland.conf".text = "${hypr-colors}";
+    ".config/wal/templates/colors-discord.css".text = "${discord-colors}";
   };
 }

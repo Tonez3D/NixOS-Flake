@@ -10,7 +10,7 @@
         after_sleep_cmd = "hyprctl dispatch dpms on";
       };
       listener = [{
-        timeout = 300; # 5 Minutes
+        timeout = 900; # 5 Minutes
         on-timeout = "loginctl lock-session";
       }];
     };

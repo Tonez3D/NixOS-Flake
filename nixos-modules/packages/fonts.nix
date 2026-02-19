@@ -1,5 +1,4 @@
-
-{pkgs, ...} :
+{ pkgs, ... }:
 
 with pkgs; [
   roboto
@@ -22,5 +21,5 @@ with pkgs; [
   font-awesome_5
   material-icons
   material-design-icons
-  
+  material-symbols
 ]

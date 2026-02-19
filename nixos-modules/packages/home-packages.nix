@@ -1,7 +1,7 @@
-{pkgs, ... } : 
+{ pkgs, ... }:
 
 with pkgs; [
-  vscode
+  vscode-fhs
   discord
   obsidian
   git
@@ -10,14 +10,15 @@ with pkgs; [
   spotify
   kicad
   dunst
+  playerctl
   oh-my-posh
+  starship
   valgrind
-  #soapysdr
   hypridle
   hyprlock
   nixfmt
+  pavucontrol
   starship
-  #gnuradio
   jetbrains.rust-rover
   jetbrains.idea-ultimate
   jetbrains.clion
@@ -26,7 +27,7 @@ with pkgs; [
   blender
   waypaper
   nemo
-  
+
   # TODO: Breakout the home-pkgs
 
 ]

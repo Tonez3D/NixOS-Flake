@@ -2,7 +2,6 @@
 
 {
 
-  wayland.windowManager.hyprland.plugins =
-    [ pkgs.hyprlandPlugins.hyprbars ];
+  wayland.windowManager.hyprland.plugins = [ pkgs.hyprlandPlugins.hyprbars ];
 
 }

@@ -1,0 +1,10 @@
+{pkgs, config, ...} : 
+let 
+  gen-colors = pkgs.writeScriptBin "new-color-pallet" ''
+    #!/usr/bin/env bash
+    wallpaperPath = waypaper --list | grep -o '"wallpaper": "[^"]*"' | cut -d: -f2
+    wallust --backend [method] $wallpaperPath
+  '';
+in {
+  home.packages = [gen-colors];
+}

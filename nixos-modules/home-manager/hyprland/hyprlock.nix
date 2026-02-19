@@ -4,13 +4,14 @@
 
     settings = {
       general = {
-        hide_cursor = true;
+        hide_cursor = false;
         ignore_empty_input = true;
         fractional_scaling = 0;
       };
 
       background = [{
-        path = "${../../../assets/whats-your-best-lotm-wallpapers-donghua-v0-v4l2iwvwjd4f1.webp}";
+        path =
+          "${../../../assets/whats-your-best-lotm-wallpapers-donghua-v0-v4l2iwvwjd4f1.webp}";
 
         color = "rgba(29, 32, 33, 255)";
         blur_passes = 2;

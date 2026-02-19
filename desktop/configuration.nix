@@ -2,26 +2,24 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... } :
+{ config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ../nixos-modules/hardware-modules/hardware-config.nix
-      inputs.home-manager.nixosModules.default
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ../nixos-modules/hardware-modules/hardware-config.nix
+    inputs.home-manager.nixosModules.default
+  ];
 
   ### SECTION [Bootloader] ###
-  
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   ### SECTION [Nix Settings] ###
-  nix.settings = 
-  {
-    experimental-features = ["nix-command" "flakes"];
-    trusted-users = ["heifee"];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    trusted-users = [ "heifee" ];
 
   };
   nixpkgs.config.allowUnfree = true;
@@ -30,7 +28,6 @@
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  
 
   ### SECTION [Hardware] ###
   bluetooth.enable = true;
@@ -53,7 +50,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
@@ -69,12 +65,15 @@
     variant = "";
   };
 
+environment.sessionVariables = {
+  DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
+};
   ### SECTION [Services] ###
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
   # Enable drivers?
-  services.xserver.videoDrivers =  ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
@@ -97,12 +96,17 @@
     # no need to redefine it in your config for now)
     #media-session.enable = true;
   };
-  
+
   #services.xserver.displayManager.lightdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
-  environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; inherit inputs;};
-  fonts.packages = with pkgs; import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
+  environment.systemPackages = with pkgs;
+    import ../nixos-modules/packages/sys-packages.nix {
+      inherit pkgs;
+      inherit inputs;
+    };
+  fonts.packages = with pkgs;
+    import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
   fonts.fontDir.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
@@ -113,33 +117,27 @@
     isNormalUser = true;
     description = "Ifeatu Dunu";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        kdePackages.kate
+        #  thunderbird
+      ];
   };
-  
+
   ### SECTION [Home Manager] ###
   home-manager = {
-   extraSpecialArgs = {
-    inherit inputs; 
-    hostName = config.networking.hostName;
+    extraSpecialArgs = {
+      inherit inputs;
+      hostName = config.networking.hostName;
     };
-    users = {
-      "heifee" = import ../nixos-modules/home-manager/home.nix; 
-    };
-    sharedModules = [
-    {
-      stylix.targets.kitty.enable = false;
-    }
-  ];
+    users = { "heifee" = import ../nixos-modules/home-manager/home.nix; };
+    sharedModules = [{ stylix.targets.kitty.enable = false; }];
   };
 
   home-manager.useUserPackages = true;
-  home-manager.backupFileExtension = "backup" ; 
+  home-manager.backupFileExtension = "backup";
 
   #home-manager.useGlobalPkgs = true;
-
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -148,17 +146,12 @@
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
   };
 
-  
-  
   xdg.portal = {
     enable = true;
     #extraPortals = with pkgs; [ xdg-desktop-portal-hyprland ];
   };
 
-
-  systemd.tmpfiles.rules = [
-      "d /etc/nixos 0755 heifee nixos"
-    ];
+  systemd.tmpfiles.rules = [ "d /etc/nixos 0755 heifee nixos" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -169,8 +162,6 @@
   # };
 
   # List services that you want to enable:
-
-
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

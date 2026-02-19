@@ -1,10 +1,9 @@
-{pkgs, ...} : 
-  let
+{ pkgs, ... }:
+let
 
-   back = ./assets/Screenshost123.png; 
-    in
+  back = ./assets/Screenshost123.png;
 
-{
+in {
   stylix = {
     enable = true;
     #targets = {#kitty.enable = true;

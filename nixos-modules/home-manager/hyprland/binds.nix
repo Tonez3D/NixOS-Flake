@@ -62,14 +62,13 @@
       "$mainMod CTRL, 9, movetoworkspace, 9 " # Move active window to workspace 9
       "$mainMod CTRL, 0, movetoworkspace, 10" # Move active window to workspace 10
 
-      
-
-      #"XF86AudioPlay, exec, playerctl play-pause" # 
-      #"XF86AudioPause, exec, playerctl pause"                                                                                                               # Audio pause
-      #"XF86AudioNext, exec, playerctl next"                                                                                                           # Audio next
-      #"XF86AudioPrev, exec, playerctl previous"   
-      ",XF86MonBrightnessUp, exec, brightnessctl -q s +10%"                                                                                                 # Increase brightness by 10%
-      ",XF86MonBrightnessDown, exec, brightnessctl -q s 10%-"                                                                                                          # Audio previous
+      #",XF86AudioPlay, exec, playerctl play-pause" # 
+      #",XF86AudioPause, exec, playerctl pause"                                                                                                               # Audio pause
+      #",XF86AudioNext, exec, playerctl next"                                                                                                           # Audio next
+      #",XF86AudioPrev, exec, playerctl previous"   
+      ", XF96AudioUp, exec, playerctl "
+      ",XF86MonBrightnessUp, exec, brightnessctl -q s +10%" # Increase brightness by 10%
+      ",XF86MonBrightnessDown, exec, brightnessctl -q s 10%-" # Audio previous
 
     ];
 

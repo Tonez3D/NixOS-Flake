@@ -1,12 +1,11 @@
-
-{pkgs, inputs, ...} :
+{ pkgs, inputs, ... }:
 
 with pkgs; [
-    # TODO: Breakout the system-pkgs
-
+  # TODO: Breakout the system-pkgs
   vim
   #git
   cmake
+  gnumake42
   clang
   gcc
   rustup
@@ -15,34 +14,36 @@ with pkgs; [
   age
   killall
   usbutils
+  direnv
   kitty
   gtk3
   lshw
   gtk4
   rofi-wayland
+  dotnet-sdk_10
   upower
-  godot-mono
+  godotPackages_4_5.export-template
+  godotPackages_4_5.export-templates-mono-bin
+  godotPackages_4_5.godot-mono
   brightnessctl
   base16-schemes
   hyprpolkitagent
   mesa
   libGLU
-
   bibata-cursors
   zip
   hellwal
-  #light
+  wallust
   wev
   libGL
   gnome-keyring
   adwaita-icon-theme
   opentabletdriver
-  #agenix
   gparted
   uv
   waypaper
-  #wev
   swww
+  wev
   fastfetch
   fzf
   fontfor

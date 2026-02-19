@@ -1,11 +1,10 @@
-{pkgs, lib, config, ...} : 
+{ pkgs, lib, config, ... }:
 
 {
-  
+
   options = {
 
-    nvidia-gpu.enable = 
-      lib.mkEnableOption "enabless nvidia gpu support";
+    nvidia-gpu.enable = lib.mkEnableOption "enabless nvidia gpu support";
 
   };
 
@@ -14,7 +13,7 @@
     # Nvidia Driver's T-T
     hardware.graphics.enable = true;
 
-    services.xserver.videoDrivers = ["nvidia"];
+    services.xserver.videoDrivers = [ "nvidia" ];
 
     hardware.nvidia = {
       modesetting.enable = true;

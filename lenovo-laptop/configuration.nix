@@ -2,29 +2,27 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... } :
+{ config, pkgs, inputs, ... }:
 
 {
-  imports =
-    [ 
-      ./hardware-configuration.nix
-      ../nixos-modules/hardware-modules/hardware-config.nix
-      #../nixos-modules/home-manager/home.nix
-      inputs.sops-nix.nixosModules.sops
-      inputs.home-manager.nixosModules.default
-      ../nixos-modules/services-modules/wifi.nix
-    ../stylix.nix   
-    ];
+  imports = [
+    ./hardware-configuration.nix
+    ../nixos-modules/hardware-modules/hardware-config.nix
+    #../nixos-modules/home-manager/home.nix
+    inputs.sops-nix.nixosModules.sops
+    inputs.home-manager.nixosModules.default
+    ../nixos-modules/services-modules/wifi.nix
+    ../stylix.nix
+  ];
 
   ### SECTION [Bootloader] ###  
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   ### SECTION [Nix Settings] ###
-  nix.settings = 
-  {
-    experimental-features = ["nix-command" "flakes"];
-    trusted-users = ["heifee"];
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    trusted-users = [ "heifee" ];
 
     # substituters = [
     #   "https://cache.nixos.org"
@@ -33,9 +31,9 @@
   };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-zramSwap.enable = true;
+  zramSwap.enable = true;
 
-programs.steam = {
+  programs.steam = {
     enable = true;
     gamescopeSession.enable = false;
     remotePlay.openFirewall = true;
@@ -46,7 +44,7 @@ programs.steam = {
   # Enable networking
   networking.networkmanager.enable = true;
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -55,9 +53,6 @@ programs.steam = {
   bluetooth.enable = true;
   drawing-tablet.enable = false;
   nvidia-gpu.enable = false;
-
-  
-
 
   ### SECTION [Locale Settings] ###
 
@@ -87,11 +82,9 @@ programs.steam = {
   sops.defaultSopsFormat = "yaml";
   sops.age.keyFile = "/home/ifeatud/.config/sops/age/keys.txt";
   sops.secrets.example_key = { };
-  sops.secrets.home_wifi_ssid = {};
-  sops.secrets.home_wifi_psk = {};
-  sops.secrets."mys/subdir/secret" = {};
-
-
+  sops.secrets.home_wifi_ssid = { };
+  sops.secrets.home_wifi_psk = { };
+  sops.secrets."mys/subdir/secret" = { };
 
   ### SECTION [Services] ###
 
@@ -102,11 +95,11 @@ programs.steam = {
   #services.desktopManager.plasma6.enable = true;
   # Enable fingerprint scanner
   #services.fprintd = {
-    #enable = true;
-    #tod.enable = true;
-   # tod.driver = pkgs.libfprint-2-tod1-goodix-550a;
+  #enable = true;
+  #tod.enable = true;
+  # tod.driver = pkgs.libfprint-2-tod1-goodix-550a;
   #};
-    services.displayManager.defaultSession = "hyprland";
+  services.displayManager.defaultSession = "hyprland";
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -139,6 +132,7 @@ programs.steam = {
   # services.xserver.libinput.enable = true;
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl1", MODE="0666"
+    
   '';
   #services.udev.extraRules = ''
   #  ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl1", MODE="0666"
@@ -148,32 +142,26 @@ programs.steam = {
     isNormalUser = true;
     description = "Ifeatu Dunu";
     extraGroups = [ "networkmanager" "wheel" "video" ];
-    packages = with pkgs; [
-      kdePackages.kate
-    #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        kdePackages.kate
+        #  thunderbird
+      ];
   };
 
   ### SECTION [Home Manager] ###
   home-manager = {
-   extraSpecialArgs = {
-    inherit inputs; 
-    hostName = config.networking.hostName;
+    extraSpecialArgs = {
+      inherit inputs;
+      hostName = config.networking.hostName;
     };
-    users = {
-      "ifeatud" = import ../nixos-modules/home-manager/home.nix; 
-    };
-    sharedModules = [
-    {
-      stylix.targets.kitty.enable = false;
-    }
-    ];
-
+    users = { "ifeatud" = import ../nixos-modules/home-manager/home.nix; };
+    sharedModules = [{ stylix.targets.kitty.enable = false; }];
 
   };
 
   home-manager.useUserPackages = true;
-  home-manager.backupFileExtension = "backup"; 
+  home-manager.backupFileExtension = "backup";
 
   # Install firefox.
   programs.firefox.enable = true;
@@ -182,10 +170,8 @@ programs.steam = {
   stylix.targets.gnome.enable = false;
   #stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   #stylix.homeManagerIntegration.enable = true;
-  
-  services.getty = {
-    autologinUser = "ifeatud";
-  };
+
+  services.getty = { autologinUser = "ifeatud"; };
   environment.loginShellInit = ''
     if [ "$(tty)" = "/dev/tty1" ]; then
       Hyprland
@@ -206,8 +192,13 @@ programs.steam = {
   #services.gnome.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget                               
-  environment.systemPackages = with pkgs; import ../nixos-modules/packages/sys-packages.nix { inherit pkgs; inherit inputs;};
-  fonts.packages = with pkgs; import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
+  environment.systemPackages = with pkgs;
+    import ../nixos-modules/packages/sys-packages.nix {
+      inherit pkgs;
+      inherit inputs;
+    };
+  fonts.packages = with pkgs;
+    import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
   fonts.fontDir.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -218,14 +209,13 @@ programs.steam = {
   #   enableSSHSupport = true;
   # };
 
-
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-	portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-};
-      hardware.graphics.enable = true;
-
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
+  hardware.graphics.enable = true;
 
   xdg.portal = {
     enable = true;

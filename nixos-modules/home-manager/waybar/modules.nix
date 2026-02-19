@@ -1,17 +1,11 @@
-
 {
-
   "clock" = {
-    format = ''
-      {:%I:%M}'';
-    tooltip-format = ''
-      <big>{:%Y %B}</big>
-      <tt><small>{calendar}</small></tt>'';
+    format = "{:%I:%M}";
   };
 
   "network" = {
     format-wifi = "󰤨";
-    on-click = "nmuti";
+    on-click = "kitty --class floating-window -e nmtui";
     format-ethernet = "󰤨";
     format-alt = "󰤨";
     format-disconnected = "󰤭";
@@ -26,10 +20,11 @@
       default = "";
       active = " 󰮯";
     };
-    persistent-workspaces = {
-      "1" = [];
-    };
+    persistent-workspaces = { "1" = [ ]; };
   };
+
+  
+
 
   "custom/search" = {
     format = " ";
@@ -37,27 +32,30 @@
     on-click = "killall rofi || rofi -show drun";
   };
 
-
   "pulseaudio" = {
     scroll-step = 5;
-          tooltip = false;
-          format = "{icon}";
-          format-icons = {default = ["" "" "墳"];};
-          on-click = "killall pavucontrol || pavucontrol";
+    tooltip = false;
+    format = "{icon}";
+    format-mute = "";
+    format-icons = { default = [  "" "" ]; };
+    on-click = "killall pavucontrol || pavucontrol";
   };
 
-
   "hyprland/window" = {
-    rewrite = {};
+    rewrite = { };
     seperate-outputs = true;
   };
 
-  "bluetooth" = {};
+  "bluetooth" = { };
 
   "custom/power" = {
     format = "Power";
     tooltip = false;
     on-click = "wlogout &";
+  };
+
+  "logout" = {
+    format = "LOG";
   };
 
   "battery" = {
@@ -66,9 +64,10 @@
       critical = 15;
     };
     format = "{icon}";
-    format-charging = "!";
-    format-plugged = "@";
+    format-charging = "";
+    format-plugged = "";
     format-alt = "{icon}";
-    format-icons = ["A" "B" "C" "D" "E" "F" "G" "H" "I" "J" "K" "L"];
+    format-icons = [ "" "`" "" ""];
+    tooltip-format = "{capacity}%";
   };
 }

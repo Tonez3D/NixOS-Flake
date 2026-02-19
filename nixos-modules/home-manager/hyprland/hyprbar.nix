@@ -5,7 +5,7 @@
     settings = {
 
       plugin.hyprbars = {
-        enable = true;
+        enable = false;
         bar_height = 14;
         bar_padding = 1;
         #bar_color = "rbg(ffffff)";
