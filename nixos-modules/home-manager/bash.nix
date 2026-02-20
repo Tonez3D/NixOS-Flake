@@ -5,7 +5,7 @@
       enable = true;
       bashrcExtra = ''
         eval "$(ssh-agent -s)"
-        ssh-add ~/.ssh/github-ssh > /dev/null
+        ssh-add ~/.ssh/github-ssh 1> /dev/null
         eval "$(starship init bash)"
       '';
     })
@@ -13,7 +13,7 @@
       enable = true;
       bashrcExtra = ''
         eval "$(ssh-agent -s)"
-        ssh-add ~/.ssh/laptop-github-ssh > /dev/null
+        ssh-add ~/.ssh/laptop-github-ssh 1> /dev/null
         eval "$(starship init bash)"
       '';
     })

@@ -22,7 +22,7 @@
   ### SECTION [Nix Settings] ###
   nix.settings = {
     experimental-features = [ "nix-command" "flakes" ];
-    trusted-users = [ "heifee" ];
+    trusted-users = [ "ifeatud" ];
 
     # substituters = [
     #   "https://cache.nixos.org"
