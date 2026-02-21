@@ -8,6 +8,7 @@
   imports = [
     ./hardware-configuration.nix
     ../nixos-modules/hardware-modules/hardware-config.nix
+    ../nixos-modules/services-modules/udev.nix
     #../nixos-modules/home-manager/home.nix
     inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.default
