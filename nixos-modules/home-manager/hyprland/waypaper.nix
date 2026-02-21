@@ -5,7 +5,7 @@ let
     language = en
     folder = /etc/nixos/assets
     monitors = All
-    wallpaper = /etc/nixos/assets/satoru-gojo-jujutsu-kaisen-79-2560x1440.jpg
+    wallpaper = 
     show_path_in_tooltip = True
     backend = swww
     fill = fill

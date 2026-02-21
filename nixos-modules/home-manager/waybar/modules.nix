@@ -1,7 +1,11 @@
 {
-  "clock" = {
-    format = "{:%I:%M}";
+
+  "group/misc" = {
+    orientation = "inherit";
+    modules = [ "network" "custom/waypaper" "clock"];
   };
+
+  "clock" = { format = "{:%I:%M}"; };
 
   "network" = {
     format-wifi = "󰤨";
@@ -23,9 +27,6 @@
     persistent-workspaces = { "1" = [ ]; };
   };
 
-  
-
-
   "custom/search" = {
     format = " ";
     tooltip = false;
@@ -37,13 +38,19 @@
     tooltip = false;
     format = "{icon}";
     format-mute = "";
-    format-icons = { default = [  "" "" ]; };
+    format-icons = { default = [ "" "" ]; };
     on-click = "killall pavucontrol || pavucontrol";
   };
 
   "hyprland/window" = {
     rewrite = { };
     seperate-outputs = true;
+  };
+
+  "custom/waypaper" = {
+    format = "";
+    tooltip = false;
+    on-click = "waypaper";
   };
 
   "bluetooth" = { };
@@ -54,9 +61,7 @@
     on-click = "wlogout &";
   };
 
-  "logout" = {
-    format = "LOG";
-  };
+  "logout" = { format = "LOG"; };
 
   "battery" = {
     states = {
@@ -67,7 +72,7 @@
     format-charging = "";
     format-plugged = "";
     format-alt = "{icon}";
-    format-icons = [ "" "`" "" ""];
+    format-icons = [ "" "`" "" "" ];
     tooltip-format = "{capacity}%";
   };
 }

@@ -9,6 +9,7 @@
     ./bash.nix
     ../scripts/generate-color-palle.nix
     ./starship/starship.nix
+    ./wallust/defualt.nix
     #../../stylix.nix
     ./hyprland/default.nix
     ./wlogout/config.nix
