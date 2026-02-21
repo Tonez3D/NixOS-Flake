@@ -12,5 +12,6 @@
     ./hellwal-colors.nix
     ./exec-once.nix
     ./hypridle.nix
+    ./waypaper.nix
     ];
 }

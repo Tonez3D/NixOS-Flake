@@ -36,6 +36,7 @@ with pkgs; [
   wallust
   wev
   libGL
+  manix
   gnome-keyring
   adwaita-icon-theme
   opentabletdriver

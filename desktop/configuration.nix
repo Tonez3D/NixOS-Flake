@@ -11,6 +11,13 @@
     inputs.home-manager.nixosModules.default
   ];
 
+  programs.ssh.knownHosts = {
+  "github.com" = {
+    publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+    hostNames = [ "github.com" ];
+  };
+  };
+
   ### SECTION [Bootloader] ###
 
   boot.loader.systemd-boot.enable = true;
@@ -28,6 +35,13 @@
   networking.hostName = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
   #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = false;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+  };
 
   ### SECTION [Hardware] ###
   bluetooth.enable = true;
@@ -131,7 +145,7 @@ environment.sessionVariables = {
       hostName = config.networking.hostName;
     };
     users = { "heifee" = import ../nixos-modules/home-manager/home.nix; };
-    sharedModules = [{ stylix.targets.kitty.enable = false; }];
+    #sharedModules = [{ stylix.targets.kitty.enable = false; }];
   };
 
   home-manager.useUserPackages = true;

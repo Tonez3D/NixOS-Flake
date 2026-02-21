@@ -1,5 +1,5 @@
 ''
-  
+  @import url("./colors.css");
   * {
     /* `otf-font-awesome` is required to be installed for icons */
     font-family: Material Design Icons, Lexend, JetBrains Mono Nerd Font;
@@ -37,7 +37,7 @@
     margin: 2px 50px 2px 2px;
     padding-left: 3px;
     padding-right: 3px;
-    background-color: #582f08;
+    background-color: @background;
     border-radius: 4px;
     font-size: 11px;
   }
@@ -48,20 +48,32 @@
     padding-left: 0px;
     padding-top: 0px;
     padding-bottom: 0px;
-    background-color: #ce6706;
+    background-color: @color5;
     border-radius: 3px;
     
     font-family: JetBrains Mono Nerd Font;
     transition: all 0.5s cubic-bezier(.55,0.68,.48,1.68);
-    color: #2c0801;
+    color: @background;
   }
 
   #workspaces button.urgent {
-    color: #A52A2A;
+    color: @color13;
   }
 
   #workspaces button.active {
-    background-color: #b3b026;
+    background-color: @color3;
+  }
+
+  #misc {
+    background-color: @background;
+    border-radius: 4px;
+  }
+
+  #waypaper {
+    font-family: JetBrains Mono Nerd Font;
+    color: @background;
+    font-size: 24px;
+    font-weight: 700;
   }
 
   #clock {
@@ -95,6 +107,7 @@
 
   #pulseaudio {
     font-family: "Material Icons";
+    font-size: 24px;
   }
 
 

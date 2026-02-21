@@ -23,11 +23,13 @@ with pkgs; [
   jetbrains.idea-ultimate
   jetbrains.clion
   krita
+  gowall
+  #wallust
   rofi-wayland
   blender
   waypaper
   nemo
 
   # TODO: Breakout the home-pkgs
-
+# https://github.com/krishna4a6av/Wallpapers/blob/master/Graphite/unknowgod.jpg
 ]
