@@ -24,7 +24,7 @@
       default = "";
       active = " 󰮯";
     };
-    persistent-workspaces = { "1" = [ ]; };
+    persistent-workspaces = { };
   };
 
   "custom/search" = {
