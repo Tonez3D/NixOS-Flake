@@ -45,7 +45,9 @@ with pkgs; [
   waypaper
   swww
   wev
+  sops
   fastfetch
+  caligula
   fzf
   fontfor
   fontforge

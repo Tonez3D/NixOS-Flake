@@ -61,7 +61,7 @@
 
   };
 
-  outputs = { self, nixpkgs, stylix, ... }@inputs:
+  outputs = { self, nixpkgs, sops-nix, stylix, ... }@inputs:
 
     let
       system = "x86_64-linux";
@@ -74,7 +74,7 @@
         modules = [
           ./desktop/configuration.nix
           inputs.home-manager.nixosModules.default
-          #sops-nix.nixosModules.sops
+          sops-nix.nixosModules.sops
         ];
       };
 

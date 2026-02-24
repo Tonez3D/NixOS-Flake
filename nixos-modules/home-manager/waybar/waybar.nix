@@ -38,7 +38,7 @@
 
         modules-center = [ "active" ];
 
-        modules-right = [ "network" "battery" "pulseaudio" "clock" ];
+        modules-right = [ "group/misc" "network" "battery" "pulseaudio" "clock" ];
       };
       conf-2 = {
         layer = "top";
