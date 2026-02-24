@@ -38,7 +38,7 @@
 
         modules-center = [ "active" ];
 
-        modules-right = [ "network" "battery" "pulseaudio" "clock" ];
+        modules-right = [ "group/misc" "network" "battery" "pulseaudio" "clock" ];
       };
     in {
       mainBar = conf-0 // modconfig;
