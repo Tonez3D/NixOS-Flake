@@ -45,8 +45,8 @@
       "$mainMod SHIFT, 9, workspace, 19"
       "$mainMod SHIFT, 0, workspace, 20"
 
-      "$mainMod CRTL, j, workspace, e+1"
-      "$mainMod CTRL, k, workspace, e-1"
+      "$mainMod CTRL, right, workspace, m+1"
+      "$mainMod CTRL, left, workspace, m-1"
 
       "$mainMod ALT, right, movetoworkspace, r+1"
       "$mainMod ALT, left, movetoworkspace, r-1"

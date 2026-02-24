@@ -12,7 +12,11 @@
       resize_on_border = true;
       gaps_in = 0;
       gaps_out = 0;
+      
     };
+    decoration = {
+      rounding = 5;
+      };
     
     windowrule = [
       "float, center, size = 40 40, class:floating-window"
