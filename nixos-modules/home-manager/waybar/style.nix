@@ -6,15 +6,15 @@
   }
 
   window#waybar {
-    background-color: #6822d8;
+    
     color: #8A2BE2;
     padding-left: 2px;
   padding-right: 2px;
-  background-color: transparent;
     
   }
+
   window#waybar>box {
-   padding: 1px 5px;
+   padding: 1px 1px;
   }
 
   window#waybar.hidden {
@@ -27,7 +27,7 @@
 
   #custom-search {
     background-image: url("/etc/nixos/assets/icons/Nix_snowflake.svg");
-    background-size: 95%;
+    background-size: 94%;
     background-position: center;
     background-repeat: no-repeat;
     padding-left: 20px;
@@ -66,6 +66,17 @@
 
   #misc {
     background-color: @background;
+    border-radius: 4px;
+  }
+
+  #connections {
+    background-color: @background;
+    border-radius: 4px;
+  }
+
+  #combinded {
+    background-color: @background;
+    margin: 1px 1px;
     border-radius: 4px;
   }
 

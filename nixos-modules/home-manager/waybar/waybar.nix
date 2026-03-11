@@ -1,5 +1,7 @@
 { ... }:
-
+let
+  bar-style = ./style.css;
+ in
 {
   programs.waybar = {
     enable = true;
@@ -17,7 +19,7 @@
 
         modules-center = [ "active" ];
 
-        modules-right = [ "group/misc" "network" "battery" "pulseaudio" "clock" ];
+        modules-right = [ "group/combinded" ];
       };
       conf-1 = {
         layer = "top";
@@ -38,7 +40,7 @@
 
         modules-center = [ "active" ];
 
-        modules-right = [ "group/misc" "network" "battery" "pulseaudio" "clock" ];
+        modules-right = [ "group/combinded" ];
       };
       conf-2 = {
         layer = "top";
@@ -67,6 +69,6 @@
       sendayBar = conf-2 // modconfig;
     };
 
-    style = import ./style.nix;
+    style = "${bar-style}"; 
   };
 }

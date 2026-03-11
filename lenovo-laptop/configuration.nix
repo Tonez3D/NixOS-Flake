@@ -57,6 +57,8 @@
 
   ### SECTION [Locale Settings] ###
 
+  services.blueman.enable = true;
+
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
@@ -133,7 +135,7 @@
   # services.xserver.libinput.enable = true;
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl1", MODE="0666"
-    
+
   '';
   #services.udev.extraRules = ''
   #  ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl1", MODE="0666"
@@ -226,7 +228,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

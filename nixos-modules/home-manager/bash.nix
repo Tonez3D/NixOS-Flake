@@ -4,16 +4,18 @@
     (lib.mkIf (hostName == "nixos") {
       enable = true;
       bashrcExtra = ''
-        eval "$(ssh-agent -s)"
-        ssh-add ~/.ssh/github-ssh 1> /dev/null
+        eval "$(ssh-agent -s)" > /dev/null 2>&1
+        ssh-add ~/.ssh/github-ssh > /dev/null 2>&1
+        fastfetch --logo-type kitty-direct --logo /etc/nixos/assets/icons/Nix_Snowflake_Logo.png --logo-width 20 --logo-height 9
         eval "$(starship init bash)"
       '';
     })
     (lib.mkIf (hostName == "lenovo-laptop") {
       enable = true;
       bashrcExtra = ''
-        eval "$(ssh-agent -s)"
-        ssh-add ~/.ssh/laptop-github-ssh 1> /dev/null
+        eval "$(ssh-agent -s)" > /dev/null 2>&1
+        ssh-add ~/.ssh/laptop-github-ssh > /dev/null 2>&1
+        fastfetch --logo-type kitty-direct --logo /etc/nixos/assets/icons/Nix_Snowflake_Logo.png --logo-width 20 --logo-height 9
         eval "$(starship init bash)"
       '';
     })

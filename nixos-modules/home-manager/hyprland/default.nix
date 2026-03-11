@@ -1,4 +1,4 @@
-{...}: {
+{ ... }: {
   imports = [
     ./binds.nix
     ./plugins.nix
@@ -13,5 +13,5 @@
     ./exec-once.nix
     ./hypridle.nix
     ./waypaper.nix
-    ];
+  ];
 }

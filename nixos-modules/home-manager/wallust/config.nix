@@ -36,5 +36,5 @@
   #kitty.target ='~/.config/kitty/themes/kittycolors.conf'
   #rofi.template = '/templates/rofi-template.rasi'
   #rofi.target ='~/.config/rofi/themes/roficolors.rasi'
-  
+
 ''

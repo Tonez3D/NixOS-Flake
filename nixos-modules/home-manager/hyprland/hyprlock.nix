@@ -10,8 +10,7 @@
       };
 
       background = [{
-        path =
-          "${../../../assets/whats-your-best-lotm-wallpapers-donghua-v0-v4l2iwvwjd4f1.webp}";
+        #path = screenshot;
 
         color = "rgba(29, 32, 33, 255)";
         blur_passes = 2;
@@ -32,20 +31,38 @@
           halign = "center";
           valign = "bottom";
         }
+        
+        # Background box
+        {
+          size = "800, 300";
+
+          rounding = 4;
+          border_size = 2;
+          color = "rgba(102, 92, 84, 0.33)";
+          border_color = "rgba(168, 153, 132, 0.95)";
+
+          position = "0, 120";
+          halign = "center";
+          valign = "center";
+        }
       ];
+
+      
+        
+      
 
       label = [
         # Time
         {
           text = ''cmd[update:1000] echo "$(date +'%I:%M')"'';
 
-          font_size = 115;
+          font_size = 50;
           font_family = "lato";
 
           shadow_passes = 3;
           color = "rgba(235, 219, 178, 0.9)";
 
-          position = "0, -25";
+          position = "0, -45";
           halign = "center";
           valign = "top";
         }
@@ -53,7 +70,7 @@
         {
           text = ''cmd[update:1000] echo "- $(date +'%A, %B %d') -" '';
 
-          font_size = 18;
+          font_size = 25;
           font_family = "lato";
 
           shadow_passes = 3;

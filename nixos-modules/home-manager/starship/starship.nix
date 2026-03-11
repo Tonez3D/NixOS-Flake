@@ -1,5 +1,6 @@
-{ ... } : {
+{ ... }: {
   programs.starship = {
+
   enable = true;
   settings = {
     add_newline = true;
@@ -13,18 +14,7 @@
     character = {
       success_symbol = "[](bold green) ";
       error_symbol = "[✗](bold red) ";
+
     };
-    git_branch = {
-          format = "[$symbol$branch(:$remote_branch)]($style) ";
-          symbol = " ";
-          style = "bold purple bg:0xFCA17D";
-          truncation_length = 9223372036854775807;
-          truncation_symbol = "…";
-          only_attached = false;
-          always_show_remote = false;
-          ignore_branches = [];
-          disabled = false;
-        };
-  };
   };
 }

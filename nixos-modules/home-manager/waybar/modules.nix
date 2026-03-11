@@ -2,7 +2,18 @@
 
   "group/misc" = {
     orientation = "inherit";
-    modules = [ "network" "custom/waypaper" "clock"];
+    modules = [ "custom/waypaper" ];
+  };
+
+  "group/combinded" = {
+    orientation = "inherit";
+    modules =
+      [ "group/misc" "group/connections" "battery" "pulseaudio" "clock" ];
+  };
+
+  "group/connections" = {
+    orientation = "inherit";
+    modules = [ "network" "custom/bluetooth" ];
   };
 
   "clock" = { format = "{:%I:%M}"; };
@@ -31,6 +42,11 @@
     format = " ";
     tooltip = false;
     on-click = "killall rofi || rofi -show drun";
+  };
+
+  "custom/bluetooth" = {
+    format = "󰂯";
+
   };
 
   "pulseaudio" = {
@@ -68,11 +84,11 @@
       warning = 30;
       critical = 15;
     };
-    format = "{icon}";
+    format = "{icon} {capacity}%";
     format-charging = "";
     format-plugged = "";
     format-alt = "{icon}";
-    format-icons = [ "" "`" "" "" ];
-    tooltip-format = "{capacity}%";
+    format-icons = [ "" "" "" "" ];
+    #tooltip-format = "{capacity}%";
   };
 }

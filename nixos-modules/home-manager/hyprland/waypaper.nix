@@ -1,5 +1,5 @@
-{...} :
-let 
+{ ... }:
+let
   waypaper-config = ''
     [Settings]
     language = en
@@ -25,11 +25,8 @@ let
     mpvpaper_sound = False
     mpvpaper_options = 
     use_xdg_state = False
-    '';
-in
-{
-  
-  home.file = {
-    ".config/waypaper/config.ini".text = "${waypaper-config}";
-  };
+  '';
+in {
+
+  home.file = { ".config/waypaper/config.ini".text = "${waypaper-config}"; };
 }

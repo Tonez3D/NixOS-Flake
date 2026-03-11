@@ -12,10 +12,11 @@
   ];
 
   programs.ssh.knownHosts = {
-  "github.com" = {
-    publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
-    hostNames = [ "github.com" ];
-  };
+    "github.com" = {
+      publicKey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+      hostNames = [ "github.com" ];
+    };
   };
 
   ### SECTION [Bootloader] ###
@@ -79,9 +80,9 @@
     variant = "";
   };
 
-environment.sessionVariables = {
-  DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
-};
+  environment.sessionVariables = {
+    DOTNET_ROOT = "${pkgs.dotnet-sdk_10}/share/dotnet";
+  };
   ### SECTION [Services] ###
   # Enable CUPS to print documents.
   services.printing.enable = true;

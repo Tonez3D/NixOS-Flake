@@ -31,5 +31,5 @@ with pkgs; [
   nemo
 
   # TODO: Breakout the home-pkgs
-# https://github.com/krishna4a6av/Wallpapers/blob/master/Graphite/unknowgod.jpg
+  # https://github.com/krishna4a6av/Wallpapers/blob/master/Graphite/unknowgod.jpg
 ]

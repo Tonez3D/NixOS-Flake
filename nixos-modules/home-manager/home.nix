@@ -10,6 +10,7 @@
     ../scripts/generate-color-palle.nix
     ./starship/starship.nix
     ./wallust/defualt.nix
+    ./fastfetch/default.nix
     #../../stylix.nix
     ./hyprland/default.nix
     ./wlogout/config.nix
@@ -33,7 +34,6 @@
     # environment.
     home.packages = with pkgs;
       import ../packages/home-packages.nix { inherit pkgs; };
-    
 
     # Home Manager is pretty good at managing dotfiles. The primary way to manage
     # plain files is through 'home.file'.
@@ -48,7 +48,10 @@
     wayland.windowManager.hyprland.enable = true; # enable Hyprland
     wayland.windowManager.hyprland.xwayland.enable = true;
 
-    programs.kitty = { enable = true; };
+    programs.kitty = {
+      enable = true;
+      settings = { neofetch = "fastfetch"; };
+    };
 
     programs.git = {
       enable = true;
