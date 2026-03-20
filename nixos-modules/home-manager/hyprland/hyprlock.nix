@@ -18,19 +18,7 @@
       }];
 
       shape = [
-        # User box
-        {
-          size = "300, 50";
-
-          rounding = 0;
-          border_size = 2;
-          color = "rgba(102, 92, 84, 0.33)";
-          border_color = "rgba(168, 153, 132, 0.95)";
-
-          position = "0, 120";
-          halign = "center";
-          valign = "bottom";
-        }
+        
         
         # Background box
         {
@@ -47,25 +35,21 @@
         }
       ];
 
-      
-        
-      
+      image = [
+        {
+          #monitor = ;
+    path = "/etc/nixos/assets/ELARA_Patch_2.0.png";
+    size = 100;
+    border_size = 2;
+          border_color = "rgba(168, 153, 132, 0.95)";
+    position = "50, -100";
+    halign = "center";
+    valign = "center";
+        }
+
+      ];
 
       label = [
-        # Time
-        {
-          text = ''cmd[update:1000] echo "$(date +'%I:%M')"'';
-
-          font_size = 50;
-          font_family = "lato";
-
-          shadow_passes = 3;
-          color = "rgba(235, 219, 178, 0.9)";
-
-          position = "0, -45";
-          halign = "center";
-          valign = "top";
-        }
         # Date
         {
           text = ''cmd[update:1000] echo "- $(date +'%A, %B %d') -" '';
@@ -80,24 +64,11 @@
           halign = "center";
           valign = "top";
         }
-        # Username
-        {
-          text = "  $USER";
-
-          font_size = 15;
-          font_family = "lato";
-
-          color = "rgba(235, 219, 178, 1)";
-
-          position = "0, 134";
-          halign = "center";
-          valign = "bottom";
-        }
       ];
 
       input-field = [{
         size = "300, 50";
-        rounding = 0;
+        rounding = 3;
         outline_thickness = 2;
 
         dots_spacing = 0.4;
@@ -113,7 +84,7 @@
         bothlock_color = "rgba(215, 153, 33, 0.95)";
 
         hide_input = false;
-        fade_on_empty = false;
+        fade_on_empty = true;
         placeholder_text =
           ''<i><span foreground="##fbf1c7">Enter Password</span></i>'';
 

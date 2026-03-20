@@ -112,6 +112,10 @@
     #media-session.enable = true;
   };
 
+  programs.direnv.enable = true;
+programs.direnv.nix-direnv.enable = true;
+
+
   #services.xserver.displayManager.lightdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
 

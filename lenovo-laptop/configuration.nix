@@ -55,6 +55,13 @@
   drawing-tablet.enable = false;
   nvidia-gpu.enable = false;
 
+programs.direnv.enable = true;
+programs.direnv.nix-direnv.enable = true;
+
+services.zerotierone = {
+  enable = true;
+};
+
   ### SECTION [Locale Settings] ###
 
   services.blueman.enable = true;

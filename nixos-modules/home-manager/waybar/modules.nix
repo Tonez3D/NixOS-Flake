@@ -84,7 +84,7 @@
       warning = 30;
       critical = 15;
     };
-    format = "{icon} {capacity}%";
+    format = "<span>{icon}</span> {capacity}%";
     format-charging = "";
     format-plugged = "";
     format-alt = "{icon}";

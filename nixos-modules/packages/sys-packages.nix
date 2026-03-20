@@ -32,8 +32,8 @@ with pkgs; [
   libGLU
   bibata-cursors
   zip
-  hellwal
   wallust
+  rpi-imager
   wev
   libGL
   manix
@@ -44,6 +44,7 @@ with pkgs; [
   uv
   waypaper
   swww
+  zerotierone
   wev
   sops
   fastfetch
