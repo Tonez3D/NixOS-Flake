@@ -31,19 +31,14 @@
       #      inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      url = "github:danth/stylix/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
     };
 
-    awww = { url = "git+https://codeberg.org/LGFae/awww"; };
+    #awww = { url = "git+https://codeberg.org/LGFae/awww"; };
 
-    matugen = { url = "github:InioX/Matugen?ref=refs/tags/v3.1.0"; };
+    #matugen = { url = "github:InioX/Matugen?ref=refs/tags/v3.1.0"; };
 
     sops-nix = {
       url = "github:Mic92/sops-nix";
@@ -61,7 +56,7 @@
 
   };
 
-  outputs = { self, nixpkgs, sops-nix, stylix, ... }@inputs:
+  outputs = { self, nixpkgs, sops-nix, ... }@inputs:
 
     let
       system = "x86_64-linux";
@@ -86,7 +81,7 @@
 
           ./lenovo-laptop/configuration.nix
           inputs.home-manager.nixosModules.default
-          inputs.stylix.nixosModules.stylix
+          #inputs.stylix.nixosModules.stylix
           #sops-nix.nixosModules.sops
         ];
       };

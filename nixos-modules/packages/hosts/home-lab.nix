@@ -1,5 +1,8 @@
-#{pkgs, ...} :{
-#  with pkgs; [
-#
-#  ]
-#}
+{pkgs, ...} :{
+  with pkgs; [
+    vim
+    neovim
+    age
+    git
+  ]
+}

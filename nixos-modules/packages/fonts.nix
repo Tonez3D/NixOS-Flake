@@ -17,6 +17,12 @@ with pkgs; [
   jetbrains-mono
   nerd-fonts.jetbrains-mono
   nerd-fonts.tinos
+  #font-misc-cyrillic
+  google-fonts
+  victor-mono
+  texlivePackages.hyphen-ethiopic
+  #font-screen-cyrillic
+  #font-winitzki-cyrillic
   font-awesome_4
   font-awesome_5
   material-icons

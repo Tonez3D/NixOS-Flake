@@ -6,7 +6,7 @@
       bashrcExtra = ''
         eval "$(ssh-agent -s)" > /dev/null 2>&1
         ssh-add ~/.ssh/github-ssh > /dev/null 2>&1
-        fastfetch --logo-type kitty-direct --logo /etc/nixos/assets/icons/Nix_Snowflake_Logo.png --logo-width 20 --logo-height 9
+        fastfetch --logo-type kitty-direct 
         eval "$(starship init bash)"
       '';
     })
@@ -15,7 +15,7 @@
       bashrcExtra = ''
         eval "$(ssh-agent -s)" > /dev/null 2>&1
         ssh-add ~/.ssh/laptop-github-ssh > /dev/null 2>&1
-        fastfetch --logo-type kitty-direct --logo /etc/nixos/assets/icons/Nix_Snowflake_Logo.png --logo-width 20 --logo-height 9
+        fastfetch --logo-type kitty-direct 
         eval "$(starship init bash)"
       '';
     })

@@ -13,7 +13,7 @@
     inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.default
     ../nixos-modules/services-modules/wifi.nix
-    ../stylix.nix
+    #../stylix.nix
   ];
 
   ### SECTION [Bootloader] ###  
@@ -166,7 +166,7 @@ services.zerotierone = {
       hostName = config.networking.hostName;
     };
     users = { "ifeatud" = import ../nixos-modules/home-manager/home.nix; };
-    sharedModules = [{ stylix.targets.kitty.enable = false; }];
+    sharedModules = [];
 
   };
 
@@ -176,8 +176,8 @@ services.zerotierone = {
   # Install firefox.
   programs.firefox.enable = true;
 
-  stylix.enable = true;
-  stylix.targets.gnome.enable = false;
+  #stylix.enable = true;
+  #stylix.targets.gnome.enable = false;
   #stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   #stylix.homeManagerIntegration.enable = true;
 

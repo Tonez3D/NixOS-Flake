@@ -7,7 +7,8 @@
   imports = [
     ./waybar/waybar.nix
     ./bash.nix
-    ../scripts/generate-color-palle.nix
+    ../scripts/generate-color-pallet.nix
+    ../scripts/get-wallpaper.nix
     ./starship/starship.nix
     ./wallust/defualt.nix
     ./fastfetch/default.nix
@@ -50,7 +51,12 @@
 
     programs.kitty = {
       enable = true;
-      settings = { neofetch = "fastfetch"; };
+      settings = { 
+        neofetch = "fastfetch"; 
+        dynamic_background_opacity = true;
+        background_opacity = "0.7";
+        background_blur = 1;
+        };
     };
 
     programs.git = {

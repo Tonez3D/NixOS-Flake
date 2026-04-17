@@ -23,6 +23,7 @@ with pkgs; [
   jetbrains.idea-ultimate
   jetbrains.clion
   krita
+  grimblast
   gowall
   #wallust
   rofi-wayland

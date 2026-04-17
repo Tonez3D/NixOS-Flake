@@ -20,20 +20,21 @@ with pkgs; [
   lshw
   gtk4
   rofi-wayland
-  dotnet-sdk_10
+  dotnet-sdk_8
   upower
-  godotPackages_4_5.export-template
-  godotPackages_4_5.export-templates-mono-bin
-  godotPackages_4_5.godot-mono
+  dotnet-runtime_8
   brightnessctl
   base16-schemes
+  godotPackages_4_5.godot-mono
+  godotPackages_4_5.export-template
   hyprpolkitagent
   mesa
+  pkg-config
   libGLU
   bibata-cursors
   zip
   wallust
-  rpi-imager
+  #rpi-imager
   wev
   libGL
   manix
@@ -54,5 +55,4 @@ with pkgs; [
   fontforge
   overskride
   neovim-unwrapped
-  inputs.awww
 ]

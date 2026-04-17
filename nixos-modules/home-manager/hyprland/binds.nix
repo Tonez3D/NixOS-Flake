@@ -17,7 +17,7 @@
       "$mainMod CTRL, L, exec, pidof hyprlock || hyprlock"
       "$mainMod CTRL, V, exec, code"
       "$mainMod ALT, T, workspaceopt, allfloat"
-      ", Print, exec, grimblast copy area"
+      "$mainMod , P, exec, grimblast save active"
 
       #", tablet:1, mouse, 1"
 
