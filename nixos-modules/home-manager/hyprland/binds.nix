@@ -48,6 +48,8 @@
       "$mainMod CTRL, right, workspace, m+1"
       "$mainMod CTRL, left, workspace, m-1"
 
+      #gesture = 3, horizontal, workspace
+
       "$mainMod ALT, right, movetoworkspace, r+1"
       "$mainMod ALT, left, movetoworkspace, r-1"
 

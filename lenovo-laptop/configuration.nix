@@ -2,34 +2,31 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ self, config, pkgs, inputs, ... }:
 
 {
-  imports = [
-    ./hardware-configuration.nix
-    ../nixos-modules/hardware-modules/hardware-config.nix
-    ../nixos-modules/services-modules/udev.nix
-    #../nixos-modules/home-manager/home.nix
-    inputs.sops-nix.nixosModules.sops
-    inputs.home-manager.nixosModules.default
-    ../nixos-modules/services-modules/wifi.nix
-    #../stylix.nix
-  ];
+  #imports = [
+  #  ./hardware-configuration.nix
+  #  ../nixos-modules/hardware-modules/hardware-config.nix
+  #  ../nixos-modules/services-modules/udev.nix
+  #  #../nixos-modules/home-manager/home.nix
+  #  inputs.sops-nix.nixosModules.sops
+  #  inputs.home-manager.nixosModules.default
+  #  ../nixos-modules/services-modules/wifi.nix
+  #  #../stylix.nix
+  #];
 
-  ### SECTION [Bootloader] ###  
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  flake.nixosModules.laptopLenovoConfig = {
+    ### SECTION [Bootloader] ###  
+    boot.loader.systemd-boot.enable = true;
+    boot.loader.efi.canTouchEfiVariables = true;  
 
-  ### SECTION [Nix Settings] ###
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-    trusted-users = [ "ifeatud" ];
+    ### SECTION [Nix Settings] ###
+    nix.settings = {
+      experimental-features = [ "nix-command" "flakes" ];
+      trusted-users = [ "ifeatud" ];
+    };
 
-    # substituters = [
-    #   "https://cache.nixos.org"
-    # ];
-
-  };
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   zramSwap.enable = true;
@@ -40,23 +37,16 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
   };
+
   ### SECTION [Networking] ###
   networking.hostName = "lenovo-laptop"; # Define your hostname.
   # Enable networking
   networking.networkmanager.enable = true;
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  ### SECTION [Hardware] ###
-  bluetooth.enable = true;
-  drawing-tablet.enable = false;
-  nvidia-gpu.enable = false;
 
 programs.direnv.enable = true;
 programs.direnv.nix-direnv.enable = true;
+
 
 services.zerotierone = {
   enable = true;
@@ -102,14 +92,8 @@ services.zerotierone = {
   #services.displayManager.sddm.enable = true;
   #services.displayManager.sddm.wayland.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-  #services.desktopManager.plasma6.enable = true;
-  # Enable fingerprint scanner
-  #services.fprintd = {
-  #enable = true;
-  #tod.enable = true;
-  # tod.driver = pkgs.libfprint-2-tod1-goodix-550a;
-  #};
-  services.displayManager.defaultSession = "hyprland";
+
+services.displayManager.defaultSession = "hyprland";
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -251,4 +235,31 @@ services.zerotierone = {
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
 
+  };
+
 }
+
+
+
+  
+  
+  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+
+  # Configure network proxy if necessary
+  # networking.proxy.default = "http://user:password@proxy:port/";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
+  ### SECTION [Hardware] ###
+ # bluetooth.enable = true;
+  #drawing-tablet.enable = false;
+  #nvidia-gpu.enable = false;
+
+  #services.desktopManager.plasma6.enable = true;
+  # Enable fingerprint scanner
+  #services.fprintd = {
+  #enable = true;
+  #tod.enable = true;
+  # tod.driver = pkgs.libfprint-2-tod1-goodix-550a;
+  #};
+  
+

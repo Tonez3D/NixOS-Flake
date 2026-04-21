@@ -1,5 +1,5 @@
 {
-  description = "Nixos config flake";
+  description = "Nixos config flake for my computers";
 
   nixConfig = {
 
@@ -17,7 +17,6 @@
   };
 
   inputs = {
-    # TODO: Reorder inputs
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
 
@@ -36,6 +35,16 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    hyprpanel = {
+      url = "github:Jas-SinghFSU/HyprPanel";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
     #awww = { url = "git+https://codeberg.org/LGFae/awww"; };
 
     #matugen = { url = "github:InioX/Matugen?ref=refs/tags/v3.1.0"; };
@@ -48,7 +57,6 @@
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
-        # IMPORTANT: To ensure compatibility with the latest Firefox version, use nixpkgs-unstable.
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
@@ -56,35 +64,43 @@
 
   };
 
-  outputs = { self, nixpkgs, sops-nix, ... }@inputs:
+  outputs = inputs@{flake-parts, self, nixpkgs, sops-nix, ... }: flake-parts.lib.mkFlake {inherit inputs;} {
 
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
 
-        modules = [
-          ./desktop/configuration.nix
-          inputs.home-manager.nixosModules.default
-          sops-nix.nixosModules.sops
-        ];
-      };
+    imports = [];
 
-      nixosConfigurations.lenovo-laptop = nixpkgs.lib.nixosSystem {
+    perSystem = { config, self', inputs', pkgs, system, ...} : {};
 
-        specialArgs = { inherit inputs; };
+    flake = {
 
-        modules = [
-
-          ./lenovo-laptop/configuration.nix
-          inputs.home-manager.nixosModules.default
-          #inputs.stylix.nixosModules.stylix
-          #sops-nix.nixosModules.sops
-        ];
-      };
-      # TODO: Add Homelab flake
     };
+
+    systems = [ "x86_64-linux" ];
+
+    #let
+    #  system = "x86_64-linux";
+    #  pkgs = nixpkgs.legacyPackages.${system};
+    #in {
+    #formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
+    #nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+    #  specialArgs = { inherit inputs; };
+    #  modules = [
+    #    ./desktop/configuration.nix
+    #    inputs.home-manager.nixosModules.default
+    #    sops-nix.nixosModules.sops
+    #  ];
+    #};
+#
+    #nixosConfigurations.lenovo-laptop = nixpkgs.lib.nixosSystem {
+    #  specialArgs = { inherit inputs; };
+    #  modules = [
+    #    ./lenovo-laptop/configuration.nix
+    #    inputs.home-manager.nixosModules.default
+    #    #inputs.stylix.nixosModules.stylix
+    #    #sops-nix.nixosModules.sops
+    #  ];
+    #};
+    #  # TODO: Add Homelab flake
+    #};
+  };
 }
