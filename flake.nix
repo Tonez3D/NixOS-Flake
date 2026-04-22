@@ -54,6 +54,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    import-tree.url = "github:vic/import-tree";
+
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
@@ -64,43 +66,12 @@
 
   };
 
-  outputs = inputs@{flake-parts, self, nixpkgs, sops-nix, ... }: flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs = inputs@{flake-parts, self, nixpkgs, sops-nix, ... }: 
+  flake-parts.lib.mkFlake {inherit inputs;
+  imports = [
+  inputs.home-manager.flakeModules.home-manager
+];
 
-
-    imports = [];
-
-    perSystem = { config, self', inputs', pkgs, system, ...} : {};
-
-    flake = {
-
-    };
-
-    systems = [ "x86_64-linux" ];
-
-    #let
-    #  system = "x86_64-linux";
-    #  pkgs = nixpkgs.legacyPackages.${system};
-    #in {
-    #formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
-    #nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-    #  specialArgs = { inherit inputs; };
-    #  modules = [
-    #    ./desktop/configuration.nix
-    #    inputs.home-manager.nixosModules.default
-    #    sops-nix.nixosModules.sops
-    #  ];
-    #};
-#
-    #nixosConfigurations.lenovo-laptop = nixpkgs.lib.nixosSystem {
-    #  specialArgs = { inherit inputs; };
-    #  modules = [
-    #    ./lenovo-laptop/configuration.nix
-    #    inputs.home-manager.nixosModules.default
-    #    #inputs.stylix.nixosModules.stylix
-    #    #sops-nix.nixosModules.sops
-    #  ];
-    #};
-    #  # TODO: Add Homelab flake
-    #};
-  };
+  } 
+  (inputs.import-tree ./modules);
 }

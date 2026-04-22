@@ -5,11 +5,11 @@
       self.nixosModules
     ];
   };
-  flake.nixosModules.lenovo-laptop = {pkgs, ... }: {
-    boot.loader.grub.enable = true;
-
-    environment.systemPackages = [
-
-    ];
-  }; 
+  #flake.nixosModules.lenovo-laptop = {pkgs, ... }: {
+  #  boot.loader.grub.enable = true;
+#
+  #  environment.systemPackages = [
+#
+  #  ];
+  #}; 
 }
