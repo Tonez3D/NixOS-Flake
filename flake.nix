@@ -67,11 +67,5 @@
   };
 
   outputs = inputs@{flake-parts, self, nixpkgs, sops-nix, ... }: 
-  flake-parts.lib.mkFlake {inherit inputs;
-  imports = [
-  inputs.home-manager.flakeModules.home-manager
-];
-
-  } 
-  (inputs.import-tree ./modules);
+  flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
 }

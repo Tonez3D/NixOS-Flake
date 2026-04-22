@@ -16,7 +16,10 @@
   #  #../stylix.nix
   #];
 
-  flake.nixosModules.laptopLenovoConfig = {
+  flake.nixosModules.lenovoLaptopConfig = {
+    
+    
+    
     ### SECTION [Bootloader] ###  
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;  
@@ -48,9 +51,6 @@ programs.direnv.enable = true;
 programs.direnv.nix-direnv.enable = true;
 
 
-services.zerotierone = {
-  enable = true;
-};
 
   ### SECTION [Locale Settings] ###
 
@@ -78,13 +78,13 @@ services.zerotierone = {
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  sops.defaultSopsFile = ../secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/ifeatud/.config/sops/age/keys.txt";
-  sops.secrets.example_key = { };
-  sops.secrets.home_wifi_ssid = { };
-  sops.secrets.home_wifi_psk = { };
-  sops.secrets."mys/subdir/secret" = { };
+  #sops.defaultSopsFile = ../secrets/secrets.yaml;
+  #sops.defaultSopsFormat = "yaml";
+  #sops.age.keyFile = "/home/ifeatud/.config/sops/age/keys.txt";
+  #sops.secrets.example_key = { };
+  #sops.secrets.home_wifi_ssid = { };
+  #sops.secrets.home_wifi_psk = { };
+  #sops.secrets."mys/subdir/secret" = { };
 
   ### SECTION [Services] ###
 
@@ -93,7 +93,7 @@ services.zerotierone = {
   #services.displayManager.sddm.wayland.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
-services.displayManager.defaultSession = "hyprland";
+#services.displayManager.defaultSession = "hyprland";
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -136,27 +136,27 @@ services.displayManager.defaultSession = "hyprland";
     isNormalUser = true;
     description = "Ifeatu Dunu";
     extraGroups = [ "networkmanager" "wheel" "video" ];
-    packages = with pkgs;
-      [
-        kdePackages.kate
-        #  thunderbird
-      ];
+   # packages = with pkgs;
+   #   [
+   #     kdePackages.kate
+   #     #  thunderbird
+   #   ];
   };
 
-  ### SECTION [Home Manager] ###
-  home-manager = {
-    extraSpecialArgs = {
-      inherit inputs;
-      hostName = config.networking.hostName;
-    };
-    users = { "ifeatud" = import ../nixos-modules/home-manager/home.nix; };
-    sharedModules = [];
-
-  };
-
-  home-manager.useUserPackages = true;
-  home-manager.backupFileExtension = "backup";
-
+  ##### SECTION [Home Manager] ###
+  ##home-manager = {
+  ##  extraSpecialArgs = {
+  ##    inherit inputs;
+  ##    hostName = config.networking.hostName;
+  ##  };
+  ##  users = { "ifeatud" = import ../nixos-modules/home-manager/home.nix; };
+  ##  sharedModules = [];
+##
+  ##};
+##
+  ##home-manager.useUserPackages = true;
+  ##home-manager.backupFileExtension = "backup";
+##
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -166,11 +166,11 @@ services.displayManager.defaultSession = "hyprland";
   #stylix.homeManagerIntegration.enable = true;
 
   services.getty = { autologinUser = "ifeatud"; };
-  environment.loginShellInit = ''
-    if [ "$(tty)" = "/dev/tty1" ]; then
-      Hyprland
-    fi
-  '';
+  #environment.loginShellInit = ''
+  #  if [ "$(tty)" = "/dev/tty1" ]; then
+  #    Hyprland
+  #  fi
+  #'';
   #services.greetd = {
   #  enable = true;
   #  settings = {
@@ -186,13 +186,13 @@ services.displayManager.defaultSession = "hyprland";
   #services.gnome.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget                               
-  environment.systemPackages = with pkgs;
-    import ../nixos-modules/packages/sys-packages.nix {
-      inherit pkgs;
-      inherit inputs;
-    };
-  fonts.packages = with pkgs;
-    import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
+  #environment.systemPackages = with pkgs;
+  #  import ../nixos-modules/packages/sys-packages.nix {
+  #    inherit pkgs;
+  #    inherit inputs;
+  #  };
+  #fonts.packages = with pkgs;
+  #  import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
   fonts.fontDir.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -203,13 +203,13 @@ services.displayManager.defaultSession = "hyprland";
   #   enableSSHSupport = true;
   # };
 
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-    portalPackage =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-  };
-  hardware.graphics.enable = true;
+  #programs.hyprland = {
+  #  enable = true;
+  #  package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  #  portalPackage =
+  #    inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  #};
+  #hardware.graphics.enable = true;
 
   xdg.portal = {
     enable = true;
