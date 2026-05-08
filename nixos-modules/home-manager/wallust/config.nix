@@ -32,8 +32,8 @@
   waybar.template = 'colors-waybar.css'
   waybar.target   = '~/.config/waybar/colors.css'
 
-  #kitty.template ='/templates/kitty-template.conf'
-  #kitty.target ='~/.config/kitty/themes/kittycolors.conf'
+  kitty.template = 'colors-kitty.conf'
+  kitty.target = '~/.config/kitty/current-theme.conf'
   #rofi.template = '/templates/rofi-template.rasi'
   #rofi.target ='~/.config/rofi/themes/roficolors.rasi'
 

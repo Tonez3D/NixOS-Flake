@@ -53,10 +53,11 @@
       enable = true;
       settings = { 
         neofetch = "fastfetch"; 
+        include = "current-theme.conf";
         dynamic_background_opacity = true;
         background_opacity = "0.7";
         background_blur = 1;
-        };
+      };
     };
 
     programs.git = {
