@@ -85,6 +85,17 @@ users.users."homelab".openssh = {
 
   };
 
+### SECTION [Home Manager] ###
+  home-manager = {
+    extraSpecialArgs = {
+      inherit inputs;
+      hostName = config.networking.hostName;
+    };
+    users = { "homelab" = import ./home.nix; };
+    sharedModules = [];
+
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 

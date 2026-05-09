@@ -1,5 +1,5 @@
-{pkgs, inputs, ...} : {
-      environment.systemPackages = with pkgs; [git];
+{pkgs, inputs, config, ...} : {
+      config.home.packages = with pkgs; [git];
 
   programs.git = {
       enable = true;
