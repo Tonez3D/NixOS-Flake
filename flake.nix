@@ -77,8 +77,8 @@
       nixosConfigurations.homelab-1 = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
-          ./home-Slab/configuration.nix
-          
+          ./home-lab/configuration.nix
+          inputs.home-manager.nixosModules.default          
         ];
       };
 

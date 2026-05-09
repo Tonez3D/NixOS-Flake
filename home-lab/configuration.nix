@@ -12,7 +12,7 @@
       ../nixos-modules/packages/vim
       ../nixos-modules/packages/git
       ../nixos-modules/packages/kitty
-      ../nixos-modules/packages/fastfetch
+#      ../nixos-modules/packages/fastfetch
 
     ];
 
