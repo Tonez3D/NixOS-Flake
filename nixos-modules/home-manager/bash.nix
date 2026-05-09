@@ -6,7 +6,6 @@
       bashrcExtra = ''
         eval "$(ssh-agent -s)" > /dev/null 2>&1
         ssh-add ~/.ssh/github-ssh > /dev/null 2>&1
-        kitty set-colors -a ~/.config/kitty/themes/wall-colors.conf
         fastfetch --logo-type kitty-direct 
         eval "$(starship init bash)"
       '';
