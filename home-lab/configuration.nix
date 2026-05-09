@@ -14,10 +14,12 @@
       ../nixos-modules/packages/kitty
 #      ../nixos-modules/packages/fastfetch
 
-  networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];
 
 
     ];
+
+      networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];
+
 
   # Bootloader.
   boot.loader.grub.enable = true;
