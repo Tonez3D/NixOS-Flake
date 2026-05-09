@@ -1,7 +1,7 @@
-{pkgs, inputs, config, ...} : {
+{pkgs, lib, inputs, config, ...} : {
       config.home.packages = with pkgs; [git];
 
-  programs.git = {
+config.programs.git = {
       enable = true;
       extraConfig = {
         user.name = "Tonez3D";
