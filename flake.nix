@@ -63,6 +63,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
     formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
+
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
 
@@ -70,6 +71,14 @@
           ./desktop/configuration.nix
           inputs.home-manager.nixosModules.default
           sops-nix.nixosModules.sops
+        ];
+      };
+
+      nixosConfigurations.homelab-1 = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./home-Slab/configuration.nix
+          
         ];
       };
 
