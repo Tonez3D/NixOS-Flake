@@ -8,6 +8,12 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../nixos-modules/packages/zerotier-one
+      ../nixos-modules/packages/vim
+      ../nixos-modules/packages/git
+      ../nixos-modules/packages/kitty
+      ../nixos-modules/packages/fastfetch
+
     ];
 
   # Bootloader.
@@ -15,7 +21,7 @@
   boot.loader.grub.device = "/dev/sda";
   boot.loader.grub.useOSProber = true;
 
-  networking.hostName = "homelab"; # Define your hostname.
+  networking.hostName = "homelab-1"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -36,7 +42,7 @@ users.users."homelab".openssh = {
 	"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfi4u0rZj7jdFMOkGmGbwFJXOH/kErjMa1US5YywkuY tonez3d@gmail.com"
 	];
 };
-services.zerotierone.enable = true;
+#services.zerotierone.enable = true;
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
@@ -69,18 +75,28 @@ services.zerotierone.enable = true;
     packages = with pkgs; [];
   };
 
+  nix.settings = {
+    experimental-features = [ "nix-command" "flakes" ];
+    trusted-users = [ "homelab" ];
+
+    # substituters = [
+    #   "https://cache.nixos.org"
+    # ];
+
+  };
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-neovim
-git
-zerotierone  
-  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-  ];
+#  environment.systemPackages = with pkgs; [
+#neovim
+#git
+#zerotierone  
+#  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+#    wget
+#  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

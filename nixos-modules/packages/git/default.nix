@@ -1,5 +1,5 @@
 {pkgs, inputs, ...} : {
-      environment.systemPackages = with pkgs; [cmake];
+      environment.systemPackages = with pkgs; [git];
 
   programs.git = {
       enable = true;
