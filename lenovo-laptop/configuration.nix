@@ -72,6 +72,8 @@ services.zerotierone = {
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
 
+  programs.nix-ld.enable = true;
+
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
     LC_IDENTIFICATION = "en_US.UTF-8";
@@ -84,17 +86,18 @@ services.zerotierone = {
     LC_TIME = "en_US.UTF-8";
   };
 
+  networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  sops.defaultSopsFile = ../secrets/secrets.yaml;
-  sops.defaultSopsFormat = "yaml";
-  sops.age.keyFile = "/home/ifeatud/.config/sops/age/keys.txt";
-  sops.secrets.example_key = { };
-  sops.secrets.home_wifi_ssid = { };
-  sops.secrets.home_wifi_psk = { };
-  sops.secrets."mys/subdir/secret" = { };
+  #sops.defaultSopsFile = ../secrets/secrets.yaml;
+  #sops.defaultSopsFormat = "yaml";
+  #sops.age.keyFile = "/home/ifeatud/.config/sops/age/keys.txt";
+  #sops.secrets.example_key = { };
+  #sops.secrets.home_wifi_ssid = { };
+  #sops.secrets.home_wifi_psk = { };
+  #sops.secrets."mys/subdir/secret" = { };
 
   ### SECTION [Services] ###
 
@@ -142,7 +145,7 @@ services.zerotierone = {
   # services.xserver.libinput.enable = true;
   services.udev.extraRules = ''
     ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl1", MODE="0666"
-
+    ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d3", MODE:="0666", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_PORT_IGNORE}="1"
   '';
   #services.udev.extraRules = ''
   #  ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl1", MODE="0666"

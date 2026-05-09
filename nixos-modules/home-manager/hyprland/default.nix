@@ -9,7 +9,7 @@
     ./general.nix
     ./workspace.nix
     ./hyprlock.nix
-    ./hellwal-colors.nix
+    #./hellwal-colors.nix
     ./exec-once.nix
     ./hypridle.nix
     ./waypaper.nix
