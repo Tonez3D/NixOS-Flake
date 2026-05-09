@@ -19,11 +19,18 @@
   inputs = {
     # TODO: Reorder inputs
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+
+    nixpkgs-25-11.url = "github:nixos/nixpkgs/nixos-25.11";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-25.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    
+    home-manager-25-11 = {
+      url = "github:nix-community/home-manager/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs-25-11";
     };
 
     hyprland = {
@@ -56,7 +63,7 @@
 
   };
 
-  outputs = { self, nixpkgs, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, nixpkgs-25-11, sops-nix, ... }@inputs:
 
     let
       system = "x86_64-linux";
@@ -74,11 +81,11 @@
         ];
       };
 
-      nixosConfigurations.homelab-1 = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.homelab-1 = nixpkgs-25-11.lib.nixosSystem {
         specialArgs = { inherit inputs; };
         modules = [
           ./home-lab/configuration.nix
-          inputs.home-manager.nixosModules.default    
+          inputs.home-manager-25-11.nixosModules.default    
         ];
       };
 
