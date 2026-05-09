@@ -1,16 +1,15 @@
 { config, lib, pkgs, ... }:
 
 {
-  
-
-  config = {
-    imports = [
+  imports = [
     #./starship/starship.nix
     #../nixos-modules/packages/fastfetch/default.nix
-        ../nixos-modules/packages/git/default.nix
+      #  ../nixos-modules/packages/git/default.nix
 
 
   ];
+
+  config = {
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
@@ -32,6 +31,15 @@
     # plain files is through 'home.file'.
     
 
+programs.git = {
+      enable = true;
+      extraConfig = {
+        user.name = "Tonez3D";
+        user.email = "tonez3d@gmail.com";
+        safe.directory = [ "/etc/nixos" ];
+        init.defaultBranch = "main";
+      };
+    };
     # Home Manager can also manage your environment variables through
     # 'home.sessionVariables'. These will be explicitly sourced when using a
     # shell provided by Home Manager. If you don't want to manage your shell

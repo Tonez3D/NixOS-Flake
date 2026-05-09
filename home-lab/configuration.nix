@@ -14,6 +14,9 @@
       ../nixos-modules/packages/kitty
 #      ../nixos-modules/packages/fastfetch
 
+  networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];
+
+
     ];
 
   # Bootloader.
