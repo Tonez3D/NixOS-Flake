@@ -1,5 +1,5 @@
 { ... }: {
-      environment.systemPackages = with pkgs; [fastfetch];
+      config.home.packages = with pkgs; [fastfetch];
 
 
   programs.fastfetch = {
