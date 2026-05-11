@@ -3,11 +3,12 @@
     enable = true;
     settings = {
       logo = {
-        #source = "nixos_old_small";
+        source = "/etc/nixos/assets/icons/Nix_Flake_ascii.txt";
+                  
         #padding = {
         #  right = 1;
         #};
-        type = "none";
+        #type = "none";
       };
       display = {
         color = "cyan";

@@ -1,5 +1,6 @@
 
 - [ ] Refactor
+  - [ ] Naming
   - [ ] Breakout Pkgs into different nix files
   - [ ] Breakout Hyprland to only be for Latprop and PC
 - [ ] Hyprland
