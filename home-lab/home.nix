@@ -4,9 +4,9 @@
   imports = [
     #./starship/starship.nix
     #../nixos-modules/packages/fastfetch/default.nix
-      #  ../nixos-modules/packages/git/default.nix
-
-
+     ../nixos-modules/packages/git/default.nix
+    #../nixos-modules/packages/vim/default.nix
+    # ../nixos-modules/packages/zerotier-one/default.nix
   ];
 
   config = {
@@ -31,15 +31,15 @@
     # plain files is through 'home.file'.
     
 
-programs.git = {
-      enable = true;
-      extraConfig = {
-        user.name = "Tonez3D";
-        user.email = "tonez3d@gmail.com";
-        safe.directory = [ "/etc/nixos" ];
-        init.defaultBranch = "main";
-      };
-    };
+#programs.git = {
+#      enable = true;
+#      extraConfig = {
+#        user.name = "Tonez3D";
+#        user.email = "tonez3d@gmail.com";
+#        safe.directory = [ "/etc/nixos" ];
+#        init.defaultBranch = "main";
+#      };
+#    };
     # Home Manager can also manage your environment variables through
     # 'home.sessionVariables'. These will be explicitly sourced when using a
     # shell provided by Home Manager. If you don't want to manage your shell

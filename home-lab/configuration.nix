@@ -18,7 +18,7 @@
 
     ];
 
-      networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];
+      #networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];
 
 
   # Bootloader.
