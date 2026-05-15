@@ -15,7 +15,7 @@ let
     all_subfolders = False
     show_hidden = False
     show_gifs_only = False
-    post_command = new-color-pallet
+    post_command = color-pallet
     number_of_columns = 3
     swww_transition_type = none
     swww_transition_step = 90

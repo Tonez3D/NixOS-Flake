@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  gen-colors = pkgs.writeScriptBin "new-color-pallet" ''
+  gen-colors = pkgs.writeScriptBin "color-pallet" ''
     #!/usr/bin/env bash
     sleep 1.75
     wallust run --backend resized --colorspace lch "$(swww query | grep -o '/etc.*' -m 1)"
