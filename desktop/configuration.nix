@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ../nixos-modules/hardware-modules/hardware-config.nix
     ../nixos-modules/agenix
+    ../nixos-modules/fzf
     inputs.home-manager.nixosModules.default
   ];
 
