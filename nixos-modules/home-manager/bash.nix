@@ -8,6 +8,7 @@
         ssh-add ~/.ssh/github-ssh > /dev/null 2>&1
         fastfetch --logo-type kitty-direct 
         eval "$(starship init bash)"
+        eval "$(fzf --bash)"
       '';
     })
     (lib.mkIf (hostName == "lenovo-laptop") {
