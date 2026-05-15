@@ -40,6 +40,11 @@
 
     #matugen = { url = "github:InioX/Matugen?ref=refs/tags/v3.1.0"; };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,35 +61,37 @@
 
   };
 
-  outputs = { self, nixpkgs, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, agenix, ... }@inputs:
 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
+
     formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
 
-        modules = [
-          ./desktop/configuration.nix
-          inputs.home-manager.nixosModules.default
-          sops-nix.nixosModules.sops
-        ];
-      };
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      specialArgs = { inherit inputs; system = system;};
 
-      nixosConfigurations.lenovo-laptop = nixpkgs.lib.nixosSystem {
-
-        specialArgs = { inherit inputs; };
-
-        modules = [
-
-          ./lenovo-laptop/configuration.nix
-          inputs.home-manager.nixosModules.default
-          #inputs.stylix.nixosModules.stylix
-          #sops-nix.nixosModules.sops
-        ];
-      };
-      # TODO: Add Homelab flake
+      modules = [
+        ./desktop/configuration.nix
+        inputs.home-manager.nixosModules.default
+        agenix.nixosModules.default
+      ];
     };
+
+    nixosConfigurations.lenovo-laptop = nixpkgs.lib.nixosSystem {
+
+      specialArgs = { inherit inputs; };
+
+      modules = [
+
+        ./lenovo-laptop/configuration.nix
+        inputs.home-manager.nixosModules.default
+        #inputs.stylix.nixosModules.stylix
+        #sops-nix.nixosModules.sops
+      ];
+    };
+    # TODO: Add Homelab flake
+  };
 }
