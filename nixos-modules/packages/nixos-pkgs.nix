@@ -8,6 +8,7 @@
     #./rofi
     ./libGL
     ./wev
+    ./killall
     ./swww
     ./zip
     ./neovim

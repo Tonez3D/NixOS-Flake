@@ -1,6 +1,9 @@
-{ ... }:
+{ pkgs, ... }:
 let bar-style = ./style.css;
 in {
+
+  home.packages = with pkgs; [ waybar ];
+
   programs.waybar = {
     enable = true;
     settings = let

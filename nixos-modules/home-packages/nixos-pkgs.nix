@@ -8,10 +8,12 @@
     ./gowall
     ./hyprland
     ./kicad
+    ./kitty
     ./gowall
     ./jetbrains
     ./wallust
     ./waybar
+    ./rofi
     ./nemo
     ./pavucontrol
     ./playerctl

@@ -2,7 +2,7 @@
 
 {
 
-  environment.systemPackages = with pkgs; [ rofi-wayland ];
+  home.packages = with pkgs; [ rofi-wayland ];
   programs.rofi = let inherit (config.lib.formats.rasi) mkLiteral;
   in {
     enable = true;
