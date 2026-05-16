@@ -1,14 +1,13 @@
-{ pkgs, inputs, ... }:
-{
-  environment.systemPackages = with pkgs; [kitty];
+{ pkgs, inputs, ... }: {
+  environment.systemPackages = with pkgs; [ kitty ];
   programs.kitty = {
-  enable = true;
-  settings = { 
-    neofetch = "fastfetch"; 
-    incude = "current-theme.conf";
-    dynamic_background_opacity = true;
-    background_opacity = "0.7";
-    background_blur = 1;
-  };
+    enable = true;
+    settings = {
+      neofetch = "fastfetch";
+      incude = "current-theme.conf";
+      dynamic_background_opacity = true;
+      background_opacity = "0.7";
+      background_blur = 1;
+    };
   };
 }

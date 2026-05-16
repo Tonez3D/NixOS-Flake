@@ -1,4 +1,7 @@
-{ inputs, ... }: {
+{ pkgs, inputs, ... }: {
+
+  home.packages = with pkgs; [ hypridle ];
+
   services.hypridle = {
     enable = true;
     settings = {

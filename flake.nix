@@ -27,7 +27,7 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     home-manager-25-11 = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-25-11";
@@ -75,9 +75,12 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in {
 
-    formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
+      formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; system = system;};
+        specialArgs = {
+          inherit inputs;
+          system = system;
+        };
 
         modules = [
           ./desktop/configuration.nix
@@ -87,26 +90,26 @@
         ];
       };
 
-    nixosConfigurations.lenovo-laptop = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.lenovo-laptop = nixpkgs.lib.nixosSystem {
 
-      specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs; };
 
-      modules = [
+        modules = [
 
-        ./lenovo-laptop/configuration.nix
-        inputs.home-manager.nixosModules.default
-        #inputs.stylix.nixosModules.stylix
-        #sops-nix.nixosModules.sops
-      ];
+          ./lenovo-laptop/configuration.nix
+          inputs.home-manager.nixosModules.default
+          #inputs.stylix.nixosModules.stylix
+          #sops-nix.nixosModules.sops
+        ];
+      };
+
+      nixosConfigurations.homelab-1 = nixpkgs-25-11.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./home-lab/configuration.nix
+          inputs.home-manager-25-11.nixosModules.default
+        ];
+      };
+
     };
-    
-    nixosConfigurations.homelab-1 = nixpkgs-25-11.lib.nixosSystem {
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./home-lab/configuration.nix
-        inputs.home-manager-25-11.nixosModules.default    
-      ];
-    };
-
-  };
 }

@@ -1,4 +1,7 @@
-{ ... }: {
+{ pkgs, ... }: {
+
+  home.packages = with pkgs; [ hyprlock ];
+
   programs.hyprlock = {
     enable = true;
 
@@ -18,8 +21,7 @@
       }];
 
       shape = [
-        
-        
+
         # Background box
         {
           size = "800, 300";
@@ -35,19 +37,18 @@
         }
       ];
 
-      image = [
-        {
-          #monitor = ;
-    path = "/etc/nixos/assets/ELARA_Patch_2.0.png";
-    size = 100;
-    border_size = 2;
-          border_color = "rgba(168, 153, 132, 0.95)";
-    position = "50, -100";
-    halign = "center";
-    valign = "center";
-        }
+      image = [{
+        #monitor = ;
+        path = "/etc/nixos/assets/ELARA_Patch_2.0.png";
+        size = 100;
+        border_size = 2;
+        border_color = "rgba(168, 153, 132, 0.95)";
+        position = "50, -100";
+        halign = "center";
+        valign = "center";
+      }
 
-      ];
+        ];
 
       label = [
         # Date

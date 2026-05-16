@@ -1,4 +1,4 @@
-{ ... }: {
+{ inputs, pkgs, config, lib, ... }: {
   imports = [
     ./binds.nix
     ./plugins.nix
@@ -12,6 +12,11 @@
     #./hellwal-colors.nix
     ./exec-once.nix
     ./hypridle.nix
-    ./waypaper.nix
   ];
+
+  home.packages = with pkgs; [ hyprpolkitagent ];
+
+  wayland.windowManager.hyprland.enable = true; # enable Hyprland
+  wayland.windowManager.hyprland.xwayland.enable = true;
+
 }
