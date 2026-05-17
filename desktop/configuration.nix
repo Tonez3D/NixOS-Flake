@@ -7,7 +7,9 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../nixos-modules/hardware-modules/hardware-config.nix
+    ../nixos-modules/hardware-modules
+    ../nixos-modules/packages/nixos-pkgs.nix
+    ../nixos-modules/fonts
     inputs.home-manager.nixosModules.default
   ];
 
@@ -69,10 +71,10 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  #services.displayManager.sddm.enable = true;
-  #services.displayManager.sddm.wayland.enable = true;
-  #services.desktopManager.plasma6.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -112,21 +114,11 @@
     #media-session.enable = true;
   };
 
-  programs.direnv.enable = true;
-programs.direnv.nix-direnv.enable = true;
-
+  #  programs.direnv.enable = true;
+  #programs.direnv.nix-direnv.enable = true;
 
   #services.xserver.displayManager.lightdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
-
-  environment.systemPackages = with pkgs;
-    import ../nixos-modules/packages/sys-packages.nix {
-      inherit pkgs;
-      inherit inputs;
-    };
-  fonts.packages = with pkgs;
-    import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
-  fonts.fontDir.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -138,7 +130,7 @@ programs.direnv.nix-direnv.enable = true;
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs;
       [
-        kdePackages.kate
+        #kdePackages.kate
         #  thunderbird
       ];
   };
@@ -149,21 +141,19 @@ programs.direnv.nix-direnv.enable = true;
       inherit inputs;
       hostName = config.networking.hostName;
     };
-    users = { "heifee" = import ../nixos-modules/home-manager/home.nix; };
-    #sharedModules = [{ stylix.targets.kitty.enable = false; }];
+    users = { "heifee" = import ./home.nix; };
   };
+
+  services.getty = { autologinUser = "heifee"; };
+  environment.loginShellInit = ''
+    Hyprland
+  '';
 
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
 
-  #home-manager.useGlobalPkgs = true;
-
   # Install firefox.
   programs.firefox.enable = true;
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-  };
 
   xdg.portal = {
     enable = true;
@@ -180,18 +170,6 @@ programs.direnv.nix-direnv.enable = true;
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?

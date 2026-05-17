@@ -5,6 +5,7 @@
 { config, pkgs, inputs, ... }:
 
 {
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -17,11 +18,9 @@
 #      ../nixos-modules/packages/fastfetch
 
 
+  ];
 
-    ];
-
-      #networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];
-
+  #networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -38,18 +37,19 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-services.openssh = {enable = true;
-	settings = {
-		#PasswordAuthentication = true;
-#		openFirewall = true;
-	};
-};
-users.users."homelab".openssh = {
-	authorizedKeys.keys = [
-	"ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfi4u0rZj7jdFMOkGmGbwFJXOH/kErjMa1US5YywkuY tonez3d@gmail.com"
-	];
-};
-#services.zerotierone.enable = true;
+  services.openssh = {
+    enable = true;
+    settings = {
+      #PasswordAuthentication = true;
+      #		openFirewall = true;
+    };
+  };
+  users.users."homelab".openssh = {
+    authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfi4u0rZj7jdFMOkGmGbwFJXOH/kErjMa1US5YywkuY tonez3d@gmail.com"
+    ];
+  };
+  #services.zerotierone.enable = true;
   # Set your time zone.
   time.timeZone = "America/Chicago";
 
@@ -79,7 +79,7 @@ users.users."homelab".openssh = {
     isNormalUser = true;
     description = "homelab";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    packages = with pkgs; [ ];
   };
 
   nix.settings = {
@@ -92,14 +92,14 @@ users.users."homelab".openssh = {
 
   };
 
-### SECTION [Home Manager] ###
+  ### SECTION [Home Manager] ###
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;
       hostName = config.networking.hostName;
     };
     users = { "homelab" = import ./home.nix; };
-    sharedModules = [];
+    sharedModules = [ ];
 
   };
 
@@ -108,13 +108,13 @@ users.users."homelab".openssh = {
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-#  environment.systemPackages = with pkgs; [
-#neovim
-#git
-#zerotierone  
-#  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-#    wget
-#  ];
+  #  environment.systemPackages = with pkgs; [
+  #neovim
+  #git
+  #zerotierone  
+  #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+  #    wget
+  #  ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
