@@ -27,7 +27,7 @@
       url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
     home-manager-25-11 = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs-25-11";
@@ -47,6 +47,11 @@
 
     #matugen = { url = "github:InioX/Matugen?ref=refs/tags/v3.1.0"; };
 
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -63,29 +68,25 @@
 
   };
 
-  outputs = { self, nixpkgs, nixpkgs-25-11, sops-nix, ... }@inputs:
+  outputs = { self, nixpkgs, sops-nix, agenix, nixpkgs-25-11, ... }@inputs:
 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-    formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
 
+      formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = {
+          inherit inputs;
+          system = system;
+        };
 
         modules = [
           ./desktop/configuration.nix
           inputs.home-manager.nixosModules.default
           sops-nix.nixosModules.sops
-        ];
-      };
-
-      nixosConfigurations.homelab-1 = nixpkgs-25-11.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./home-lab/configuration.nix
-          inputs.home-manager-25-11.nixosModules.default    
+          agenix.nixosModules.default
         ];
       };
 
@@ -101,6 +102,14 @@
           #sops-nix.nixosModules.sops
         ];
       };
-      # TODO: Add Homelab flake
+
+      nixosConfigurations.homelab-1 = nixpkgs-25-11.lib.nixosSystem {
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./home-lab/configuration.nix
+          inputs.home-manager-25-11.nixosModules.default
+        ];
+      };
+
     };
 }

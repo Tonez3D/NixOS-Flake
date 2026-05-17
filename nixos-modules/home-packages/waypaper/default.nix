@@ -1,0 +1,33 @@
+{ pkgs, ... }:
+let
+  waypaper-config = ''
+    [Settings]
+    language = en
+    folder = /etc/nixos/assets
+    monitors = All
+    wallpaper = 
+    show_path_in_tooltip = True
+    backend = swww
+    fill = fill
+    sort = name
+    color = #ffffff
+    subfolders = False
+    all_subfolders = False
+    show_hidden = False
+    show_gifs_only = False
+    post_command = color-pallet
+    number_of_columns = 3
+    swww_transition_type = none
+    swww_transition_step = 90
+    swww_transition_angle = 0
+    swww_transition_duration = 2
+    swww_transition_fps = 60
+    mpvpaper_sound = False
+    mpvpaper_options = 
+    use_xdg_state = False
+  '';
+in {
+
+  home.packages = with pkgs; [ waypaper ];
+  home.file = { ".config/waypaper/config.ini".text = "${waypaper-config}"; };
+}
