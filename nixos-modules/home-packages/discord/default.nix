@@ -1,1 +1,10 @@
-{ pkgs, lib, inputs, config, ... }: { home.packages = with pkgs; [ discord ]; }
+{
+  pkgs,
+  lib,
+  inputs,
+  config,
+  ...
+}:
+{
+  home.packages = with pkgs; [ discord ];
+}

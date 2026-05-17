@@ -1,1 +1,4 @@
-{ pkgs, ... }: { environment.systemPackages = with pkgs; [ swww ]; }
+{ pkgs, ... }:
+{
+  environment.systemPackages = with pkgs; [ swww ];
+}

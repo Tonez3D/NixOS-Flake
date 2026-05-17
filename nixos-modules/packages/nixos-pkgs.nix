@@ -1,11 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./default.nix
     ./clang
     ./cmake
     ./gtk
-    ./nixfmt
-    #./rofi
     ./libGL
     ./hyprpolkit
     ./wev

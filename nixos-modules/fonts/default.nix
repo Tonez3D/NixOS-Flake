@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   fonts.fontDir.enable = true;
   fonts.packages = with pkgs; [
     roboto
@@ -29,6 +30,9 @@
     material-design-icons
     material-symbols
   ];
-  environment.systemPackages = with pkgs; [ fontfor fontforge ];
+  environment.systemPackages = with pkgs; [
+    fontfor
+    fontforge
+  ];
 
 }

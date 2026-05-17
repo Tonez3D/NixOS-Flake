@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
 
   home.packages = with pkgs; [ hyprlock ];
 
@@ -12,13 +13,15 @@
         fractional_scaling = 0;
       };
 
-      background = [{
-        #path = screenshot;
+      background = [
+        {
+          #path = screenshot;
 
-        color = "rgba(29, 32, 33, 255)";
-        blur_passes = 2;
-        vibrancy_darkness = 0.0;
-      }];
+          color = "rgba(29, 32, 33, 255)";
+          blur_passes = 2;
+          vibrancy_darkness = 0.0;
+        }
+      ];
 
       shape = [
 
@@ -37,18 +40,19 @@
         }
       ];
 
-      image = [{
-        #monitor = ;
-        path = "/etc/nixos/assets/ELARA_Patch_2.0.png";
-        size = 100;
-        border_size = 2;
-        border_color = "rgba(168, 153, 132, 0.95)";
-        position = "50, -100";
-        halign = "center";
-        valign = "center";
-      }
+      image = [
+        {
+          #monitor = ;
+          path = "/etc/nixos/assets/ELARA_Patch_2.0.png";
+          size = 100;
+          border_size = 2;
+          border_color = "rgba(168, 153, 132, 0.95)";
+          position = "50, -100";
+          halign = "center";
+          valign = "center";
+        }
 
-        ];
+      ];
 
       label = [
         # Date
@@ -67,32 +71,33 @@
         }
       ];
 
-      input-field = [{
-        size = "300, 50";
-        rounding = 3;
-        outline_thickness = 2;
+      input-field = [
+        {
+          size = "300, 50";
+          rounding = 3;
+          outline_thickness = 2;
 
-        dots_spacing = 0.4;
+          dots_spacing = 0.4;
 
-        font_color = "rgba(235, 219, 178, 0.9)";
-        font_family = "lato";
+          font_color = "rgba(235, 219, 178, 0.9)";
+          font_family = "lato";
 
-        outer_color = "rgba(168, 153, 132, 0.95)";
-        inner_color = "rgba(102, 92, 84, 0.33)";
-        check_color = "rgba(152, 151, 26, 0.95)";
-        fail_color = "rgba(204, 36, 29, 0.95)";
-        capslock_color = "rgba(215, 153, 33, 0.95)";
-        bothlock_color = "rgba(215, 153, 33, 0.95)";
+          outer_color = "rgba(168, 153, 132, 0.95)";
+          inner_color = "rgba(102, 92, 84, 0.33)";
+          check_color = "rgba(152, 151, 26, 0.95)";
+          fail_color = "rgba(204, 36, 29, 0.95)";
+          capslock_color = "rgba(215, 153, 33, 0.95)";
+          bothlock_color = "rgba(215, 153, 33, 0.95)";
 
-        hide_input = false;
-        fade_on_empty = true;
-        placeholder_text =
-          ''<i><span foreground="##fbf1c7">Enter Password</span></i>'';
+          hide_input = false;
+          fade_on_empty = true;
+          placeholder_text = ''<i><span foreground="##fbf1c7">Enter Password</span></i>'';
 
-        position = "0, 50";
-        halign = "center";
-        valign = "bottom";
-      }];
+          position = "0, 50";
+          halign = "center";
+          valign = "bottom";
+        }
+      ];
 
       animation = [ "inputFieldColors, 0" ];
     };

@@ -1,8 +1,17 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
 
-  imports = [ ./bluetooth.nix ./nvidia-gpu.nix ./drawing-tablet.nix ];
+  imports = [
+    ./bluetooth.nix
+    ./nvidia-gpu.nix
+    ./drawing-tablet.nix
+  ];
 
   hardware.opentabletdriver.enable = true;
   hardware.opentabletdriver.daemon.enable = true;

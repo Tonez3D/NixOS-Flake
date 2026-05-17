@@ -1,10 +1,15 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   imports = [
-          ../nixos-modules/home-packages/home-lab-pkgs.nix
+    ../nixos-modules/home-packages/home-lab-pkgs.nix
 
-    ];
+  ];
 
   config = {
 

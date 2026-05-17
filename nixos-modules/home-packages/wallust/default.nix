@@ -5,7 +5,8 @@ let
   rofi-colors = import ./rofi-template.nix;
   starship-colors = import ./starship-template.nix;
   config-toml = import ./config.nix;
-in {
+in
+{
 
   home.packages = with pkgs; [ wallust ];
 

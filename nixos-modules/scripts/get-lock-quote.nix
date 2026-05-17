@@ -6,4 +6,7 @@ let
     sed -n "$((RANDOM % $(wc -l < filename.txt) + 1))p" filename.txt
 
   '';
-in { home.packages = [ gen-lqoute ]; }
+in
+{
+  home.packages = [ gen-lqoute ];
+}

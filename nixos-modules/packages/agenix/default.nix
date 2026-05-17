@@ -1,4 +1,14 @@
-{ config, pkgs, lib, inputs, system, ... }: {
-  environment.systemPackages =
-    [ inputs.agenix.packages."${system}".default pkgs.agenix-cli pkgs.age ];
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
+{
+  environment.systemPackages = [
+    inputs.agenix.packages."${pkgs.system}".default
+    pkgs.agenix-cli
+    pkgs.age
+  ];
 }

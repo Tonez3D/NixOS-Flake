@@ -68,12 +68,21 @@
 
   };
 
-  outputs = { self, nixpkgs, sops-nix, agenix, nixpkgs-25-11, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      sops-nix,
+      agenix,
+      nixpkgs-25-11,
+      ...
+    }@inputs:
 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
+    in
+    {
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
@@ -107,7 +116,10 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./home-lab/configuration.nix
+
           inputs.home-manager-25-11.nixosModules.default
+          agenix.nixosModules.default
+          sops-nix.nixosModules.sops
         ];
       };
 

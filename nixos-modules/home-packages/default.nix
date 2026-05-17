@@ -1,5 +1,7 @@
-{ ... }: {
-  imports = [ # Include the results of the hardware scan.
+{ ... }:
+{
+  imports = [
+    # Include the results of the hardware scan.
     ./git
     ./bash
     ./fastfetch
