@@ -10,6 +10,8 @@
       ./hardware-configuration.nix
       ../nixos-modules/packages/zerotier-one
       ../nixos-modules/packages/vim
+      ../nixos-modules/kernel/kernel-version.nix
+      ../nixos-modules/kernel/patches/dirty-flag.nix
       #../nixos-modules/packages/git
       #../nixos-modules/packages/kitty
 #      ../nixos-modules/packages/fastfetch
