@@ -7,6 +7,7 @@
     ./nixfmt
     #./rofi
     ./libGL
+    ./hyprpolkit
     ./wev
     ./killall
     ./swww

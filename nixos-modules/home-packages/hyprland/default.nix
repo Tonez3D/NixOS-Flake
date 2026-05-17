@@ -14,8 +14,6 @@
     ./hypridle.nix
   ];
 
-  home.packages = with pkgs; [ hyprpolkitagent ];
-
   wayland.windowManager.hyprland.enable = true; # enable Hyprland
   wayland.windowManager.hyprland.xwayland.enable = true;
 

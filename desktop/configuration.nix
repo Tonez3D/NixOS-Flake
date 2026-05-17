@@ -130,7 +130,7 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs;
       [
-        kdePackages.kate
+        #kdePackages.kate
         #  thunderbird
       ];
   };
@@ -143,6 +143,11 @@
     };
     users = { "heifee" = import ./home.nix; };
   };
+
+  services.getty = { autologinUser = "heifee"; };
+  environment.loginShellInit = ''
+    Hyprland
+  '';
 
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";

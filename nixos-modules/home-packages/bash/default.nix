@@ -24,7 +24,7 @@
       enable = true;
       bashrcExtra = ''
         eval "$(ssh-agent -s)" > /dev/null 2>&1
-        ssh-add ~/.ssh/laptop-github-ssh > /dev/null 2>&1
+        ssh-add ~/.ssh/homelab-key > /dev/null 2>&1
         eval "$(starship init bash)"
       '';
     })
