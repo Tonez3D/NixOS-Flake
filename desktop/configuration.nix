@@ -10,6 +10,8 @@
     ../nixos-modules/hardware-modules
     ../nixos-modules/packages/nixos-pkgs.nix
     ../nixos-modules/fonts
+    ../nixos-modules/kernel/kerbel-version.nix
+    ../nixos-modules/kernel/patches/dirty-flag.nix
     inputs.home-manager.nixosModules.default
   ];
 

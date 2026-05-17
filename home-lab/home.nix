@@ -2,12 +2,9 @@
 
 {
   imports = [
-    #./starship/starship.nix
-    #../nixos-modules/packages/fastfetch/default.nix
-    ../nixos-modules/home-packages/git/default.nix
-    #../nixos-modules/packages/vim/default.nix
-    # ../nixos-modules/packages/zerotier-one/default.nix
-  ];
+          ../nixos-modules/home-packages/home-lab-pkgs.nix
+
+    ];
 
   config = {
 
