@@ -1,4 +1,1 @@
-{ pkgs, ... }:
-{
-  environment.systemPackages = with pkgs; [ neovim-unwrapped ];
-}
+{ pkgs, ... }: { environment.systemPackages = with pkgs; [ neovim-unwrapped ]; }

@@ -1,8 +1,4 @@
-{ pkgs, inputs, ... }:
-{
-  environment.systemPackages = with pkgs; [
-    libGL
-    libGLU
-  ];
+{ pkgs, inputs, ... }: {
+  environment.systemPackages = with pkgs; [ libGL libGLU ];
 
 }

@@ -2,12 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{
-  config,
-  pkgs,
-  inputs,
-  ...
-}:
+{ config, pkgs, inputs, ... }:
 
 {
   imports = [
@@ -27,10 +22,7 @@
 
   ### SECTION [Nix Settings] ###
   nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
+    experimental-features = [ "nix-command" "flakes" ];
     trusted-users = [ "ifeatud" ];
 
     # substituters = [
@@ -66,9 +58,7 @@
   programs.direnv.enable = true;
   programs.direnv.nix-direnv.enable = true;
 
-  services.zerotierone = {
-    enable = true;
-  };
+  services.zerotierone = { enable = true; };
 
   ### SECTION [Locale Settings] ###
 
@@ -162,15 +152,12 @@
   users.users.ifeatud = {
     isNormalUser = true;
     description = "Ifeatu Dunu";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "video"
-    ];
-    packages = with pkgs; [
-      kdePackages.kate
-      #  thunderbird
-    ];
+    extraGroups = [ "networkmanager" "wheel" "video" ];
+    packages = with pkgs;
+      [
+        kdePackages.kate
+        #  thunderbird
+      ];
   };
 
   ### SECTION [Home Manager] ###
@@ -179,9 +166,7 @@
       inherit inputs;
       hostName = config.networking.hostName;
     };
-    users = {
-      "ifeatud" = import ../nixos-modules/home-manager/home.nix;
-    };
+    users = { "ifeatud" = import ../nixos-modules/home-manager/home.nix; };
     sharedModules = [ ];
 
   };
@@ -197,9 +182,7 @@
   #stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
   #stylix.homeManagerIntegration.enable = true;
 
-  services.getty = {
-    autologinUser = "ifeatud";
-  };
+  services.getty = { autologinUser = "ifeatud"; };
   environment.loginShellInit = ''
     if [ "$(tty)" = "/dev/tty1" ]; then
       Hyprland
@@ -220,13 +203,13 @@
   #services.gnome.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages =
-    with pkgs;
+  environment.systemPackages = with pkgs;
     import ../nixos-modules/packages/sys-packages.nix {
       inherit pkgs;
       inherit inputs;
     };
-  fonts.packages = with pkgs; import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
+  fonts.packages = with pkgs;
+    import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
   fonts.fontDir.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are

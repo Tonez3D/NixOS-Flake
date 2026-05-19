@@ -1,5 +1,4 @@
-{ ... }:
-{
+{ ... }: {
   imports = [
     # Include the results of the hardware scan.
     ./agenix
@@ -14,5 +13,6 @@
     ./vim
     ./zerotier-one
     ./direnv
+    ./forgejo
   ];
 }

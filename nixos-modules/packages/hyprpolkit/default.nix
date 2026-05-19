@@ -1,4 +1,1 @@
-{ pkgs, ... }:
-{
-  environment.systemPackages = with pkgs; [ hyprpolkitagent ];
-}
+{ pkgs, ... }: { environment.systemPackages = with pkgs; [ hyprpolkitagent ]; }

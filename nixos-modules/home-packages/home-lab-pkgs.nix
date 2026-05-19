@@ -1,6 +1,1 @@
-{ pkgs, ... }:
-{
-  imports = [
-    ./default.nix
-  ];
-}
+{ pkgs, ... }: { imports = [ ./default.nix ]; }

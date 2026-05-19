@@ -1,7 +1,1 @@
-{ pkgs, ... }:
-{
-  imports = [
-    ./neovim
-    ./default.nix
-  ];
-}
+{ pkgs, ... }: { imports = [ ./neovim ./default.nix ./tmux ]; }

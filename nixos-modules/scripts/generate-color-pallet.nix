@@ -8,7 +8,4 @@ let
     hyprctl dispatch exec pkill waybar
     hyprctl dispatch exec waybar
   '';
-in
-{
-  home.packages = [ gen-colors ];
-}
+in { home.packages = [ gen-colors ]; }

@@ -1,8 +1,4 @@
-{ pkgs, inputs, ... }:
-{
-  environment.systemPackages = with pkgs; [
-    rustc
-    rustup
-  ];
+{ pkgs, inputs, ... }: {
+  environment.systemPackages = with pkgs; [ rustc rustup ];
 
 }

@@ -26,11 +26,8 @@ let
     mpvpaper_options = 
     use_xdg_state = False
   '';
-in
-{
+in {
 
   home.packages = with pkgs; [ waypaper ];
-  home.file = {
-    ".config/waypaper/config.ini".text = "${waypaper-config}";
-  };
+  home.file = { ".config/waypaper/config.ini".text = "${waypaper-config}"; };
 }

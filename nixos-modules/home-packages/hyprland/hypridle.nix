@@ -1,5 +1,4 @@
-{ pkgs, inputs, ... }:
-{
+{ pkgs, inputs, ... }: {
 
   home.packages = with pkgs; [ hypridle ];
 
@@ -13,12 +12,10 @@
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on";
       };
-      listener = [
-        {
-          timeout = 900; # 5 Minutes
-          on-timeout = "loginctl lock-session";
-        }
-      ];
+      listener = [{
+        timeout = 900; # 5 Minutes
+        on-timeout = "loginctl lock-session";
+      }];
     };
   };
 }

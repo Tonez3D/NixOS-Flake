@@ -1,17 +1,26 @@
 
 - [ ] Refactor
   - [ ] Naming
-  - [ ] Breakout Pkgs into different nix files
-  - [ ] Breakout Hyprland to only be for Latprop and PC
-- [ ] Hyprland
-  - [ ] Setup Waypaper
-  - [ ] Mutagen Color Gen
-  - [ ] Setup OhMyPosh
-  - [ ] Rofi
-  - [ ] Hyprlock
-- [ ] Setup sops-nix
-- [ ] Setup Cursor
-- [ ] Setup Wallpaper
-- [ ] Zen browser maybe
-- [ ] Fix Chrome issues
-- [ ] Add KiCad keybind
+  - [ ] Services Module
+  - [x] Kernel Module
+  - [X] Breakout Pkgs into different nix files
+  - [x] Breakout Hyprland to only be for Latprop and PC
+- [ ] Packages
+  - [ ] Hyprland
+    - [x] Setup Waypaper
+    - [x] Wallust
+    - [ ] Setup OhMyPosh
+    - [ ] Rofi
+    - [ ] Hyprlock
+  - [ ] Tmux
+  - [ ] Zen browser maybe
+  - [ ] Setup sops-nix
+  - [x] Setup agenix
+  - [x] Setup a cursor package
+- [x] Setup Wallpaper
+- [ ] Misc
+  - [ ] Fix Chrome issues
+  - [ ] Add KiCad keybind 
+- [ ] Services
+  - [ ] ssh 
+  - [ ] networking
