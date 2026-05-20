@@ -7,13 +7,13 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ../nixos-modules/hardware-modules/hardware-config.nix
-    ../nixos-modules/services-modules/udev.nix
-    #../nixos-modules/home-manager/home.nix
+    ../nixos-modules/hardware-modules
     inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.default
-    ../nixos-modules/services-modules/wifi.nix
-    #../stylix.nix
+   
+    ../nixos-modules/udev
+    ../nixos-modules/packages/lenovo-laptop-pkgs.nix
+    ../nixos-modules/kernel/kernel-version.nix
   ];
 
   ### SECTION [Bootloader] ###
@@ -55,11 +55,6 @@
   drawing-tablet.enable = false;
   nvidia-gpu.enable = false;
 
-  programs.direnv.enable = true;
-  programs.direnv.nix-direnv.enable = true;
-
-  services.zerotierone = { enable = true; };
-
   ### SECTION [Locale Settings] ###
 
   services.blueman.enable = true;
@@ -84,32 +79,15 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];
+  #networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  #sops.defaultSopsFile = ../secrets/secrets.yaml;
-  #sops.defaultSopsFormat = "yaml";
-  #sops.age.keyFile = "/home/ifeatud/.config/sops/age/keys.txt";
-  #sops.secrets.example_key = { };
-  #sops.secrets.home_wifi_ssid = { };
-  #sops.secrets.home_wifi_psk = { };
-  #sops.secrets."mys/subdir/secret" = { };
 
-  ### SECTION [Services] ###
-
-  # Enable the KDE Plasma Desktop Environment.
-  #services.displayManager.sddm.enable = true;
-  #services.displayManager.sddm.wayland.enable = true;
+  
   services.xserver.desktopManager.gnome.enable = true;
-  #services.desktopManager.plasma6.enable = true;
-  # Enable fingerprint scanner
-  #services.fprintd = {
-  #enable = true;
-  #tod.enable = true;
-  # tod.driver = pkgs.libfprint-2-tod1-goodix-550a;
-  #};
+ 
   services.displayManager.defaultSession = "hyprland";
 
   # Configure keymap in X11
@@ -141,23 +119,12 @@
   #programs.brightnessctl.enable = true;
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-  services.udev.extraRules = ''
-    ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl1", MODE="0666"
-    ATTRS{idVendor}=="1a86", ATTRS{idProduct}=="55d3", MODE:="0666", ENV{ID_MM_DEVICE_IGNORE}="1", ENV{ID_MM_PORT_IGNORE}="1"
-  '';
-  #services.udev.extraRules = ''
-  #  ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="amdgpu_bl1", MODE="0666"
-  #'';
+ 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ifeatud = {
     isNormalUser = true;
     description = "Ifeatu Dunu";
     extraGroups = [ "networkmanager" "wheel" "video" ];
-    packages = with pkgs;
-      [
-        kdePackages.kate
-        #  thunderbird
-      ];
   };
 
   ### SECTION [Home Manager] ###
@@ -166,21 +133,12 @@
       inherit inputs;
       hostName = config.networking.hostName;
     };
-    users = { "ifeatud" = import ../nixos-modules/home-manager/home.nix; };
+    users = { "ifeatud" = import ./home.nix; };
     sharedModules = [ ];
-
   };
 
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  #stylix.enable = true;
-  #stylix.targets.gnome.enable = false;
-  #stylix.base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
-  #stylix.homeManagerIntegration.enable = true;
 
   services.getty = { autologinUser = "ifeatud"; };
   environment.loginShellInit = ''
@@ -203,15 +161,7 @@
   #services.gnome.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs;
-    import ../nixos-modules/packages/sys-packages.nix {
-      inherit pkgs;
-      inherit inputs;
-    };
-  fonts.packages = with pkgs;
-    import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
-  fonts.fontDir.enable = true;
-
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

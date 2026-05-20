@@ -9,6 +9,8 @@
     ./wev
     ./killall
     ./swww
+        ./firefox
+
     ./zip
     ./neovim
     ./open-tablet-driver
