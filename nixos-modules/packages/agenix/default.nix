@@ -12,12 +12,12 @@
     secrets = {
    networking = {
     
-   file = ../../../secrets/home-wifi-psk.age;
+   file = ../../../secrets/wifi-secrets.age;
     
    name = "wifi-secrets.env";
    owner = "root";
    group = "networkmanager";
-   mode = "640";
+   mode = "600";
    };
   };
   };

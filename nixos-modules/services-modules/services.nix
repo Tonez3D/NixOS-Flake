@@ -1,7 +1,8 @@
 { pkgs, lib, ... }: {
 
-  import = [
-
+  imports = [
+    ./wifi.nix
+    ./udev.nix
   ];
 
 }

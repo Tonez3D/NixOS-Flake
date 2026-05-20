@@ -2,16 +2,14 @@
 - [ ] Refactor
   - [ ] Naming
   - [ ] Services Module
-  - [x] Kernel Module
-  - [X] Breakout Pkgs into different nix files
-  - [x] Breakout Hyprland to only be for Latprop and PC
 - [ ] Packages
   - [ ] Hyprland
     - [x] Setup Waypaper
     - [x] Wallust
-    - [ ] Setup OhMyPosh
     - [ ] Rofi
+      - [ ] Theme
     - [ ] Hyprlock
+      - [ ] Theme
   - [ ] Tmux
   - [ ] Zen browser maybe
   - [ ] Setup sops-nix
@@ -24,3 +22,17 @@
 - [ ] Services
   - [ ] ssh 
   - [ ] networking
+  - [ ] Use mkIf to define everything in default.nix
+- [ ] Vanity
+  - [ ] Waybar
+    - [ ] Update mainbar
+      - [ ] 
+    - [ ] Organize modules
+    - [ ] Icon fonts not changing size
+    - [ ] Add Secondary Bar
+  - [ ] Spictify
+  - [ ] wlogout
+  - [ ] dunst theme
+  - [ ] Ghost terminal idea????
+  - [ ] Hyprland
+    - [ ] Figure out kitty window rule inconsistency 

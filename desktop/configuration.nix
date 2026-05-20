@@ -9,6 +9,7 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../nixos-modules/hardware-modules
+    ../nixos-modules/services-modules/services.nix
     ../nixos-modules/packages/nixos-pkgs.nix
     ../nixos-modules/fonts
     ../nixos-modules/kernel/kernel-version.nix
