@@ -5,3 +5,5 @@
   ];
   services.forgejo.enable = true;
 }
+
+#fj pr create --title "My Feature" --body "Description of changes"

@@ -4,4 +4,21 @@
     pkgs.agenix-cli
     pkgs.age
   ];
+
+
+  age = {
+    identityPaths = [ "/home/heifee/.ssh/github-ssh" ];
+    secretsDir = "/etc/secrets";
+    secrets = {
+   networking = {
+    
+   file = ../../../secrets/home-wifi-psk.age;
+    
+   name = "wifi-secrets.env";
+   owner = "root";
+   group = "networkmanager";
+   mode = "640";
+   };
+  };
+  };
 }
