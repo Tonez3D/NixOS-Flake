@@ -16,6 +16,7 @@
     ./rofi
     ./nemo
     ./pavucontrol
+    ./jetbrains
     ./playerctl
     ./vscode
     ./starship

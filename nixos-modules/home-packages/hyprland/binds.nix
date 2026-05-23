@@ -13,7 +13,7 @@
       "$mainMod SHIFT, Q, exec, hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"
       "$mainMod, Z, exec, rofi -show drun"
       "$mainMod, O, exec, obsidian"
-      "$mainMod SHIFT, F, fullscreen, 1"
+      "$mainMod, F, fullscreen, 1"
       "$mainMod CTRL, L, exec, pidof hyprlock || hyprlock"
       "$mainMod CTRL, V, exec, code"
       "$mainMod ALT, T, workspaceopt, allfloat"
@@ -45,8 +45,8 @@
       "$mainMod SHIFT, 9, workspace, 19"
       "$mainMod SHIFT, 0, workspace, 20"
 
-      "$mainMod CTRL, right, workspace, m+1"
-      "$mainMod CTRL, left, workspace, m-1"
+      "$mainMod, right, workspace, m+1"
+      "$mainMod, left, workspace, m-1"
 
       "$mainMod ALT, right, movetoworkspace, r+1"
       "$mainMod ALT, left, movetoworkspace, r-1"
