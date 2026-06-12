@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   imports = [
     ./default.nix
     ./clang
@@ -9,8 +10,7 @@
     ./wev
     ./killall
     ./swww
-        ./firefox
-
+    ./firefo
     ./zip
     ./neovim
     ./open-tablet-driver

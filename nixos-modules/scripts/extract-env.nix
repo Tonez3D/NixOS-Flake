@@ -1,0 +1,1 @@
+> env | grep -e ^LIBCLANG_PATH=/nix/*s

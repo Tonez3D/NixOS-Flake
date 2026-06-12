@@ -1,4 +1,11 @@
-{ pkgs, config, lib, inputs, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  ...
+}:
+{
   environment.systemPackages = with pkgs; [ wev ];
 
 }

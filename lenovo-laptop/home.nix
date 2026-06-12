@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -20,7 +25,6 @@
     home.stateVersion = "25.05"; # Please read the comment before changing.
 
     nixpkgs.config.allowUnfree = true;
-
 
     # Home Manager can also manage your environment variables through
     # 'home.sessionVariables'. These will be explicitly sourced when using a

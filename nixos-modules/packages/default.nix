@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   imports = [
     # Include the results of the hardware scan.
     ./agenix
@@ -6,10 +7,13 @@
     ./fzf
     ./valgrind
     ./gcc
+    ./cron
+    ./sqllite
     ./nixfmt
     ./gnumake
     ./killall
     ./rust
+    ./sqllite
     ./vim
     ./zerotier-one
     ./direnv

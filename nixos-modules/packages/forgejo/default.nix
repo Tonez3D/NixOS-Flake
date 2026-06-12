@@ -1,5 +1,6 @@
-{pkgs, ... } : {
-   environment.systemPackages = [
+{ pkgs, ... }:
+{
+  environment.systemPackages = [
     pkgs.forgejo
     pkgs.forgejo-cli
   ];

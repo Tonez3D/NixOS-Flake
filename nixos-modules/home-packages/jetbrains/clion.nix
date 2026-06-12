@@ -1,3 +1,10 @@
-{pkgs, lib, inputs, config, ...} : {
-  home.packages = with pkgs; [jetbrains.clion];
+{
+  pkgs,
+  lib,
+  inputs,
+  config,
+  ...
+}:
+{
+  home.packages = with pkgs; [ jetbrains.clion ];
 }

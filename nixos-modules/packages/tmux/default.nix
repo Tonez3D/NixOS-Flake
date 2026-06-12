@@ -1,5 +1,6 @@
-{pkgs, inputs, ...} : {
-  environment.systemPackages = with pkgs; [tmux];
+{ pkgs, inputs, ... }:
+{
+  environment.systemPackages = with pkgs; [ tmux ];
 
   programs.tmux = {
     enable = true;
@@ -7,5 +8,5 @@
     #extraConfig = '' # used for less common options, intelligently combines if defined in multiple places.
     #  ...
     #'';
-  }
+  };
 }

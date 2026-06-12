@@ -7,16 +7,26 @@
 
   "group/combinded" = {
     orientation = "inherit";
-    modules =
-      [ "group/misc" "group/connections" "battery" "pulseaudio" "clock" ];
+    modules = [
+      "group/misc"
+      "group/connections"
+      "battery"
+      "pulseaudio"
+      "clock"
+    ];
   };
 
   "group/connections" = {
     orientation = "inherit";
-    modules = [ "network" "custom/bluetooth" ];
+    modules = [
+      "network"
+      "custom/bluetooth"
+    ];
   };
 
-  "clock" = { format = "{:%I:%M}"; };
+  "clock" = {
+    format = "{:%I:%M}";
+  };
 
   "network" = {
     format-wifi = "󰤨";
@@ -54,7 +64,12 @@
     tooltip = false;
     format = "{icon}";
     format-mute = "";
-    format-icons = { default = [ "" "" ]; };
+    format-icons = {
+      default = [
+        ""
+        ""
+      ];
+    };
     on-click = "killall pavucontrol || pavucontrol";
   };
 
@@ -77,7 +92,9 @@
     on-click = "wlogout &";
   };
 
-  "logout" = { format = "LOG"; };
+  "logout" = {
+    format = "LOG";
+  };
 
   "battery" = {
     states = {
@@ -88,7 +105,12 @@
     format-charging = "";
     format-plugged = "";
     format-alt = "{icon}";
-    format-icons = [ "" "" "" "" ];
+    format-icons = [
+      ""
+      ""
+      ""
+      ""
+    ];
     #tooltip-format = "{capacity}%";
   };
 }

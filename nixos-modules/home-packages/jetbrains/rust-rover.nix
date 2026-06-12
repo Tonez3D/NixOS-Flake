@@ -1,3 +1,10 @@
-{pkgs, lib, inputs, config, ...} : {
-  home.packages = with pkgs; [jetbrains.rust-rover];
+{
+  pkgs,
+  lib,
+  inputs,
+  config,
+  ...
+}:
+{
+  home.packages = with pkgs; [ jetbrains.rust-rover ];
 }

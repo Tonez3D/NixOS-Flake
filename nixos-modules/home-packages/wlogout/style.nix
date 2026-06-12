@@ -1,4 +1,5 @@
-{ ... }: {
+{ ... }:
+{
   programs.wlogout = {
     style = ''
       window {

@@ -59,16 +59,25 @@
     };
   };
 
-  outputs = { self, nixpkgs, sops-nix, agenix, nixpkgs-25-11, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      sops-nix,
+      agenix,
+      nixpkgs-25-11,
+      ...
+    }@inputs:
 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
+    in
+    {
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = { inherit inputs; };
 
         modules = [
           ./desktop/configuration.nix
@@ -86,6 +95,12 @@
           inputs.home-manager.nixosModules.default
           agenix.nixosModules.default
           sops-nix.nixosModules.sops
+          {
+            _module.args.pkgs-25-11 = import nixpkgs-25-11 {
+              system = "x86_64-linux";
+              config.allowUnfree = true;
+            };
+          }
         ];
       };
 

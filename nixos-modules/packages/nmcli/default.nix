@@ -1,1 +1,4 @@
-{ }: { environment.systemPackages = with pkgs; [ networkmanager ]; }
+{ }:
+{
+  environment.systemPackages = with pkgs; [ networkmanager ];
+}

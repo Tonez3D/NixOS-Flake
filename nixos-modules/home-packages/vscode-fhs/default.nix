@@ -1,3 +1,10 @@
-{pkgs, lib, inputs, config, ...} : {
-  home.packages = with pkgs; [vscode-fhs];
+{
+  pkgs,
+  lib,
+  inputs,
+  config,
+  ...
+}:
+{
+  home.packages = with pkgs; [ vscode-fhs ];
 }

@@ -1,3 +1,10 @@
-{ pkgs, lib, inputs, config, ... }: {
+{
+  pkgs,
+  lib,
+  inputs,
+  config,
+  ...
+}:
+{
   home.packages = with pkgs; [ grimblast ];
 }

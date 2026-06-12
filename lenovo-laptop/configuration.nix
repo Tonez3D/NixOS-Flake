@@ -2,17 +2,23 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
+    ../nixos-modules/packages/lenovo-laptop-pkgs.nix
+    ../nixos-modules/networking
     ./hardware-configuration.nix
     ../nixos-modules/hardware-modules
     inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.default
-   
+    ../nixos-modules/fonts
     ../nixos-modules/udev
-    ../nixos-modules/packages/lenovo-laptop-pkgs.nix
     ../nixos-modules/kernel/kernel-version.nix
   ];
 
@@ -22,7 +28,10 @@
 
   ### SECTION [Nix Settings] ###
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     trusted-users = [ "ifeatud" ];
 
     # substituters = [
@@ -84,10 +93,8 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-
-  
   services.xserver.desktopManager.gnome.enable = true;
- 
+
   services.displayManager.defaultSession = "hyprland";
 
   # Configure keymap in X11
@@ -119,12 +126,17 @@
   #programs.brightnessctl.enable = true;
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
- 
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.ifeatud = {
     isNormalUser = true;
     description = "Ifeatu Dunu";
-    extraGroups = [ "networkmanager" "wheel" "video" ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "video"
+      "dialout"
+    ];
   };
 
   ### SECTION [Home Manager] ###
@@ -133,18 +145,20 @@
       inherit inputs;
       hostName = config.networking.hostName;
     };
-    users = { "ifeatud" = import ./home.nix; };
+    users = {
+      "ifeatud" = import ./home.nix;
+    };
     sharedModules = [ ];
   };
 
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
 
-  services.getty = { autologinUser = "ifeatud"; };
+  services.getty = {
+    autologinUser = "ifeatud";
+  };
   environment.loginShellInit = ''
-    if [ "$(tty)" = "/dev/tty1" ]; then
-      Hyprland
-    fi
+    Hyprland
   '';
   #services.greetd = {
   #  enable = true;
@@ -161,7 +175,7 @@
   #services.gnome.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

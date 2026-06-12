@@ -1,1 +1,8 @@
-{ pkgs, ... }: { imports = [ ./neovim ./default.nix ./tmux ]; }
+{ pkgs, ... }:
+{
+  imports = [
+    ./neovim
+    ./default.nix
+    ./tmux
+  ];
+}

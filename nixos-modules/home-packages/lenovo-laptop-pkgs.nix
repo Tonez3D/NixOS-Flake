@@ -1,8 +1,9 @@
 { pkgs, ... }:
 {
   imports = [
-./discord
-    ./blender
+    ./default.nix
+    ./discord
+    #./blender
     ./krita
     ./obsidian
     ./gowall
@@ -15,6 +16,7 @@
     ./waybar
     ./rofi
     ./nemo
+    ./grimblast
     ./pavucontrol
     ./playerctl
     ./vscode
@@ -23,8 +25,9 @@
     ./waypaper
     ./pointers/bibata.nix
     ../scripts/generate-color-pallet.nix
-    ../scripts/get-wallpaper.nix];
+    ../scripts/get-wallpaper.nix
+  ];
 
-      custom-spotify.enable = false;
+  custom-spotify.enable = false;
 
 }

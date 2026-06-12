@@ -2,7 +2,12 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
   imports = [
@@ -19,8 +24,7 @@
 
   programs.ssh.knownHosts = {
     "github.com" = {
-      publicKey =
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
       hostNames = [ "github.com" ];
     };
   };
@@ -38,7 +42,10 @@
 
   ### SECTION [Nix Settings] ###
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     trusted-users = [ "heifee" ];
 
   };
@@ -84,7 +91,8 @@
   programs.hyprland = {
     enable = true;
     package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-    portalPackage =    inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
 
   # Configure keymap in X11
@@ -138,12 +146,14 @@
   users.users.heifee = {
     isNormalUser = true;
     description = "Ifeatu Dunu";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs;
-      [
-        #kdePackages.kate
-        #  thunderbird
-      ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [
+      #kdePackages.kate
+      #  thunderbird
+    ];
   };
 
   ### SECTION [Home Manager] ###
@@ -152,10 +162,14 @@
       inherit inputs;
       hostName = config.networking.hostName;
     };
-    users = { "heifee" = import ./home.nix; };
+    users = {
+      "heifee" = import ./home.nix;
+    };
   };
 
-  services.getty = { autologinUser = "heifee"; };
+  services.getty = {
+    autologinUser = "heifee";
+  };
   environment.loginShellInit = ''
     Hyprland
   '';
