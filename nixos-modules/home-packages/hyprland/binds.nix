@@ -8,7 +8,7 @@
 
     bind = [
       "$mainMod, B, exec, firefox"
-      "$mainMod, RETURN, exec, kitty"
+      "$mainMod, T, exec, kitty"
       "$mainMod, Q, killactive"
       "$mainMod SHIFT, Q, exec, hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"
       "$mainMod, Z, exec, rofi -show drun"
@@ -17,7 +17,7 @@
       "$mainMod CTRL, L, exec, pidof hyprlock || hyprlock"
       "$mainMod CTRL, V, exec, code"
       "$mainMod ALT, T, workspaceopt, allfloat"
-      "$mainMod , P, exec, grimblast save active"
+      "$mainMod, P, exec, grimblast save active"
 
       #", tablet:1, mouse, 1"
 

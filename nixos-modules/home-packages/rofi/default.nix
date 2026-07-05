@@ -8,7 +8,7 @@
 
 {
 
-  home.packages = with pkgs; [ rofi-wayland ];
+  home.packages = with pkgs; [ rofi ];
   programs.rofi =
     let
       inherit (config.lib.formats.rasi) mkLiteral;
@@ -24,7 +24,7 @@
         "keys"
       ];
       # Install the wayland variant of rofi
-      package = pkgs.rofi-wayland;
+      package = pkgs.rofi;
       # Set terminal to kitty
       terminal = "${pkgs.kitty}/bin/kitty";
       location = "center";

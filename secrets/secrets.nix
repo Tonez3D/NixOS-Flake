@@ -21,4 +21,11 @@ in
     ];
     armor = true;
   };
+
+  "tailscale.age" = {
+    publicKeys = [nix-pc
+      homelab
+      laptop];
+    armor = true;
+  };
 }

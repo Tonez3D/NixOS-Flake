@@ -13,6 +13,7 @@
   imports = [
     ../nixos-modules/packages/lenovo-laptop-pkgs.nix
     ../nixos-modules/networking
+    ../nixos-modules/services-modules/munin-auto-start.nix
     ./hardware-configuration.nix
     ../nixos-modules/hardware-modules
     inputs.sops-nix.nixosModules.sops
@@ -122,8 +123,9 @@
     #media-session.enable = true;
   };
 
-  programs.light.enable = true;
+  #programs.light.enable = true;
   #programs.brightnessctl.enable = true;
+  hardware.acpilight.enable = true;
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -191,6 +193,8 @@
       inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
   };
   hardware.graphics.enable = true;
+
+  systemd.services.munin-auto-start.enable = false;
 
   xdg.portal = {
     enable = true;

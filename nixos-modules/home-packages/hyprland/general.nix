@@ -18,7 +18,7 @@
       rounding = 5;
     };
 
-    windowrule = [ "float, center, size = 30 40, class:floating-window" ];
+    windowrule = [ "float = true, center = 1, size = 30 40, match:class ^(floating-window)" ];
 
     input = {
       kb_layout = "us";
