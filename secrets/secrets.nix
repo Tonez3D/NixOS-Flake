@@ -23,9 +23,20 @@ in
   };
 
   "tailscale.age" = {
-    publicKeys = [nix-pc
+    publicKeys = [
+      nix-pc
       homelab
-      laptop];
+      laptop
+    ];
+    armor = true;
+  };
+
+  "samba.age" = {
+    publicKeys = [
+      nix-pc
+      homelab
+      laptop
+    ];
     armor = true;
   };
 }

@@ -15,12 +15,14 @@
     ../nixos-modules/networking
     ../nixos-modules/services-modules/munin-auto-start.nix
     ./hardware-configuration.nix
+    ./share.nix
     ../nixos-modules/hardware-modules
     inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.default
     ../nixos-modules/fonts
     ../nixos-modules/udev
     ../nixos-modules/kernel/kernel-version.nix
+    ../users
   ];
 
   ### SECTION [Bootloader] ###
@@ -137,6 +139,7 @@
       "networkmanager"
       "wheel"
       "video"
+      "hermit"
       "dialout"
     ];
   };
