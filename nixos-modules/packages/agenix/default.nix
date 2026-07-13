@@ -16,6 +16,7 @@
     identityPaths = [
       "/home/heifee/.ssh/github-ssh"
       "/home/ifeatud/.ssh/laptop-github-ssh"
+      "/home/homelab/.ssh/homelab-key"
     ];
     secretsDir = "/etc/secrets";
     secrets = {

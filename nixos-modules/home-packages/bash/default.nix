@@ -22,7 +22,7 @@
           eval "$(starship init bash)"
         '';
       })
-      (lib.mkIf (hostName == "homelab") {
+      (lib.mkIf (hostName == "homelab-1") {
         enable = true;
         bashrcExtra = ''
           eval "$(ssh-agent -s)" > /dev/null 2>&1
