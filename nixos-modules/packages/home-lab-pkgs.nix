@@ -4,5 +4,6 @@
     ./neovim
     ./default.nix
     ./tmux
+    ./tailscale
   ];
 }

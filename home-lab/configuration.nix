@@ -15,6 +15,7 @@
     ./hardware-configuration.nix
     ../nixos-modules/packages/home-lab-pkgs.nix
     ../nixos-modules/kernel/kernel-version.nix
+    ./samba.nix
     # ../nixos-modules/kernel/patches/dirty-flag.nix
 
   ];
