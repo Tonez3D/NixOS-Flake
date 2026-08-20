@@ -21,7 +21,7 @@
     ./hypridle.nix
   ];
 
-  wayland.windowManager.hyprland.enable = true; # enable Hyprland
+  wayland.windowManager.hyprland.enable = true; 
   wayland.windowManager.hyprland.xwayland.enable = true;
 
 }
