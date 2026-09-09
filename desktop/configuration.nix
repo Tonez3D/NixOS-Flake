@@ -2,21 +2,29 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
 
 {
-  imports = [ # Include the results of the hardware scan.
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../nixos-modules/hardware-modules/hardware-config.nix
-    ../nixos-modules/agenix
-    ../nixos-modules/fzf
+    ../nixos-modules/hardware-modules
+    ../nixos-modules/services-modules/services.nix
+    ../nixos-modules/packages/nixos-pkgs.nix
+    ../nixos-modules/fonts
+    ../nixos-modules/kernel/kernel-version.nix
+    # ../nixos-modules/kernel/patches/dirty-flag.nix
     inputs.home-manager.nixosModules.default
   ];
 
   programs.ssh.knownHosts = {
     "github.com" = {
-      publicKey =
-        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
       hostNames = [ "github.com" ];
     };
   };
@@ -26,9 +34,18 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  users.users."heifee".openssh = {
+    authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfi4u0rZj7jdFMOkGmGbwFJXOH/kErjMa1US5YywkuY tonez3d@gmail.com"
+    ];
+  };
+
   ### SECTION [Nix Settings] ###
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     trusted-users = [ "heifee" ];
 
   };
@@ -71,10 +88,12 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  #services.displayManager.sddm.enable = true;
-  #services.displayManager.sddm.wayland.enable = true;
-  #services.desktopManager.plasma6.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+  };
 
   # Configure keymap in X11
   services.xserver.xkb = {
@@ -114,21 +133,11 @@
     #media-session.enable = true;
   };
 
-  programs.direnv.enable = true;
-programs.direnv.nix-direnv.enable = true;
-
+  #  programs.direnv.enable = true;
+  #programs.direnv.nix-direnv.enable = true;
 
   #services.xserver.displayManager.lightdm.enable = true;
   services.gnome.gnome-keyring.enable = true;
-
-  environment.systemPackages = with pkgs;
-    import ../nixos-modules/packages/sys-packages.nix {
-      inherit pkgs;
-      inherit inputs;
-    };
-  fonts.packages = with pkgs;
-    import ../nixos-modules/packages/fonts.nix { inherit pkgs; };
-  fonts.fontDir.enable = true;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
@@ -137,12 +146,14 @@ programs.direnv.nix-direnv.enable = true;
   users.users.heifee = {
     isNormalUser = true;
     description = "Ifeatu Dunu";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs;
-      [
-        kdePackages.kate
-        #  thunderbird
-      ];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+    ];
+    packages = with pkgs; [
+      #kdePackages.kate
+      #  thunderbird
+    ];
   };
 
   ### SECTION [Home Manager] ###
@@ -151,21 +162,23 @@ programs.direnv.nix-direnv.enable = true;
       inherit inputs;
       hostName = config.networking.hostName;
     };
-    users = { "heifee" = import ../nixos-modules/home-manager/home.nix; };
-    #sharedModules = [{ stylix.targets.kitty.enable = false; }];
+    users = {
+      "heifee" = import ./home.nix;
+    };
   };
+
+  services.getty = {
+    autologinUser = "heifee";
+  };
+  environment.loginShellInit = ''
+    Hyprland
+  '';
 
   home-manager.useUserPackages = true;
   home-manager.backupFileExtension = "backup";
 
-  #home-manager.useGlobalPkgs = true;
-
   # Install firefox.
-  programs.firefox.enable = true;
-  programs.hyprland = {
-    enable = true;
-    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
-  };
+  #programs.firefox.enable = true;
 
   xdg.portal = {
     enable = true;
@@ -182,18 +195,6 @@ programs.direnv.nix-direnv.enable = true;
   #   enableSSHSupport = true;
   # };
 
-  # List services that you want to enable:
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?

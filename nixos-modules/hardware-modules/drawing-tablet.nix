@@ -1,4 +1,9 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
 
@@ -8,7 +13,7 @@
   };
 
   config = lib.mkIf config.drawing-tablet.enable {
-
+    #Move The hyprland thingy here?
   };
 
 }

@@ -1,5 +1,5 @@
 { pkgs, inputs, ... }:
 {
-      environment.systemPackages = with pkgs; [gparted];
+  environment.systemPackages = with pkgs; [ gparted ];
 
 }

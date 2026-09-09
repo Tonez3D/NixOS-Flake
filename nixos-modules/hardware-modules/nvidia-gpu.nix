@@ -1,16 +1,22 @@
-{ pkgs, lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 {
 
   options = {
 
-    nvidia-gpu.enable = lib.mkEnableOption "enabless nvidia gpu support";
+    nvidia-gpu.enable = lib.mkEnableOption "enables nvidia gpu support";
 
   };
 
   config = lib.mkIf config.nvidia-gpu.enable {
 
     # Nvidia Driver's T-T
+    # Fix the fan issue
     hardware.graphics.enable = true;
 
     services.xserver.videoDrivers = [ "nvidia" ];
