@@ -96,7 +96,7 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  services.xserver.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   services.displayManager.defaultSession = "hyprland";
 

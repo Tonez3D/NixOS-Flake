@@ -19,5 +19,4 @@ in
     ".config/wallust/wallust.toml".text = "${config-toml}";
     ".config/wallust/templates/colors-hypr.conf".text = "${hypr-colors}";
   };
-
 }

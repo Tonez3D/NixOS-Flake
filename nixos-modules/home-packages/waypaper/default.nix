@@ -3,11 +3,11 @@ let
   waypaper-config = ''
     [Settings]
     language = en
-    folder = /etc/nixos/assets
+    folder = /etc/nixos/assets/wallpapers
     monitors = All
     wallpaper = 
     show_path_in_tooltip = True
-    backend = swww
+    backend = awww
     fill = fill
     sort = name
     color = #ffffff
@@ -17,11 +17,11 @@ let
     show_gifs_only = False
     post_command = color-pallet
     number_of_columns = 3
-    swww_transition_type = none
-    swww_transition_step = 90
-    swww_transition_angle = 0
-    swww_transition_duration = 2
-    swww_transition_fps = 60
+    awww_transition_type = none
+    awww_transition_step = 90
+    awww_transition_angle = 0
+    awww_transition_duration = 2
+    awww_transition_fps = 60
     mpvpaper_sound = False
     mpvpaper_options = 
     use_xdg_state = False
