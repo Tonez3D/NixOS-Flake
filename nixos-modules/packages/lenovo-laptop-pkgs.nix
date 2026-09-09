@@ -11,7 +11,7 @@
     ./tailscale
     ./killall
     ./usb
-    ./swww
+    ./awww
     ./firefox
     ./iproute2
     ./visidata

@@ -9,7 +9,7 @@
     ./hyprpolkit
     ./wev
     ./killall
-    ./swww
+    ./awww
     ./firefo
     ./zip
     ./neovim
