@@ -11,7 +11,7 @@
 
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       user.name = (
         lib.mkMerge [
           (lib.mkIf (hostName == "nixos") "Tonez3D")

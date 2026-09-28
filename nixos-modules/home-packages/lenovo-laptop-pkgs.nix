@@ -3,7 +3,7 @@
   imports = [
     ./default.nix
     ./discord
-    #./blender
+    ./blender
     ./krita
     ./obsidian
     ./gowall
@@ -15,6 +15,7 @@
     ./wallust
     ./waybar
     ./rofi
+    ./jetbrains
     ./nemo
     ./grimblast
     ./pavucontrol
@@ -27,6 +28,7 @@
     ../scripts/generate-color-pallet.nix
     ../scripts/get-wallpaper.nix
   ];
+  
 
   custom-spotify.enable = false;
 

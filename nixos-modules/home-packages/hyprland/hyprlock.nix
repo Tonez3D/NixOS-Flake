@@ -17,8 +17,11 @@
         {
           #path = screenshot;
 
+          crossfade_time = 1.2;
           color = "rgba(29, 32, 33, 255)";
           blur_passes = 2;
+          blur_size = 2;
+          noise = 0.4;
           vibrancy_darkness = 0.0;
         }
       ];
@@ -43,7 +46,7 @@
       image = [
         {
           #monitor = ;
-          path = "/etc/nixos/assets/ELARA_Patch_2.0.png";
+          path = "/etc/nixos/assets/badges/ELARA_Patch_2.0.png";
           size = 100;
           border_size = 2;
           border_color = "rgba(168, 153, 132, 0.95)";

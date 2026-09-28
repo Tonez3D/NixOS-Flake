@@ -11,6 +11,7 @@
     ./tailscale
     ./killall
     ./usb
+    ./tree
     ./awww
     ./firefox
     ./iproute2
