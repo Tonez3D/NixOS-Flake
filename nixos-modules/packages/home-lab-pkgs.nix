@@ -4,7 +4,8 @@
     ./neovim
     ./default.nix
     ./tmux
-#    ./kubernetes
+    ./kubernetes
+    ./tree
     ./tailscale
   ];
 }

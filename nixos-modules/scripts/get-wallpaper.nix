@@ -2,7 +2,7 @@
 let
   gen-wallpaper = pkgs.writeScriptBin "current-wallpaper" ''
     #!/usr/bin/env bash
-    echo $(swww query | grep -o '/etc.*' -m 1)
+    echo $(awww query | grep -o '/etc.*' -m 1)
   '';
 in
 {

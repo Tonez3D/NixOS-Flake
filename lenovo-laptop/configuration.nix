@@ -96,7 +96,7 @@
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  services.xserver.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   services.displayManager.defaultSession = "hyprland";
 
@@ -218,5 +218,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "25.05"; # Did you read the comment?
-
 }
