@@ -32,12 +32,13 @@ in
       (bind "${mod_key} + O" (exec "obsidian"))
       (bind "${mod_key} + V" (exec "code"))
 
-      (bind "${mod_key} + Q" (exec "hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"))
-      #(bind "${mod_key} + Q" (exec "killactive"))
+      (bind "${mod_key} + SHIFT + Q" (exec "hyprctl activewindow | grep pid | tr -d 'pid:' | xargs kill"))
+      (bind "${mod_key} + Q" (exec "hyprctl activewindow | grep pid | tr -d 'pid:' | pkill"))
 
       (bind "${mod_key} + F" (fs "1"))
       #"$mainMod CTRL, L, exec, pidof hyprlock || hyprlock"
       #"$mainMod ALT, T, workspaceopt, allfloat"
+      (bind "${mod_key} + P" (exec "grimblast save active"))
       #"$mainMod, P, exec, grimblast save active"
       #"$mainMod, F, fullscreen, 1"
 

@@ -9,9 +9,7 @@
     background-color: transparent;
     color: @color13;
     padding-left: 2px;
-  padding-right: 2px;
-  
-    
+    padding-right: 2px;
   }
 
   window#waybar>box {
