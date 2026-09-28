@@ -55,7 +55,7 @@ virtualization.docker.enable = true;1
   # 3. Restrict Firewall to Tailscale Interface
   networking.firewall = {
     enable = true;
-allowedTCPPorts = [ 445 ];
+allowedTCPPorts = [ 445 688 844 ];
     # Only allow NetBIOS and SMB protocols on the tailscale0 interface
     trustedInterfaces = [ "tailscale0" ];
   };
