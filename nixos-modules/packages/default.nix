@@ -1,22 +1,25 @@
-{ ... }:
+{ pkgs, ... }:
 {
   imports = [
-    # Include the results of the hardware scan.
     ./agenix
     ./sops
     ./fzf
     ./valgrind
     ./gcc
     ./cron
-    ./sqllite
+    ./tmux
     ./nixfmt
     ./gnumake
     ./killall
+    ./tailscale
     ./rust
-    ./sqllite
+    ./neovim
+    ./kubernetes
     ./vim
+    ./zip
+    ./unzip
     ./zerotier-one
     ./direnv
-    ./forgejo
+    ./tree
   ];
 }

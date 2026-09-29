@@ -7,5 +7,12 @@
 		docker	
 	];
 	virtualisation.docker.enable = true;
-	services.kubernetes.proxy.enable = true;
+	services.kubernetes = {
+		proxy = {
+			enable = true;
+			bindAddress = "0.0.0.0";
+
+		};
+		masterAddress = "23.23.23.23";
+	};
 }

@@ -27,7 +27,6 @@
         bashrcExtra = ''
           eval "$(ssh-agent -s)" > /dev/null 2>&1
           ssh-add ~/.ssh/homelab-key > /dev/null 2>&1
-          eval "$(starship init bash)"
         '';
       })
     ]

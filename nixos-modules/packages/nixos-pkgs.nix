@@ -4,14 +4,10 @@
     ./clang
     ./cmake
     ./gtk
-    ./nixfmt
-    ./tailscale
     ./libGL
+    ./firefox
     ./hyprpolkit
-    ./killall
     ./awww
-    ./zip
-    ./neovim
     ./open-tablet-driver
     ./brightnessctl
   ];
