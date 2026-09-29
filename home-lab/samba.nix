@@ -1,15 +1,9 @@
-
-2131do
-ckerconfig, lib, pkgs, ... }: 
+{ config, lib, pkgs, ... }: 
 let
   # Replace 'yourusername' with your actual Linux user
-  shareUser = "homelab
-	
- 
- 	"
-  share<		Left>Path = "/mnt/share";
-in {13;
-virtualization.docker.enable = true;1
+  shareUser = "homelab"; 
+  sharePath = "/mnt/share";
+in {
 
   # 1. Enable Tailscale
   services.tailscale.enable = true;

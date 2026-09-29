@@ -17,16 +17,9 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
-    nixpkgs-25-11.url = "github:nixos/nixpkgs/nixos-25.11";
-
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    home-manager-25-11 = {
-      url = "github:nix-community/home-manager/release-25.11";
-      inputs.nixpkgs.follows = "nixpkgs-25-11";
     };
 
     hyprland = {
@@ -65,7 +58,6 @@
       nixpkgs,
       sops-nix,
       agenix,
-      nixpkgs-25-11,
       ...
     }@inputs:
 
@@ -95,12 +87,6 @@
           inputs.home-manager.nixosModules.default
           agenix.nixosModules.default
           sops-nix.nixosModules.sops
-          {
-            _module.args.pkgs-25-11 = import nixpkgs-25-11 {
-              system = "x86_64-linux";
-              config.allowUnfree = true;
-            };
-          }
         ];
       };
 
