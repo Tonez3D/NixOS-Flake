@@ -13,7 +13,7 @@
   imports = [
     ../nixos-modules/packages/lenovo-laptop-pkgs.nix
     ../nixos-modules/networking
-    ../nixos-modules/services-modules/munin-auto-start.nix
+    #../nixos-modules/services-modules/munin-auto-start.nix
     ./hardware-configuration.nix
     ./share.nix
     ../nixos-modules/hardware-modules

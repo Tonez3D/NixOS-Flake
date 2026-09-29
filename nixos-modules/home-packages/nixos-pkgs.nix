@@ -15,9 +15,10 @@
     ./wallust
     ./waybar
     ./rofi
-    ./nemo
-    ./pavucontrol
     ./jetbrains
+    ./nemo
+    ./grimblast
+    ./pavucontrol
     ./playerctl
     ./vscode
     ./starship
@@ -27,6 +28,8 @@
     ../scripts/generate-color-pallet.nix
     ../scripts/get-wallpaper.nix
   ];
+  
 
   custom-spotify.enable = false;
+
 }

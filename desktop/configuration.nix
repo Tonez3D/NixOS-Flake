@@ -17,6 +17,8 @@
     ../nixos-modules/services-modules/services.nix
     ../nixos-modules/packages/nixos-pkgs.nix
     ../nixos-modules/fonts
+    ./share.nix
+    ../users
     ../nixos-modules/kernel/kernel-version.nix
     # ../nixos-modules/kernel/patches/dirty-flag.nix
     inputs.home-manager.nixosModules.default
@@ -149,6 +151,7 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "hermit"
     ];
     packages = with pkgs; [
       #kdePackages.kate

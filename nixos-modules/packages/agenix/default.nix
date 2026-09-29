@@ -29,6 +29,14 @@
         mode = "600";
       };
 
+      tailscale = {
+        file = ../../../secrets/tailscale.age;
+
+        name = "tailscale-authkey";
+        owner = "root";
+        mode = "600";
+      };
+
       share = {
         file = ../../../secrets/samba.age;
 
