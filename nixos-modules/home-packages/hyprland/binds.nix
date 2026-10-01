@@ -39,6 +39,8 @@ in
       #"$mainMod CTRL, L, exec, pidof hyprlock || hyprlock"
       #"$mainMod ALT, T, workspaceopt, allfloat"
       (bind "${mod_key} + P" (exec "grimblast save active"))
+      (bind "${mod_key} + SHIFT + P" (exec "grimblast save area"))
+
       #"$mainMod, P, exec, grimblast save active"
       #"$mainMod, F, fullscreen, 1"
 
