@@ -31,9 +31,9 @@ in
       (lib.mkIf (hostName == "nixos") {
 
         monitor = [
-          (bind (monitor "eDP-1" "2560x1440@60" "0x0" "1"))
+          (bind (monitor "DP-1" "2560x1440@60" "0x0" "1"))
           (bind (monitor "HDMI-A-1" "1920x1080@60" "+0x1440" "1"))
-          (bind (monitor "eDP-1" "1360x768@60" "+2560x700" "1"))
+          (bind (monitor "DP-2" "1360x768@60" "+2560x700" "1"))
         ];
 
       })
