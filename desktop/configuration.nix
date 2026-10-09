@@ -24,12 +24,6 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  programs.ssh.knownHosts = {
-    "github.com" = {
-      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
-      hostNames = [ "github.com" ];
-    };
-  };
 
   ### SECTION [Bootloader] ###
 
@@ -39,6 +33,7 @@
   users.users."heifee".openssh = {
     authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfi4u0rZj7jdFMOkGmGbwFJXOH/kErjMa1US5YywkuY tonez3d@gmail.com"
+
     ];
   };
 
@@ -54,9 +49,8 @@
   nixpkgs.config.allowUnfree = true;
 
   ### SECTION [Networking] ###
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "nixos"; 
   networking.networkmanager.enable = true;
-  #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   programs.steam = {
     enable = true;
@@ -72,7 +66,6 @@
 
   ### SECTION [Locale Settings] ###
   time.timeZone = "America/Chicago";
-  # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "en_US.UTF-8";
@@ -86,8 +79,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
   programs.hyprland = {
@@ -108,7 +99,7 @@
   };
   ### SECTION [Services] ###
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #services.printing.enable = true;
 
   # Enable drivers?
   services.xserver.videoDrivers = [ "nvidia" ];
