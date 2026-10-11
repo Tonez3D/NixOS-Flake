@@ -12,6 +12,7 @@
     ./kitty
     ./gowall
     ./jetbrains
+    ./proton-vpn
     ./wallust
     ./waybar
     ./rofi

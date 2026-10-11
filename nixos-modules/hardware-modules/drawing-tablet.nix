@@ -13,7 +13,7 @@
   };
 
   config = lib.mkIf config.drawing-tablet.enable {
-    #Move The hyprland thingy here?
+    #Move The hyprland thingy here? what?
   };
 
 }

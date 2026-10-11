@@ -16,7 +16,7 @@
   config = lib.mkIf config.nvidia-gpu.enable {
 
     # Nvidia Driver's T-T
-    # Fix the fan issue
+    # TODO: Fix the fan issue
     hardware.graphics.enable = true;
 
     services.xserver.videoDrivers = [ "nvidia" ];
