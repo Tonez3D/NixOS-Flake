@@ -34,7 +34,10 @@
   fileSystems."/mnt/share" = {
     device = "/dev/disk/by-uuid/ca340c50-81ad-4857-9398-a51edcc43597";
     fsType = "btrfs"; # Replace with your filesystem, e.g., ntfs, xfs, vfat, btrfs
-    options = [ "defaults" "nofail" ]; 
+    options = [
+      "defaults"
+      "nofail"
+    ];
   };
 
   swapDevices = [ { device = "/dev/disk/by-uuid/99c8e0e9-6f0e-4e6c-b68d-9c74dd4234ad"; } ];

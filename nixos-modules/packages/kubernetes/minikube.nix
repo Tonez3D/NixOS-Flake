@@ -1,3 +1,3 @@
-{pkgs, ...} : {
-	environment.systemPackages = with pkgs; [minikube];
+{ pkgs, ... }: {
+  environment.systemPackages = with pkgs; [ minikube ];
 }

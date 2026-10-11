@@ -12,7 +12,9 @@ let
       (lua configs)
     ];
   };
-  monitor = o: m: p: s: ''{ output = "${o}", mode = "${m}", position = "${p}", scale = "${s}", }'';
+  monitor =
+    o: m: p: s:
+    ''{ output = "${o}", mode = "${m}", position = "${p}", scale = "${s}", }'';
 in
 {
 

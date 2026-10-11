@@ -7,11 +7,13 @@
 }:
 {
 
- # imports = [
- #   ./clion.nix
- #   ./rust-rover.nix
- # ];
+  # imports = [
+  #   ./clion.nix
+  #   ./rust-rover.nix
+  # ];
 
-  home.packages = with pkgs; [ proton-vpn
-  jetbrains-toolbox ];
+  home.packages = with pkgs; [
+    proton-vpn
+    jetbrains-toolbox
+  ];
 }
