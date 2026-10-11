@@ -17,13 +17,12 @@
     ../nixos-modules/services-modules/services.nix
     ../nixos-modules/packages/nixos-pkgs.nix
     ../nixos-modules/fonts
-    ./share.nix
+    ../nixos-modules/shares/share.nix
     ../users
     ../nixos-modules/kernel/kernel-version.nix
     # ../nixos-modules/kernel/patches/dirty-flag.nix
     inputs.home-manager.nixosModules.default
   ];
-
 
   ### SECTION [Bootloader] ###
 
@@ -49,7 +48,7 @@
   nixpkgs.config.allowUnfree = true;
 
   ### SECTION [Networking] ###
-  networking.hostName = "nixos"; 
+  networking.hostName = "nixos";
   networking.networkmanager.enable = true;
 
   programs.steam = {

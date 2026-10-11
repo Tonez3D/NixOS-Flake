@@ -15,7 +15,7 @@
     ../nixos-modules/networking
     #../nixos-modules/services-modules/munin-auto-start.nix
     ./hardware-configuration.nix
-    ./share.nix
+    ../nixos-modules/shares/share.nix
     ../nixos-modules/hardware-modules
     inputs.sops-nix.nixosModules.sops
     inputs.home-manager.nixosModules.default
