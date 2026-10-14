@@ -45,7 +45,6 @@
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs = {
-        # IMPORTANT: To ensure compatibility with the latest Firefox version, use nixpkgs-unstable.
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
@@ -58,16 +57,20 @@
       nixpkgs,
       sops-nix,
       agenix,
+      zen-browser,
       ...
     }@inputs:
 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      crossPkgs = pkgs.pkgsCross.aarch64-multiplatform;
     in
     {
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
+      formatter.aarch64-linux = crossPkgs.nixfmt-tree;
+
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
 

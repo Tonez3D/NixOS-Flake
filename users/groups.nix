@@ -1,3 +1,5 @@
 { config, inputs, ... }: {
-  users.groups.hermit = { };
+  users.groups.hermit = {
+    gid = 1300;
+  };
 }
