@@ -57,6 +57,7 @@
       nixpkgs,
       sops-nix,
       agenix,
+      zen-browser,
       ...
     }@inputs:
 

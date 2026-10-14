@@ -27,6 +27,7 @@
     ./pointers/bibata.nix
     ../scripts/generate-color-pallet.nix
     ../scripts/get-wallpaper.nix
+    ./zen
   ];
 
   custom-spotify.enable = false;
