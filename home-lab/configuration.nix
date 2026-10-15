@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
   config,
@@ -8,17 +5,21 @@
   inputs,
   ...
 }:
-
+let 
+    hostName = config.networking.hostName;
+    
+  in 
 {
-
-  imports = [
-    ./hardware-configuration.nix
-    ../nixos-modules/packages/home-lab-pkgs.nix
-    ../nixos-modules/kernel/kernel-version.nix
-    ./samba.nix
-    # ../nixos-modules/kernel/patches/dirty-flag.nix
-
-  ];
+  
+    imports = [
+      ./hardware-configuration.nix
+      ../nixos-modules/packages/home-lab-pkgs.nix
+      ../nixos-modules/kernel/kernel-version.nix
+      ./samba.nix
+      # ../nixos-modules/kernel/patches/dirty-flag.nix
+    ];
+    _module.args = {inherit hostName};
+  
 
   #networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];
 
@@ -103,7 +104,7 @@
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;
-      hostName = config.networking.hostName;
+      hostName = hostName;
     };
     users = {
       "homelab" = import ./home.nix;

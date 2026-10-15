@@ -22,6 +22,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    private-flake = {
+
+      url = "git+ssh://git@github.com/Tonez3D/private-flake.git?ref=main";
+      flake = false;
+    };
+
     hyprland = {
       url = "github:hyprwm/Hyprland";
       #inputs.nixpkgs.follows = "nixpkgs";
@@ -58,18 +64,21 @@
       nixpkgs,
       sops-nix,
       agenix,
+      private-flake,
       ...
     }@inputs:
 
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      cluster-details = import "${inputs.private-flake}/cluster-details.nix";
+
     in
     {
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs cluster-details; };
 
         modules = [
           ./desktop/configuration.nix

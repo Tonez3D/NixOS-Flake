@@ -6,11 +6,7 @@
 }:
 {
 
-  services.avahi.enable = true;
-
-  networking.networkmanager.unmanaged = [
-    "interface-name:enp4s0f3u1" 
-  ];
+  #services.avahi.enable = true;
 
   networking.networkmanager.ensureProfiles = {
     environmentFiles = [ "/etc/secrets/wifi-secrets.env" ];
@@ -19,6 +15,7 @@
         connection = {
           id = "home-wifi";
           type = "wifi";
+          interface-name = "wlp0s20f3";
         };
         wifi = {
           ssid = "$HOME_WIFI_SSID";
@@ -27,20 +24,6 @@
           auth-alg = "open";
           key-mgmt = "wpa-psk";
           psk = "$HOME_WIFI_PSK";
-        };
-      };
-
-      "pi-share" = {
-        connection = {
-          id = "PiEthernetShare";
-          type = "ethernet";
-          interface-name = "enp4s0f3u1"; 
-        };
-        ipv4 = {
-          method = "link-local"; 
-        };
-        ipv6 = {
-          method = "ignored";
         };
       };
 
@@ -81,39 +64,18 @@
     };
   };
 
-  networking.useDHCP = false; 
+  networking.useDHCP = false;
   networking.useNetworkd = true;
-
-systemd.network.networks."10-lan" = {
-    matchConfig.Name = "enp4s0f3u1";
-    networkConfig = {
-      Address = "192.168.7.1/24";
-      DHCPServer = true;
-    };
-    dhcpServerConfig = {
-      PoolSize = 50;
-      PoolOffset = 10;
-      EmitDNS = true;
-      DNS = [
-        "1.1.1.1"
-        "8.8.8.8"
-      ];
-    };
-    linkConfig.RequiredForOnline = "no";
-  };
 
   networking.nat = {
     enable = true;
     externalInterface = "wlp2s0"; # Keep this as your internet/Wi-Fi source
-    internalInterfaces = [ "enp4s0f3u1" ]; # Change this to match
   };
 
-  
   networking.firewall.allowedUDPPorts = [
     53
     6885
   ];
 
   systemd.services.systemd-networkd-wait-online.enable = lib.mkForce false;
-
 }

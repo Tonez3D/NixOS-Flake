@@ -1,6 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
   config,
@@ -8,10 +5,12 @@
   inputs,
   ...
 }:
-
+let 
+hostName = config.networking.hostName; 
+in 
 {
+  
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ../nixos-modules/hardware-modules
     ../nixos-modules/services-modules/services.nix
@@ -24,6 +23,8 @@
     inputs.home-manager.nixosModules.default
   ];
 
+  _module.args = {inherit hostName;};
+  
   programs.ssh.knownHosts = {
     "github.com" = {
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
@@ -152,6 +153,7 @@
       "networkmanager"
       "wheel"
       "hermit"
+      "docker"
     ];
     packages = with pkgs; [
       #kdePackages.kate
@@ -163,7 +165,7 @@
   home-manager = {
     extraSpecialArgs = {
       inherit inputs;
-      hostName = config.networking.hostName;
+      hostName = hostName;
     };
     users = {
       "heifee" = import ./home.nix;

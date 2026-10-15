@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ hostName, pkgs, ... }: {
   imports = [
     ./default.nix
     ./clang

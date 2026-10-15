@@ -562,6 +562,23 @@
         "type": "github"
       }
     },
+    "private-flake": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1792083848,
+        "narHash": "sha256-ahh+o9sEiNvDeukn6ChTk4zD3W8LFHwguVCToA1Rzw4=",
+        "ref": "main",
+        "rev": "15c090fa26ac6c35c053f01a85df63cf7da17d4d",
+        "revCount": 8,
+        "type": "git",
+        "url": "ssh://git@github.com/Tonez3D/private-flake.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/Tonez3D/private-flake.git"
+      }
+    },
     "root": {
       "inputs": {
         "agenix": "agenix",
@@ -569,6 +586,7 @@
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "nixpkgs": "nixpkgs_2",
+        "private-flake": "private-flake",
         "sops-nix": "sops-nix",
         "zen-browser": "zen-browser"
       }
