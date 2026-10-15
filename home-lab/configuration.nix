@@ -18,7 +18,7 @@ let
       ./samba.nix
       # ../nixos-modules/kernel/patches/dirty-flag.nix
     ];
-    _module.args = {inherit hostName};
+    _module.args = {inherit hostName;};
   
 
   #networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];

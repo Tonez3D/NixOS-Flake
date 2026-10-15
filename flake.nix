@@ -89,7 +89,7 @@
       };
 
       nixosConfigurations.lenovo-laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs cluster-details; };
 
         modules = [
           ./lenovo-laptop/configuration.nix
@@ -100,7 +100,7 @@
       };
 
       nixosConfigurations.homelab-1 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+        specialArgs = { inherit inputs cluster-details; };
 
         modules = [
           ./home-lab/configuration.nix

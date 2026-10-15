@@ -13,7 +13,6 @@
       (lib.mkIf (hostName == "nixos") {
         node = "fool";
         tokenFile = "/etc/secrets/cf-serToken";
-        bootstrap = true;
       })
       (lib.mkIf (hostName == "homelab-1") {
         node = "ever-night";
