@@ -24,7 +24,7 @@
   ];
 
   wayland.windowManager.hyprland = {
-    enable = true; 
+    enable = true;
     xwayland.enable = true;
     #plugins = [
     #  pkgs.waypaper
@@ -32,6 +32,6 @@
     #  pkgs.hypridle
     #  pkgs.hyprlock
     #  pkgs.awww
-    #]; 
+    #];
   };
 }

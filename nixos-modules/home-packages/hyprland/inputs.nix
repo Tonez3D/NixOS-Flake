@@ -1,8 +1,8 @@
-{pkgs, ...} : {
+{ pkgs, ... }: {
   wayland.windowManager.hyprland.settings = {
-     config = {
+    config = {
       input = {
-        
+
         kb_layout = "us";
         numlock_by_default = true;
 

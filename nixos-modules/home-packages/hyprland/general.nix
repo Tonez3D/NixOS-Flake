@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  wayland.windowManager.hyprland = { 
+  wayland.windowManager.hyprland = {
     systemd.variables = [ "--all" ];
 
     configType = "lua";
@@ -24,14 +24,13 @@
         };
       };
 
-  
-    #  windowrule = [ "float = true, center = 1, size = 30 40, match:class ^(floating-window)" ];
-    #
-    #
-    #  misc = {
-    #    disable_hyprland_logo = true;
-    #    disable_splash_rendering = true;
-    #  };
+      #  windowrule = [ "float = true, center = 1, size = 30 40, match:class ^(floating-window)" ];
+      #
+      #
+      #  misc = {
+      #    disable_hyprland_logo = true;
+      #    disable_splash_rendering = true;
+      #  };
     };
   };
 }

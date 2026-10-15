@@ -1,3 +1,3 @@
-{...} : {
-  home.packages = with pkgs; [wine];
+{ ... }: {
+  home.packages = with pkgs; [ wine ];
 }
