@@ -132,7 +132,9 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.ifeatud = {
+  users.users = {
+    
+    ifeatud = {
     isNormalUser = true;
     description = "Ifeatu Dunu";
     extraGroups = [
@@ -144,6 +146,18 @@
     ];
   };
 
+    watts = {
+      isNormalUser = true;
+      description = "Work User";
+      extraGroups = [
+        "networkmanager"
+      "wheel"
+      "video"
+            "dialout"
+      ];
+    };
+  };
+
   ### SECTION [Home Manager] ###
   home-manager = {
     extraSpecialArgs = {
@@ -152,6 +166,7 @@
     };
     users = {
       "ifeatud" = import ./home.nix;
+      "watts" = import ./home.nix;
     };
     sharedModules = [ ];
   };

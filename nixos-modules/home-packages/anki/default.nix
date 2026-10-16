@@ -1,3 +1,3 @@
 {pkgs, ...} : {
-  environment.systemPackages = with pkgs; [anki];
+  home.packages = with pkgs; [anki];
 }
