@@ -10,7 +10,6 @@ in
       homelab
       laptop
     ];
-    armor = true;
   };
 
   "wifi-secrets.age" = {
@@ -19,7 +18,30 @@ in
       homelab
       laptop
     ];
-    armor = true;
+  };
+
+  "cluster-secrets.age" = {
+    publicKeys = [
+      nix-pc
+      homelab
+      laptop
+    ];
+  };
+
+  "cuttlefish-server.age" = {
+    publicKeys = [
+      nix-pc
+      homelab
+      laptop
+    ];
+  };
+
+  "cuttlefish-worker.age" = {
+    publicKeys = [
+      nix-pc
+      homelab
+      laptop
+    ];
   };
 
   "tailscale.age" = {
@@ -37,6 +59,5 @@ in
       homelab
       laptop
     ];
-    armor = true;
   };
 }

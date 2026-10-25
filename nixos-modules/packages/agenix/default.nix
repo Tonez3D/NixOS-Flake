@@ -29,10 +29,36 @@
         mode = "600";
       };
 
+      cuttlefish-server-token = {
+        file = ../../../secrets/cuttlefish-server.age;
+
+        name = "cf-serToken";
+        owner = "root";
+        group = "networkmanager";
+        mode = "0400";
+      };
+
+      cuttlefish-worker-token = {
+        file = ../../../secrets/cuttlefish-worker.age;
+
+        name = "cf-workToken";
+        owner = "root";
+        group = "networkmanager";
+        mode = "0400";
+      };
+
       tailscale = {
         file = ../../../secrets/tailscale.age;
 
         name = "tailscale-authkey";
+        owner = "root";
+        mode = "600";
+      };
+
+      cluster-secrets = {
+        file = ../../../secrets/cluster-secrets.age;
+
+        name = "cluster-secrets";
         owner = "root";
         mode = "600";
       };
