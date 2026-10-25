@@ -1,4 +1,3 @@
-
 {
   config,
   pkgs,
@@ -14,8 +13,6 @@
     ./hardware-configuration.nix
     ./share.nix
     ../nixos-modules/hardware-modules
-    inputs.sops-nix.nixosModules.sops
-    inputs.home-manager.nixosModules.default
     ../nixos-modules/fonts
     ../nixos-modules/udev
     ../nixos-modules/kernel/kernel-version.nix

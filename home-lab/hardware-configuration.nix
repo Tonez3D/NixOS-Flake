@@ -26,15 +26,18 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/562ccecd-2dfa-4421-b836-5215f7c43384";
-    fsType = "ext4";
-  };
+  #fileSystems."/" = {
+  #  device = "/dev/disk/by-uuid/562ccecd-2dfa-4421-b836-5215f7c43384";
+  #  fsType = "ext4";
+  #};
 
   fileSystems."/mnt/share" = {
     device = "/dev/disk/by-uuid/ca340c50-81ad-4857-9398-a51edcc43597";
     fsType = "btrfs"; # Replace with your filesystem, e.g., ntfs, xfs, vfat, btrfs
-    options = [ "defaults" "nofail" ]; 
+    options = [
+      "defaults"
+      "nofail"
+    ];
   };
 
   swapDevices = [ { device = "/dev/disk/by-uuid/99c8e0e9-6f0e-4e6c-b68d-9c74dd4234ad"; } ];

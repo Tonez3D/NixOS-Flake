@@ -28,7 +28,6 @@
     ../scripts/generate-color-pallet.nix
     ../scripts/get-wallpaper.nix
   ];
-  
 
   custom-spotify.enable = false;
 

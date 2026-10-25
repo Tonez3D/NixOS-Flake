@@ -9,7 +9,6 @@
 {
   imports = [
     ./agenix
-    ./sops
     ./fzf
     ./valgrind
     ./gcc

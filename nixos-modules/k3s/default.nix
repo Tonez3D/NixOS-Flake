@@ -18,7 +18,7 @@
         node = "ever-night";
         tokenFile = "/etc/secrets/cf-serToken";
       })
-      (lib.mkIf (hostName == "laptop") {
+      (lib.mkIf (hostName == "error") {
         node = "error";
         tokenFile = "/etc/secrets/cf-serToken";
       })
