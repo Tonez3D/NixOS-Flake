@@ -13,6 +13,8 @@
     ./gowall
     ./jetbrains
     ./wallust
+    ./chrome
+    ./anki
     ./waybar
     ./rofi
     ./jetbrains
