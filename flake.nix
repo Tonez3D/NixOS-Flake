@@ -80,6 +80,7 @@
       private-flake,
 disko,
       config-install,
+      zen-browser,
       ...
     }@inputs:
 
@@ -93,12 +94,15 @@ disko,
      # modules = [ ./installer.nix ];
     #};
 
+      crossPkgs = pkgs.pkgsCross.aarch64-multiplatform;
     in
     {
 
 
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
+      #formatter.aarch64-linux = crossPkgs.nixfmt-tree;
+
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs cluster-details; };
 

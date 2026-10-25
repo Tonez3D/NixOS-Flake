@@ -39,6 +39,8 @@ in
       #"$mainMod CTRL, L, exec, pidof hyprlock || hyprlock"
       #"$mainMod ALT, T, workspaceopt, allfloat"
       (bind "${mod_key} + P" (exec "grimblast save active"))
+      (bind "${mod_key} + SHIFT + P" (exec "grimblast save area"))
+
       #"$mainMod, P, exec, grimblast save active"
       #"$mainMod, F, fullscreen, 1"
 
@@ -74,17 +76,11 @@ in
       (bind "${mod_key} + SHIFT + 7" (mvwd "7"))
       (bind "${mod_key} + SHIFT + 8" (mvwd "8"))
 
-      # Only if multimoniter support
-      #"$mainMod SHIFT, 1, workspace, 11"
-      #"$mainMod SHIFT, 2, workspace, 12"
-      #"$mainMod SHIFT, 3, workspace, 13"
-      #"$mainMod SHIFT, 4, workspace, 14"
-      #"$mainMod SHIFT, 5, workspace, 15"
-      #"$mainMod SHIFT, 6, workspace, 16"
-      #"$mainMod SHIFT, 7, workspace, 17"
-      #"$mainMod SHIFT, 8, workspace, 18"
-      #"$mainMod SHIFT, 9, workspace, 19"
-      #"$mainMod SHIFT, 0, workspace, 20"
+      (bind "${mod_key} + Right" (mvws "m+1"))
+      (bind "${mod_key} + Right" (mvws "m-1"))
+
+      (bind "${mod_key} + CTRL + Right" (mvws "r+1"))
+      (bind "${mod_key} + CTRL + Right" (mvws "r-1"))
 
       #"$mainMod, right, workspace, m+1"
       #"$mainMod, left, workspace, m-1"

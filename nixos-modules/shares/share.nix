@@ -4,6 +4,7 @@
   lib,
   ...
 }:
+
 {
   environment.systemPackages = [ pkgs.cifs-utils ];
   fileSystems."/mnt/knowledge-moor" = {
@@ -20,7 +21,12 @@
       "uid=1000"
       "credentials=/etc/secrets/samba-secrets.env"
       "gid=${toString config.users.groups.hermit.gid}"
+      "file_mode=0664"
+      "dir_mode=0775"
+      "forcegid"
+      "mfsymlinks"
       "nofail"
+      "noperm"
     ];
   };
 }
