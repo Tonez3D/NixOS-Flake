@@ -10,7 +10,7 @@
         lock_cmd = "hyprlock";
         unlock_cmd = "pkill --signal SIGUSR1 hyprlock";
         before_sleep_cmd = "";
-        after_sleep_cmd = "hyprctl dispatch 'hl.dsp.dpms({action = "disable"})";
+        after_sleep_cmd = "hyprctl dispatch 'hl.dsp.dpms({action = " disable "})";
       };
       listener = [
         {
@@ -18,12 +18,12 @@
           on-timeout = "loginctl lock-session";
         }
         {
-          timeout = 700; #
+          timeout = 700;
           on-timeout = "brightnessctl 20%";
         }
         {
           timeout = 900;
-          on-timeout = "hyprctl dispatch 'hl.dsp.dpms({action = "enable"})";
+          on-timeout = "hyprctl dispatch 'hl.dsp.dpms({action = " enable "})";
         }
         {
           timeout = 1050;

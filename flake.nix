@@ -5,12 +5,14 @@
     substituters = [
       "https://nix-community.cachix.org"
       "https://cache.nixos.org"
+      "https://cache.nixos-cuda.org"
       "https://hyprland.cachix.org"
     ];
 
     extra-trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
+      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
     ];
   };
 
@@ -28,7 +30,7 @@
       flake = false;
     };
 
-        quickshell = {
+    quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
 
       inputs.nixpkgs.follows = "nixpkgs";
@@ -66,9 +68,10 @@
       url = "git+file:///home/heifee/Dev/config-install";
     };
 
-        disko={url = "github:nix-community/disko";
-    inputs.nixpkgs.follows = "nixpkgs";
-          };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -78,7 +81,7 @@
       sops-nix,
       agenix,
       private-flake,
-disko,
+      disko,
       config-install,
       zen-browser,
       ...
@@ -88,17 +91,15 @@ disko,
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       cluster-details = import "${inputs.private-flake}/cluster-details.nix";
-     # systemInstaller = target: nixpkgs.lib.nixosSystem {
-     # inherit system;
-     # specialArgs = { inherit target; };
-     # modules = [ ./installer.nix ];
-    #};
+      # systemInstaller = target: nixpkgs.lib.nixosSystem {
+      # inherit system;
+      # specialArgs = { inherit target; };
+      # modules = [ ./installer.nix ];
+      #};
 
       crossPkgs = pkgs.pkgsCross.aarch64-multiplatform;
     in
     {
-
-
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
       #formatter.aarch64-linux = crossPkgs.nixfmt-tree;
@@ -134,6 +135,8 @@ disko,
         ];
       };
 
-    packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab-1"];
+      packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations [
+        "homelab-1"
+      ];
     };
 }

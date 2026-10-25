@@ -28,21 +28,19 @@
       };
 
       "work-wifi" = {
-connection = {
-  id = "work-wifi";
+        connection = {
+          id = "work-wifi";
           type = "wifi";
-};
-wifi={
-  ssid = "$WORK_SSID";
-};
-wifi-security = {
-  auth-alg = "open";
-  key-mgmt = "wpa2-psk";
+        };
+        wifi = {
+          ssid = "$WORK_SSID";
+        };
+        wifi-security = {
+          auth-alg = "open";
+          key-mgmt = "wpa2-psk";
           psk = "$WORK_PSK";
-};
+        };
       };
-
-    
 
       "phone-hotspot" = {
         connection = {

@@ -1,4 +1,10 @@
-{ config, pkgs, lib, modulesPath, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  modulesPath,
+  ...
+}:
 
 {
   imports = [
@@ -17,9 +23,15 @@
 
   hardware.enableRedistributableFirmware = true;
 
-  nixpkgs.config.allowUnfree = true; 
+  nixpkgs.config.allowUnfree = true;
 
-  boot.supportedFilesystems = [ "btrfs" "xfs" "ext4" "vfat" "ntfs" ];
+  boot.supportedFilesystems = [
+    "btrfs"
+    "xfs"
+    "ext4"
+    "vfat"
+    "ntfs"
+  ];
 
   networking.wireless.enable = lib.mkForce false;
 

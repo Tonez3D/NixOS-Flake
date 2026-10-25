@@ -127,28 +127,28 @@
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
-    
+
     ifeatud = {
-    isNormalUser = true;
-    description = "Ifeatu Dunu";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "video"
-      "hermit"
-      "docker"
-      "dialout"
-    ];
-  };
+      isNormalUser = true;
+      description = "Ifeatu Dunu";
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "video"
+        "hermit"
+        "docker"
+        "dialout"
+      ];
+    };
 
     watts = {
       isNormalUser = true;
       description = "Work User";
       extraGroups = [
         "networkmanager"
-      "wheel"
-      "video"
-            "dialout"
+        "wheel"
+        "video"
+        "dialout"
       ];
     };
   };
