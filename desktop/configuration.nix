@@ -29,6 +29,10 @@ in
       publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
       hostNames = [ "github.com" ];
     };
+    "lenovo-laptop" = {
+      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfi4u0rZj7jdFMOkGmGbwFJXOH/kErjMa1US5YywkuY tonez3d@gmail.com";
+      hostNames = [ "lenovo-laptop" ];
+    };
   };
 
   ### SECTION [Bootloader] ###
