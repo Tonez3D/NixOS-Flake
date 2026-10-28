@@ -10,7 +10,6 @@ in
       homelab
       laptop
     ];
-    armor = true;
   };
 
   "work.age" = {
@@ -45,7 +44,30 @@ in
       homelab
       laptop
     ];
-    armor = true;
+  };
+
+  "cluster-secrets.age" = {
+    publicKeys = [
+      nix-pc
+      homelab
+      laptop
+    ];
+  };
+
+  "cuttlefish-server.age" = {
+    publicKeys = [
+      nix-pc
+      homelab
+      laptop
+    ];
+  };
+
+  "cuttlefish-worker.age" = {
+    publicKeys = [
+      nix-pc
+      homelab
+      laptop
+    ];
   };
 
   "tailscale.age" = {
@@ -63,6 +85,5 @@ in
       homelab
       laptop
     ];
-    armor = true;
   };
 }
