@@ -42,6 +42,7 @@
     #
     #  /etc/profiles/per-user/root/etc/profile.d/hm-session-vars.sh
     #
+    
     home.sessionVariables = {
       # EDITOR = "emacs";
     };
