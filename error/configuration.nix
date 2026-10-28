@@ -8,32 +8,31 @@
   inputs,
   ...
 }:
-
+let 
+    hostName = config.networking.hostName;
+    
+  in 
 {
 
   imports = [
     ./hardware-configuration.nix
     ../nixos-modules/packages/home-lab-pkgs.nix
     ../nixos-modules/kernel/kernel-version.nix
+        ../nixos-modules/networking
+        ../users
     ../nixos-modules/shares/share.nix
     ./disko.nix
     # ../nixos-modules/kernel/patches/dirty-flag.nix
 
   ];
+  _module.args = {inherit hostName;};
 
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "error"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
+  networking.hostName = "error"; 
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -42,8 +41,7 @@
     #settings = { };
   };
   
-  #services.zerotierone.enable = true;
-  # Set your time zone.
+ 
   time.timeZone = "America/Chicago";
 
   # Select internationalisation properties.
@@ -74,7 +72,12 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "video"
+      "hermit"
+      "usb"
+      "plugdev"
       "docker"
+      "dialout"
     ];
 
     openssh = {
@@ -101,7 +104,7 @@
       hostName = config.networking.hostName;
     };
     users = {
-      "homelab" = import ./home.nix;
+      "error" = import ./home.nix;
     };
     sharedModules = [ ];
 

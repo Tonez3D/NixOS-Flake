@@ -17,8 +17,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
-        disko = {url = "github:nix-community/disko/latest";
-     inputs.nixpkgs.follows = "nixpkgs"; };
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs"; 
+    };
 
 
     home-manager = {
@@ -70,9 +72,6 @@
       url = "git+file:///home/heifee/Dev/config-install";
     };
 
-        disko={url = "github:nix-community/disko";
-    inputs.nixpkgs.follows = "nixpkgs";
-          };
   };
 
   outputs =
@@ -80,7 +79,7 @@
       self,
       nixpkgs,
       sops-nix,
-      unstable,
+ 
       agenix,
       private-flake,
 disko,
@@ -139,6 +138,17 @@ disko,
         ];
       };
 
-    packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab-1"];
+      nixosConfigurations.error = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs cluster-details; };
+
+        modules = [
+          ./error/configuration.nix
+          inputs.home-manager.nixosModules.default
+          disko.nixosModules.disko
+          agenix.nixosModules.default
+        ];
+      };
+
+    packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab-1" "error"];
     };
 }
