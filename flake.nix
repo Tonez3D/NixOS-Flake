@@ -68,12 +68,11 @@
     };
 
     config-install = {
-      url = "git+file:///home/heifee/Dev/config-install";
-      flake = false;
+      url = "git+ssh://git@github.com/Tonez3D/config-install.git?ref=main";
     };
 
     cuttlefish = {
-      url = "git+file:///home/heifee/Dev/cuttlefish";
+      url = "git+ssh://git@github.com/Tonez3D/cuttlefish.git?ref=main";
             inputs.nixpkgs.follows = "nixpkgs"; 
 
     };
