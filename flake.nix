@@ -17,6 +17,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
+        disko = {url = "github:nix-community/disko/latest";
+     inputs.nixpkgs.follows = "nixpkgs"; };
+
+
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,6 +60,7 @@
       self,
       nixpkgs,
       sops-nix,
+      unstable,
       agenix,
       zen-browser,
       ...
@@ -64,6 +69,7 @@
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      unstable-pkgs  = unstable.legacyPackages.${system};
       crossPkgs = pkgs.pkgsCross.aarch64-multiplatform;
     in
     {

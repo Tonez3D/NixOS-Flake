@@ -13,6 +13,32 @@ in
     armor = true;
   };
 
+  "work.age" = {
+    publicKeys = [
+      nix-pc
+      homelab
+      laptop
+    ];
+    armor = true;
+  };
+
+
+  "claude-work.age" = {
+    publicKeys = [
+      nix-pc
+      homelab
+      laptop
+    ];
+    armor = true;
+  };
+  "claude-personal.age" = {
+    publicKeys = [
+      nix-pc
+      homelab
+      laptop
+    ];
+    armor = true;
+  };
   "wifi-secrets.age" = {
     publicKeys = [
       nix-pc
