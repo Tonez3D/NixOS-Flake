@@ -10,6 +10,7 @@
     ./claude-code
     ./usb
     ./awww
+    ./docker
     ./firefox
     ./open-tablet-driver
     ./brightnessctl

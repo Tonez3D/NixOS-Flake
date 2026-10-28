@@ -29,7 +29,6 @@
     };
 
     private-flake = {
-
       url = "git+ssh://git@github.com/Tonez3D/private-flake.git?ref=main";
       flake = false;
     };
@@ -70,6 +69,13 @@
 
     config-install = {
       url = "git+file:///home/heifee/Dev/config-install";
+      flake = false;
+    };
+
+    cuttlefish = {
+      url = "git+file:///home/heifee/Dev/cuttlefish";
+            inputs.nixpkgs.follows = "nixpkgs"; 
+
     };
 
   };
@@ -79,7 +85,7 @@
       self,
       nixpkgs,
       sops-nix,
- 
+ cuttlefish,
       agenix,
       private-flake,
 disko,
@@ -111,6 +117,7 @@ disko,
         specialArgs = { inherit inputs cluster-details; };
 
         modules = [
+          cuttlefish.nixosModules.default
           ./desktop/configuration.nix
           inputs.home-manager.nixosModules.default
           agenix.nixosModules.default

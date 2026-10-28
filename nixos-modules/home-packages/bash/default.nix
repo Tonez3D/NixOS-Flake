@@ -29,6 +29,13 @@
           ssh-add ~/.ssh/homelab-key > /dev/null 2>&1
         '';
       })
+      (lib.mkIf (hostName == "error") {
+        enable = true;
+        bashrcExtra = ''
+          eval "$(ssh-agent -s)" > /dev/null 2>&1
+          ssh-add ~/.ssh/error-key > /dev/null 2>&1
+        '';
+      })
     ]
   );
 

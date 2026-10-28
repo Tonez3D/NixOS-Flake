@@ -338,6 +338,7 @@
       "docker"
       "dialout"
     ];
+    linger = true; 
   };
 
     watts = {
@@ -351,6 +352,7 @@
         "video"
         "dialout"
       ];
+      linger = true; 
     };
   };
 
