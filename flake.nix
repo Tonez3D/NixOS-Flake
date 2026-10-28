@@ -68,11 +68,11 @@
     };
 
     config-install = {
-      url = "git+ssh://git@github.com/Tonez3D/config-install.git?ref=main";
+      url = "git+ssh://git@github.com/Tonez3D/nix-system-install.git?ref=main";
     };
 
     cuttlefish = {
-      url = "git+ssh://git@github.com/Tonez3D/cuttlefish.git?ref=main";
+      url = "git+ssh://git@github.com/Tonez3D/cuttlefish-flake.git?ref=main";
             inputs.nixpkgs.follows = "nixpkgs"; 
 
     };
