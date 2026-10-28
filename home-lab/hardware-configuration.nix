@@ -26,10 +26,10 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  #fileSystems."/" = {
-  #  device = "/dev/disk/by-uuid/562ccecd-2dfa-4421-b836-5215f7c43384";
-  #  fsType = "ext4";
-  #};
+  fileSystems."/" = {
+    device = "/dev/disk/by-uuid/562ccecd-2dfa-4421-b836-5215f7c43384";
+    fsType = "ext4";
+  };
 
   fileSystems."/mnt/share" = {
     device = "/dev/disk/by-uuid/ca340c50-81ad-4857-9398-a51edcc43597";

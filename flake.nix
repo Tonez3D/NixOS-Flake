@@ -157,6 +157,6 @@ disko,
         ];
       };
 
-    packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab-1" "error"];
+    packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations [ "error"];
     };
 }

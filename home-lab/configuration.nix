@@ -16,7 +16,7 @@ let
       ../nixos-modules/packages/home-lab-pkgs.nix
       ../nixos-modules/kernel/kernel-version.nix
       ./samba.nix
-      ./disko.nix
+      # ./disko.nix
       # ../nixos-modules/kernel/patches/dirty-flag.nix
     ];
     _module.args = {inherit hostName;};
