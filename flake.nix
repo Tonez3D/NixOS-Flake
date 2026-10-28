@@ -137,6 +137,7 @@ disko,
         specialArgs = { inherit inputs cluster-details; };
 
         modules = [
+          cuttlefish.nixosModules.default
           ./home-lab/configuration.nix
           inputs.home-manager.nixosModules.default
           disko.nixosModules.disko
@@ -149,6 +150,7 @@ disko,
 
         modules = [
           ./error/configuration.nix
+          cuttlefish.nixosModules.default
           inputs.home-manager.nixosModules.default
           disko.nixosModules.disko
           agenix.nixosModules.default
