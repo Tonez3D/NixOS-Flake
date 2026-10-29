@@ -5,6 +5,7 @@
     ./cmake
     ./gtk
     ./libGL
+    ./claude-code
     ./firefox
     ./hyprpolkit
     ./awww

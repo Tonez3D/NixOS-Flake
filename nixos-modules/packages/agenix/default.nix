@@ -56,14 +56,6 @@
         mode = "600";
       };
 
-      cluster-secrets = {
-        file = ../../../secrets/cluster-secrets.age;
-
-        name = "cluster-secrets";
-        owner = "root";
-        mode = "600";
-      };
-
       share = {
         file = ../../../secrets/samba.age;
 

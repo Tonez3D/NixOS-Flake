@@ -60,15 +60,37 @@
       "locked": {
         "lastModified": 1793154191,
         "narHash": "sha256-5+fHgJxHWPIl+7xw+OP8m02mZv0uNBYyh0jattTT47k=",
-        "ref": "refs/heads/main",
+        "ref": "main",
         "rev": "9065d182bf35af40083b10cb1ba70e16e4cbd007",
         "revCount": 2,
         "type": "git",
-        "url": "file:///home/heifee/Dev/config-install"
+        "url": "ssh://git@github.com/Tonez3D/nix-system-install.git"
       },
       "original": {
+        "ref": "main",
         "type": "git",
-        "url": "file:///home/heifee/Dev/config-install"
+        "url": "ssh://git@github.com/Tonez3D/nix-system-install.git"
+      }
+    },
+    "cuttlefish": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793278679,
+        "narHash": "sha256-Xv6Sd+OCrv5fmPj29JBThhdKzzfqOdxLFI9COWOcvaY=",
+        "ref": "main",
+        "rev": "e341ffcefe95d736520d48c7148ac7d27d581fa3",
+        "revCount": 16,
+        "type": "git",
+        "url": "ssh://git@github.com/Tonez3D/cuttlefish-flake.git"
+      },
+      "original": {
+        "ref": "main",
+        "type": "git",
+        "url": "ssh://git@github.com/Tonez3D/cuttlefish-flake.git"
       }
     },
     "disko": {
@@ -602,6 +624,7 @@
       "inputs": {
         "agenix": "agenix",
         "config-install": "config-install",
+        "cuttlefish": "cuttlefish",
         "disko": "disko",
         "home-manager": "home-manager",
         "hyprland": "hyprland",
