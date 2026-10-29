@@ -13,5 +13,15 @@
       '';
       destination = "/etc/udev/rules.d/99-pico-debug.rules";
     })
+
+    (pkgs.writeTextFile {
+      name = "arduino-udev-rules";
+      text = ''
+        # Generic rule for Arduino serial / ACM devices
+        SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", TAG+="uaccess"
+        SUBSYSTEM=="tty", ATTRS{idVendor}=="2a03", TAG+="uaccess"
+      '';
+      destination = "/etc/udev/rules.d/50-arduino.rules";
+    })
   ];
 }

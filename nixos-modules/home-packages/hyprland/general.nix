@@ -1,9 +1,10 @@
 { ... }:
 
 {
+
   wayland.windowManager.hyprland = {
     systemd.variables = [ "--all" ];
-
+systemd.enable = false;
     configType = "lua";
 
     settings = {

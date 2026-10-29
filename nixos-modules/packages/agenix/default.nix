@@ -10,6 +10,7 @@
     inputs.agenix.packages."${pkgs.system}".default
     pkgs.agenix-cli
     pkgs.age
+    pkgs.awscli2 pkgs.nodejs_24
   ];
 
   age = {
@@ -34,6 +35,24 @@
 
         name = "tailscale-authkey";
         owner = "root";
+        mode = "600";
+      };
+
+      claude-pkey = {
+        file = ../../../secrets/claude-personal.age;
+
+        name = "claude-personal-key";
+                owner = "root";
+
+        mode = "600";
+      };
+
+      claude-wkey = {
+        file = ../../../secrets/claude-work.age;
+
+        name = "claude-work-key";
+                owner = "root";
+
         mode = "600";
       };
 

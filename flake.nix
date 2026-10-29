@@ -20,6 +20,7 @@
         disko = {url = "github:nix-community/disko/latest";
      inputs.nixpkgs.follows = "nixpkgs"; };
 
+    unstable.url = "github:nixos/nixpkgs/master";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";

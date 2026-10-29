@@ -26,6 +26,7 @@
       "forcegid"
       "mfsymlinks"
       "nofail"
+      "exec"
       "noperm"
     ];
   };
