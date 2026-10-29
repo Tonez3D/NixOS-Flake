@@ -3,7 +3,7 @@ let
   waypaper-config = ''
     [Settings]
     language = en
-    folder = /etc/nixos/assets/wallpapers
+    folder = /mnt/knowledge-moor/Assets/Nix-Assets/wallpapers/
     monitors = All
     wallpaper = 
     show_path_in_tooltip = True

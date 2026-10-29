@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./default.nix
@@ -22,6 +22,8 @@
     ./grimblast
     ./pavucontrol
     ./playerctl
+    ./claude-code
+
     ./vscode
     ./starship
     ./spotify

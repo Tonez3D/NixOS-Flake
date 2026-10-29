@@ -1,3 +1,8 @@
 {pkgs, ...} : {
-  environment.systemPackages = with pkgs; [claude-code];
+
+  programs.claude-code = {
+    enable = true;
+    package = pkgs.claude-code;
+
+  };
 }
