@@ -1,20 +1,27 @@
-{ pkgs, ... }:
+{
+  hostName,
+  pkgs,
+  lib,
+  config,
+  inputs,
+  ...
+}:
 {
   imports = [
     ./agenix
-    ./sops
     ./fzf
     ./valgrind
     ./gcc
     ./cron
     ./tmux
+    ../k3s
     ./nixfmt
     ./gnumake
     ./killall
     ./tailscale
     ./rust
     ./neovim
-    ./kubernetes
+    #./kubernetes
     ./vim
     ./zip
     ./unzip

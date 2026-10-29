@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 {
   config,
   pkgs,
@@ -18,9 +14,6 @@
     ./hardware-configuration.nix
     ../nixos-modules/shares/share.nix
     ../nixos-modules/hardware-modules
-    inputs.sops-nix.nixosModules.sops
-    inputs.home-manager.nixosModules.default
-    ./greetd-multi.nix
     ../nixos-modules/fonts
     ../nixos-modules/udev
     ../nixos-modules/kernel/kernel-version.nix
@@ -342,6 +335,7 @@
       "hermit"
       "usb"
       "plugdev"
+      "docker"
       "dialout"
     ];
   };
