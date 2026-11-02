@@ -5,7 +5,10 @@
   lib,
   ...
 }:
-
+let 
+    hostName = config.networking.hostName;
+    
+  in 
 {
   imports = [
     ../nixos-modules/packages/lenovo-laptop-pkgs.nix
@@ -19,6 +22,7 @@
     ../nixos-modules/kernel/kernel-version.nix
     ../users
   ];
+    _module.args = {inherit hostName;};
 
   ### SECTION [Bootloader] ###
   boot.loader.systemd-boot.enable = true;

@@ -8,7 +8,10 @@
   inputs,
   ...
 }:
-
+let 
+    hostName = config.networking.hostName;
+    
+  in 
 {
 
   imports = [
@@ -20,6 +23,8 @@
     # ../nixos-modules/kernel/patches/dirty-flag.nix
 
   ];
+      _module.args = {inherit hostName;};
+
 
 
   # Bootloader.

@@ -20,7 +20,7 @@
         disko = {url = "github:nix-community/disko/latest";
      inputs.nixpkgs.follows = "nixpkgs"; };
 
-    unstable.url = "github:nixos/nixpkgs/master";
+    #unstable.url = "github:nixos/nixpkgs/master";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -68,20 +68,27 @@
     };
 
     config-install = {
-      url = "git+file:///home/heifee/Dev/config-install";
+      url = "git+ssh://git@github.com/Tonez3D/nix-system-install.git?ref=main";
     };
 
-        disko={url = "github:nix-community/disko";
-    inputs.nixpkgs.follows = "nixpkgs";
-          };
+
+
+    cuttlefish = {
+      url = "git+ssh://git@github.com/Tonez3D/cuttlefish-flake.git?ref=main";
+            inputs.nixpkgs.follows = "nixpkgs"; 
+
+    };
+
   };
 
   outputs =
     {
+      
       self,
       nixpkgs,
       sops-nix,
-      unstable,
+ cuttlefish,
+ #unstable,
       agenix,
       private-flake,
 disko,
@@ -93,6 +100,7 @@ disko,
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      #upkgs = unstable.legacyPackages.${system};
       cluster-details = import "${inputs.private-flake}/cluster-details.nix";
      # systemInstaller = target: nixpkgs.lib.nixosSystem {
      # inherit system;
@@ -101,6 +109,24 @@ disko,
     #};
 
       crossPkgs = pkgs.pkgsCross.aarch64-multiplatform;
+
+      # Disable imageio's PNG tests, which fail against the current Pillow
+      # ("ValueError: Invalid mode for data type"). The package itself is fine;
+      # only the test suite is incompatible.
+      imageioOverlay = final: prev: {
+        python313 = prev.python313.override {
+          packageOverrides = pyfinal: pyprev: {
+            imageio = pyprev.imageio.overridePythonAttrs (old: {
+              disabledTests = (old.disabledTests or [ ]) ++ [
+                "test_png_16bit"
+                "test_png"
+              ];
+            });
+          };
+        };
+      };
+
+      overlayModule = { nixpkgs.overlays = [ imageioOverlay ]; };
     in
     {
 
@@ -116,6 +142,7 @@ disko,
           ./desktop/configuration.nix
           inputs.home-manager.nixosModules.default
           agenix.nixosModules.default
+          overlayModule
         ];
       };
 
@@ -126,6 +153,7 @@ disko,
           ./lenovo-laptop/configuration.nix
           inputs.home-manager.nixosModules.default
           agenix.nixosModules.default
+          overlayModule
         ];
       };
 
@@ -137,9 +165,10 @@ disko,
           inputs.home-manager.nixosModules.default
           disko.nixosModules.disko
           agenix.nixosModules.default
+          overlayModule
         ];
       };
 
-    packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab-1"];
+    #packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab-1"];
     };
 }
