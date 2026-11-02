@@ -94,8 +94,8 @@ in
       #",XF86AudioNext, exec, playerctl next"                                                                                                           # Audio next
       #",XF86AudioPrev, exec, playerctl previous"
       #(bind "XF86AudioUp" (exec "playerctl"))
-      (bind "XF86MonBrightnessUp" (exec "brightnessctl -q s +10%"))
-      (bind "XF86MonBrightnessDown" (exec "brightnessctl -q s 10%-"))
+      (bind "XF86MonBrightnessUp" (exec "brightnessctl -q s +5%"))
+      (bind "XF86MonBrightnessDown" (exec "brightnessctl -q s 5%-"))
     ];
   };
 }

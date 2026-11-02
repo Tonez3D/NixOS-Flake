@@ -9,6 +9,7 @@
     ./hyprpolkit
     ./usb
     ./awww
+    ./glab
     ./firefox
     ./open-tablet-driver
     ./brightnessctl

@@ -14,7 +14,8 @@
     ./jetbrains
     ./wallust
     ./chrome
-    ./anki
+    ./vencord
+    #./anki
     ./waybar
     ./rofi
     ./jetbrains
@@ -23,7 +24,6 @@
     ./pavucontrol
     ./playerctl
     ./claude-code
-
     ./vscode
     ./starship
     ./spotify
