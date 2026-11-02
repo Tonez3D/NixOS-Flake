@@ -8,7 +8,7 @@
         bashrcExtra = ''
           eval "$(ssh-agent -s)" > /dev/null 2>&1
           ssh-add ~/.ssh/* > /dev/null 2>&1
-          fastfetch --logo-type kitty-direct 
+          fastfetch --logo none
           eval "$(starship init bash)"
           eval "$(fzf --bash)"
         '';
