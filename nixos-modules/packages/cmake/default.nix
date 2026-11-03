@@ -1,5 +1,8 @@
 { pkgs, inputs, ... }:
 {
-  environment.systemPackages = with pkgs; [ cmake displaylink ];
+  environment.systemPackages = with pkgs; [
+    cmake
+    displaylink
+  ];
 
 }

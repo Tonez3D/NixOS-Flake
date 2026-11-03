@@ -10,7 +10,8 @@
     inputs.agenix.packages."${pkgs.system}".default
     pkgs.agenix-cli
     pkgs.age
-    pkgs.awscli2 pkgs.nodejs_24
+    pkgs.awscli2
+    pkgs.nodejs_24
   ];
 
   age = {
@@ -60,7 +61,7 @@
         file = ../../../secrets/claude-personal.age;
 
         name = "claude-personal-key";
-                owner = "root";
+        owner = "root";
 
         mode = "600";
       };
@@ -69,7 +70,7 @@
         file = ../../../secrets/claude-work.age;
 
         name = "claude-work-key";
-                owner = "root";
+        owner = "root";
 
         mode = "600";
       };

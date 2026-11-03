@@ -1,26 +1,24 @@
-
 {
   config,
   pkgs,
   inputs,
   ...
 }:
-let 
-    hostName = config.networking.hostName;
-    
-  in 
+let
+  hostName = config.networking.hostName;
+
+in
 {
-  
-    imports = [
-      ./hardware-configuration.nix
-      ../nixos-modules/packages/home-lab-pkgs.nix
-      ../nixos-modules/kernel/kernel-version.nix
-      ./samba.nix
-      ./disko.nix
-      # ../nixos-modules/kernel/patches/dirty-flag.nix
-    ];
-    _module.args = {inherit hostName;};
-  
+
+  imports = [
+    ./hardware-configuration.nix
+    ../nixos-modules/packages/home-lab-pkgs.nix
+    ../nixos-modules/kernel/kernel-version.nix
+    ./samba.nix
+    ./disko.nix
+    # ../nixos-modules/kernel/patches/dirty-flag.nix
+  ];
+  _module.args = { inherit hostName; };
 
   #networking.firewall.trustedInterfaces = [ "ztfl6pg5zr" ];
 

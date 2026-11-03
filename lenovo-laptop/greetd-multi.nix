@@ -1,8 +1,17 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
-  ttys = [ 1 2 3 ];
-  bootTty = 1; 
+  ttys = [
+    1
+    2
+    3
+  ];
+  bootTty = 1;
 
   greeterCmd = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --cmd start-hyprland";
 
@@ -18,9 +27,12 @@ let
     '';
   };
 
-  mkService = n:
-    let tty = "tty${toString n}";
-    in {
+  mkService =
+    n:
+    let
+      tty = "tty${toString n}";
+    in
+    {
       description = "greetd on ${tty}";
       documentation = [ "man:greetd(1)" ];
       wantedBy = [ "graphical.target" ];
@@ -35,7 +47,7 @@ let
       restartIfChanged = false;
 
       serviceConfig = {
-        Type = "idle"; 
+        Type = "idle";
         ExecStart = "${pkgs.greetd}/bin/greetd --config /etc/greetd/${tty}.toml";
         Restart = "always";
         RestartSec = "1s";
@@ -57,18 +69,22 @@ in
     enableGnomeKeyring = config.services.gnome.gnome-keyring.enable;
   };
 
-  environment.etc = lib.listToAttrs (map
-    (n: lib.nameValuePair "greetd/tty${toString n}.toml" (mkConfig n))
-    ttys);
+  environment.etc = lib.listToAttrs (
+    map (n: lib.nameValuePair "greetd/tty${toString n}.toml" (mkConfig n)) ttys
+  );
 
-  systemd.services = lib.listToAttrs (lib.concatMap
-    (n:
-      let tty = "tty${toString n}";
-      in [
+  systemd.services = lib.listToAttrs (
+    lib.concatMap (
+      n:
+      let
+        tty = "tty${toString n}";
+      in
+      [
         (lib.nameValuePair "greetd-${tty}" (mkService n))
         (lib.nameValuePair "autovt@${tty}" { enable = false; })
-      ])
-    ttys);
+      ]
+    ) ttys
+  );
 
   users.users.greeter = {
     isSystemUser = true;

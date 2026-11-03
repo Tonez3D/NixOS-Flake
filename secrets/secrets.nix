@@ -21,7 +21,6 @@ in
     armor = true;
   };
 
-
   "claude-work.age" = {
     publicKeys = [
       nix-pc

@@ -17,8 +17,10 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
 
-        disko = {url = "github:nix-community/disko/latest";
-     inputs.nixpkgs.follows = "nixpkgs"; };
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     #unstable.url = "github:nixos/nixpkgs/master";
 
@@ -33,7 +35,7 @@
       flake = false;
     };
 
-        quickshell = {
+    quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
 
       inputs.nixpkgs.follows = "nixpkgs";
@@ -71,11 +73,9 @@
       url = "git+ssh://git@github.com/Tonez3D/nix-system-install.git?ref=main";
     };
 
-
-
     cuttlefish = {
       url = "git+ssh://git@github.com/Tonez3D/cuttlefish-flake.git?ref=main";
-            inputs.nixpkgs.follows = "nixpkgs"; 
+      inputs.nixpkgs.follows = "nixpkgs";
 
     };
 
@@ -83,15 +83,14 @@
 
   outputs =
     {
-      
       self,
       nixpkgs,
       sops-nix,
- cuttlefish,
- #unstable,
+      cuttlefish,
+
       agenix,
       private-flake,
-disko,
+      disko,
       config-install,
       zen-browser,
       ...
@@ -100,19 +99,11 @@ disko,
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      #upkgs = unstable.legacyPackages.${system};
       cluster-details = import "${inputs.private-flake}/cluster-details.nix";
-     # systemInstaller = target: nixpkgs.lib.nixosSystem {
-     # inherit system;
-     # specialArgs = { inherit target; };
-     # modules = [ ./installer.nix ];
-    #};
 
       crossPkgs = pkgs.pkgsCross.aarch64-multiplatform;
 
-      # Disable imageio's PNG tests, which fail against the current Pillow
-      # ("ValueError: Invalid mode for data type"). The package itself is fine;
-      # only the test suite is incompatible.
+      #Disable the tests
       imageioOverlay = final: prev: {
         python313 = prev.python313.override {
           packageOverrides = pyfinal: pyprev: {
@@ -126,11 +117,11 @@ disko,
         };
       };
 
-      overlayModule = { nixpkgs.overlays = [ imageioOverlay ]; };
+      overlayModule = {
+        nixpkgs.overlays = [ imageioOverlay ];
+      };
     in
     {
-
-
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
       #formatter.aarch64-linux = crossPkgs.nixfmt-tree;
@@ -169,6 +160,6 @@ disko,
         ];
       };
 
-    #packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab-1"];
+      #packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab-1"];
     };
 }

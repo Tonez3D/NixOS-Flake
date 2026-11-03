@@ -6,5 +6,8 @@
   ...
 }:
 {
-  home.packages = with pkgs; [ blender tuigreet];
+  home.packages = with pkgs; [
+    blender
+    tuigreet
+  ];
 }

@@ -8,10 +8,10 @@
   inputs,
   ...
 }:
-let 
-    hostName = config.networking.hostName;
-    
-  in 
+let
+  hostName = config.networking.hostName;
+
+in
 {
 
   imports = [
@@ -23,9 +23,7 @@ let
     # ../nixos-modules/kernel/patches/dirty-flag.nix
 
   ];
-      _module.args = {inherit hostName;};
-
-
+  _module.args = { inherit hostName; };
 
   # Bootloader.
   boot.loader.grub.enable = true;
@@ -46,7 +44,7 @@ let
     enable = true;
     #settings = { };
   };
-  
+
   #services.zerotierone.enable = true;
   # Set your time zone.
   time.timeZone = "America/Chicago";

@@ -1,4 +1,4 @@
-{pkgs, ...} : {
-    home.packages = with pkgs; [ vencord ];
+{ pkgs, ... }: {
+  home.packages = with pkgs; [ vencord ];
 
 }
