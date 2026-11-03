@@ -30,7 +30,6 @@
     };
 
     private-flake = {
-
       url = "git+ssh://git@github.com/Tonez3D/private-flake.git?ref=main";
       flake = false;
     };
@@ -130,6 +129,7 @@
         specialArgs = { inherit inputs cluster-details; };
 
         modules = [
+          cuttlefish.nixosModules.default
           ./desktop/configuration.nix
           inputs.home-manager.nixosModules.default
           agenix.nixosModules.default
@@ -152,6 +152,7 @@
         specialArgs = { inherit inputs cluster-details; };
 
         modules = [
+          cuttlefish.nixosModules.default
           ./home-lab/configuration.nix
           inputs.home-manager.nixosModules.default
           disko.nixosModules.disko
@@ -161,5 +162,18 @@
       };
 
       #packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab-1"];
+      nixosConfigurations.error = nixpkgs.lib.nixosSystem {
+        specialArgs = { inherit inputs cluster-details; };
+
+        modules = [
+          ./error/configuration.nix
+          cuttlefish.nixosModules.default
+          inputs.home-manager.nixosModules.default
+          disko.nixosModules.disko
+          agenix.nixosModules.default
+        ];
+      };
+
+    packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations [ "error"];
     };
 }

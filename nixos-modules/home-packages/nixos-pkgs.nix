@@ -17,6 +17,8 @@
     ./rofi
     ./jetbrains
     ./nemo
+    ./claude-code
+    #./anki
     ./grimblast
     ./pavucontrol
     ./playerctl

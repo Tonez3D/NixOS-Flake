@@ -1,4 +1,4 @@
-{ pkgs, unstable-pkgs, ... }: {
+{pkgs, ...} : {
 
   programs.claude-code = {
     enable = true;
@@ -9,6 +9,7 @@
           "/home/ifeatud/Dev/fyder-chat"
           "/home/ifeatud/Dev/fyder-cli"
           "/home/ifeatud/Dev/ProtoDocs"
+          "/home/ifeatud/Dev/cuttlefish"
         ];
         allow = [
           "Bash(git diff:*)"

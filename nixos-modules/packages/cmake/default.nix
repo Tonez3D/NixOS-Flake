@@ -2,7 +2,7 @@
 {
   environment.systemPackages = with pkgs; [
     cmake
-    displaylink
+    #displaylink
   ];
 
 }

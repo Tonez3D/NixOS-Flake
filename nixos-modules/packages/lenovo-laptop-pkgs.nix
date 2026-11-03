@@ -10,6 +10,7 @@
     ./usb
     ./awww
     ./glab
+    ./docker
     ./firefox
     ./open-tablet-driver
     ./brightnessctl
