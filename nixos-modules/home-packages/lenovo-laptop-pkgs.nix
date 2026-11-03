@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   imports = [
     ./default.nix
@@ -14,7 +14,8 @@
     ./jetbrains
     ./wallust
     ./chrome
-    ./anki
+    ./vencord
+    #./anki
     ./waybar
     ./rofi
     ./jetbrains
@@ -22,6 +23,7 @@
     ./grimblast
     ./pavucontrol
     ./playerctl
+    ./claude-code
     ./vscode
     ./starship
     ./spotify

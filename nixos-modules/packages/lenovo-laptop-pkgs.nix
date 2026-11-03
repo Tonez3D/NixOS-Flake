@@ -7,9 +7,9 @@
     ./gtk
     ./libGL
     ./hyprpolkit
-    ./claude-code
     ./usb
     ./awww
+    ./glab
     ./docker
     ./firefox
     ./open-tablet-driver

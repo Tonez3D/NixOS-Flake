@@ -19,9 +19,10 @@
 
     disko = {
       url = "github:nix-community/disko/latest";
-      inputs.nixpkgs.follows = "nixpkgs"; 
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    #unstable.url = "github:nixos/nixpkgs/master";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -33,7 +34,7 @@
       flake = false;
     };
 
-        quickshell = {
+    quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
 
       inputs.nixpkgs.follows = "nixpkgs";
@@ -73,7 +74,7 @@
 
     cuttlefish = {
       url = "git+ssh://git@github.com/Tonez3D/cuttlefish-flake.git?ref=main";
-            inputs.nixpkgs.follows = "nixpkgs"; 
+      inputs.nixpkgs.follows = "nixpkgs";
 
     };
 
@@ -84,10 +85,11 @@
       self,
       nixpkgs,
       sops-nix,
- cuttlefish,
+      cuttlefish,
+
       agenix,
       private-flake,
-disko,
+      disko,
       config-install,
       zen-browser,
       ...
@@ -97,17 +99,28 @@ disko,
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       cluster-details = import "${inputs.private-flake}/cluster-details.nix";
-     # systemInstaller = target: nixpkgs.lib.nixosSystem {
-     # inherit system;
-     # specialArgs = { inherit target; };
-     # modules = [ ./installer.nix ];
-    #};
 
       crossPkgs = pkgs.pkgsCross.aarch64-multiplatform;
+
+      #Disable the tests
+      imageioOverlay = final: prev: {
+        python313 = prev.python313.override {
+          packageOverrides = pyfinal: pyprev: {
+            imageio = pyprev.imageio.overridePythonAttrs (old: {
+              disabledTests = (old.disabledTests or [ ]) ++ [
+                "test_png_16bit"
+                "test_png"
+              ];
+            });
+          };
+        };
+      };
+
+      overlayModule = {
+        nixpkgs.overlays = [ imageioOverlay ];
+      };
     in
     {
-
-
 
       formatter.x86_64-linux = nixpkgs.legacyPackages.${system}.nixfmt-tree;
       #formatter.aarch64-linux = crossPkgs.nixfmt-tree;
@@ -120,6 +133,7 @@ disko,
           ./desktop/configuration.nix
           inputs.home-manager.nixosModules.default
           agenix.nixosModules.default
+          overlayModule
         ];
       };
 
@@ -130,6 +144,7 @@ disko,
           ./lenovo-laptop/configuration.nix
           inputs.home-manager.nixosModules.default
           agenix.nixosModules.default
+          overlayModule
         ];
       };
 
@@ -142,9 +157,11 @@ disko,
           inputs.home-manager.nixosModules.default
           disko.nixosModules.disko
           agenix.nixosModules.default
+          overlayModule
         ];
       };
 
+      #packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab-1"];
       nixosConfigurations.error = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs cluster-details; };
 

@@ -1,14 +1,13 @@
-
 {
   config,
   pkgs,
   inputs,
   ...
 }:
-let 
-    hostName = config.networking.hostName;
-    
-  in 
+let
+  hostName = config.networking.hostName;
+
+in
 {
   
     imports = [
