@@ -25,6 +25,7 @@
       "dir_mode=0775"
       "forcegid"
       "mfsymlinks"
+      "exec"
       "nofail"
       "exec"
       "noperm"

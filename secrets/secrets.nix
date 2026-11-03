@@ -22,6 +22,10 @@ in
     armor = true;
   };
 
+  "cuttlefish-tailscale.age" = {
+    publicKeys = all;
+  };
+
   "claude-personal.age" = {
     publicKeys = all;
     armor = true;
