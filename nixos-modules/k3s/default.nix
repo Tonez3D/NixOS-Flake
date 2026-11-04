@@ -13,6 +13,16 @@
           cuttlefish = {
             details = cluster-details;
             tokenFile = "/etc/secrets/cf-serToken";
+	    tailscale = {
+	      operator = {
+		enable = true;
+		oauthEnvFile = "/etc/secrets/cuttlefish-tailscale.env";
+		expose = {
+		  cygnus.enable = true;
+		  horus.enable = true;
+		};
+	      };
+	    };
             # With agenix:  tokenFile = config.age.secrets.cf-serToken.path;
 
             # Set on ONE server for its very first start only, then remove:

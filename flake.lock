@@ -79,11 +79,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1793659708,
-        "narHash": "sha256-UvfBFCp4kTVRELK7Yntv0D1nmADFTEEA2WVNgN62zS4=",
+        "lastModified": 1793746731,
+        "narHash": "sha256-FWOp+Z3UOJ+MZlfKS3jtD5TlmTKtlyLeHPhZN5Vy2dk=",
         "ref": "main",
-        "rev": "fe82b8a5bf31722f1d8a2849e4817aecc45538e2",
-        "revCount": 22,
+        "rev": "af903aa0c40eca4158bdd9bb5fd6eae5e18ac3f9",
+        "revCount": 27,
         "type": "git",
         "url": "ssh://git@github.com/Tonez3D/cuttlefish-flake.git"
       },

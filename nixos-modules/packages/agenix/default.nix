@@ -29,6 +29,14 @@
         group = "networkmanager";
         mode = "600";
       };
+     
+     cuttlefish-tailscale = {
+       file = ../../../secrets/cuttlefish-tailscale.age;
+       name = "cuttlefish-tailscale.env";
+       owner = "root";
+       mode = "0400";
+
+     };
 
       cuttlefish-server-token = {
         file = ../../../secrets/cuttlefish-server.age;
