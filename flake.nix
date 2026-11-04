@@ -22,7 +22,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    #unstable.url = "github:nixos/nixpkgs/master";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
@@ -30,7 +30,8 @@
     };
 
     private-flake = {
-      url = "git+ssh://git@github.com/Tonez3D/private-flake.git?ref=main";
+      url = "git+file:///home/heifee/private-flake";
+      #url = "git+ssh://git@github.com/Tonez3D/private-flake.git?ref=main";
       flake = false;
     };
 
@@ -73,7 +74,8 @@
     };
 
     cuttlefish = {
-      url = "git+ssh://git@github.com/Tonez3D/cuttlefish-flake.git?ref=main";
+      url = "git+file:///home/heifee/Dev/cuttlefish";
+      #url = "git+ssh://git@github.com/Tonez3D/cuttlefish-flake.git?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
 
     };
@@ -106,19 +108,36 @@
       imageioOverlay = final: prev: {
         python313 = prev.python313.override {
           packageOverrides = pyfinal: pyprev: {
-            imageio = pyprev.imageio.overridePythonAttrs (old: {
-              disabledTests = (old.disabledTests or [ ]) ++ [
-                "test_png_16bit"
-                "test_png"
-              ];
+            imageio = pyprev.imageio.overridePythonAttrs (_: {
+             doCheck = false;
             });
           };
         };
       };
 
-      overlayModule = {
-        nixpkgs.overlays = [ imageioOverlay ];
+      # Expose nixpkgs-unstable as `pkgs.unstable`, and take the packages we
+      # want to track upstream straight from it.
+      unstableOverlay = final: prev: {
+        unstable = import inputs.nixpkgs-unstable {
+          inherit (prev.stdenv.hostPlatform) system;
+          config.allowUnfree = true;
+        };
+
+        inherit (final.unstable) claude-code;
       };
+
+      overlayModule =
+        { config, lib, ... }:
+        {
+          home-manager.sharedModules = lib.optionals (!config.home-manager.useGlobalPkgs) [
+            {
+              nixpkgs.overlays = [
+                imageioOverlay
+                unstableOverlay
+              ];
+            }
+          ];
+        };
     in
     {
 
@@ -141,6 +160,7 @@
         specialArgs = { inherit inputs cluster-details; };
 
         modules = [
+          cuttlefish.nixosModules.default
           ./lenovo-laptop/configuration.nix
           inputs.home-manager.nixosModules.default
           agenix.nixosModules.default
@@ -174,6 +194,8 @@
         ];
       };
 
-    packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations [ "error"];
+      packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations [
+        "error"
+      ];
     };
 }

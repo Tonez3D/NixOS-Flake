@@ -1,4 +1,4 @@
-{pkgs, ...} : {
+{ pkgs, ... }: {
 
   programs.claude-code = {
     enable = true;
@@ -20,14 +20,14 @@
           "Read(./.env.*)"
         ];
         disableBypassPermissionsMode = "disable";
-        statusLine = {
-          command = "input=$(cat); echo \"[$(echo \"$input\" | jq -r '.model.display_name')] 📁 $(basename \"$(echo \"$input\" | jq -r '.workspace.current_dir')\")\"";
-          padding = 0;
-          type = "command";
-        };
-        theme = "dark";
-
       };
+
+      statusLine = {
+        command = "input=$(cat); echo \"[$(echo \"$input\" | jq -r '.model.display_name')] 📁 $(basename \"$(echo \"$input\" | jq -r '.workspace.current_dir')\")\"";
+        padding = 0;
+        type = "command";
+      };
+      theme = "dark";
     };
 
   };

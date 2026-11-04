@@ -14,7 +14,7 @@
     ./gcc
     ./cron
     ./tmux
-    #../k3s
+    ../k3s
     ./nixfmt
     ./gnumake
     ./killall
