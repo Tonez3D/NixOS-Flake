@@ -27,6 +27,7 @@
       "mfsymlinks"
       "exec"
       "nofail"
+      "exec"
       "noperm"
     ];
   };

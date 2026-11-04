@@ -43,14 +43,14 @@ let
 
       valuesContent = builtins.toJSON {
         kubeProxyReplacement = true;
-                 
+
         k8sServiceHost = "127.0.0.1";
         k8sServicePort = apiPort;
         ipam = {
           mode = "cluster-pool";
           operator.clusterPoolIPv4PodCIDRList = [ podCIDR ];
         };
-        
+
         #cni = {
         #  binPath = "";
         #  confPath = "";
@@ -196,11 +196,11 @@ let
                   port = toString apiPort;
                   vip_interface = iface;
                   vip_cidr = "32";
-                  vip_arp = "true"; 
+                  vip_arp = "true";
                   cp_enable = "true";
                   cp_namespace = "kube-system";
-                  svc_enable = "false"; 
-                  vip_leaderelection = "true"; 
+                  svc_enable = "false";
+                  vip_leaderelection = "true";
                   vip_leasename = "plndr-cp-lock";
                   vip_leaseduration = "5";
                   vip_renewdeadline = "3";
@@ -280,7 +280,7 @@ in
 
     networking.firewall = {
       allowedTCPPorts = [ apiPort ] ++ firewallTCPPorts;
-      allowedUDPPorts = firewallUDPPorts; 
+      allowedUDPPorts = firewallUDPPorts;
       checkReversePath = "loose";
       trustedInterfaces = interfaces;
     };

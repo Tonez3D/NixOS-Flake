@@ -14,14 +14,15 @@
     ./gcc
     ./cron
     ./tmux
-    ../k3s
+    #../k3s
     ./nixfmt
     ./gnumake
     ./killall
     ./tailscale
     ./rust
     ./neovim
-    #./kubernetes
+    ./docker
+    ./glab
     ./vim
     ./zip
     ./unzip

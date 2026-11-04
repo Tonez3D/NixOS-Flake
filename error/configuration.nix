@@ -8,10 +8,10 @@
   inputs,
   ...
 }:
-let 
-    hostName = config.networking.hostName;
-    
-  in 
+let
+  hostName = config.networking.hostName;
+
+in
 {
 
   imports = [
@@ -25,8 +25,7 @@ let
     # ../nixos-modules/kernel/patches/dirty-flag.nix
 
   ];
-  _module.args = {inherit hostName;};
-
+  _module.args = { inherit hostName; };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

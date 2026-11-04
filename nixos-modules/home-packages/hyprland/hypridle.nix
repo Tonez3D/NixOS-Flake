@@ -18,7 +18,7 @@
           on-timeout = "loginctl lock-session";
         }
         {
-          timeout = 700; #
+          timeout = 700;
           on-timeout = "brightnessctl 20%";
         }
         {

@@ -14,9 +14,9 @@
     settings = {
       user.name = (
         lib.mkMerge [
-          (lib.mkIf (hostName == "nixos") "Tonez3D")
-          (lib.mkIf (hostName == "lenovo-laptop") "Tonez3D")
-          (lib.mkIf (hostName == "homelab") "Tonez3D-Homelab")
+          (lib.mkIf (hostName == "nixos") "Ifeatu Dunu")
+          (lib.mkIf (hostName == "lenovo-laptop") "Ifeatu Dunu")
+          (lib.mkIf (hostName == "homelab") "Ifeatu Dunu-Homelab")
         ]
       );
       user.email = "tonez3d@gmail.com";
