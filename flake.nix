@@ -30,8 +30,8 @@
     };
 
     private-flake = {
-      url = "git+file:///home/heifee/private-flake";
-      #url = "git+ssh://git@github.com/Tonez3D/private-flake.git?ref=main";
+      #url = "git+file:///home/heifee/private-flake";
+      url = "git+ssh://git@github.com/Tonez3D/private-flake.git?ref=main";
       flake = false;
     };
 
@@ -74,8 +74,8 @@
     };
 
     cuttlefish = {
-      url = "git+file:///home/heifee/Dev/cuttlefish";
-      #url = "git+ssh://git@github.com/Tonez3D/cuttlefish-flake.git?ref=main";
+      #url = "git+file:///home/heifee/Dev/cuttlefish";
+      url = "git+ssh://git@github.com/Tonez3D/cuttlefish-flake.git?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
 
     };
