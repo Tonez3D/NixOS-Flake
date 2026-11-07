@@ -53,6 +53,22 @@
         "type": "github"
       }
     },
+    "briefing-site": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1794003728,
+        "narHash": "sha256-tL0KMQp2K0m4u5XFkb5s7twrciSpDYt/+6jnf+Z6cC8=",
+        "ref": "refs/heads/main",
+        "rev": "e30bedb31be98de9dba79781028bf73e16cc18c4",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/Tonez3D/Briefing"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/Tonez3D/Briefing"
+      }
+    },
     "config-install": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -79,10 +95,11 @@
         ]
       },
       "locked": {
-        "dirtyRev": "4290c8cec81934f00d37cd97f6951cdf72d09661-dirty",
-        "dirtyShortRev": "4290c8c-dirty",
-        "lastModified": 1793709608,
-        "narHash": "sha256-cfRKJmDp+Gbld2tG354GvPXsHXNF7L3M4MJm81t1WpQ=",
+        "lastModified": 1794007770,
+        "narHash": "sha256-eytODAw70HKZ2rvT9XdUgvc1qJ8VPnoWKJ4R7ycbIIQ=",
+        "ref": "refs/heads/main",
+        "rev": "bf045ec7d8f3f9beb946c59718e93cf2529b8a6d",
+        "revCount": 35,
         "type": "git",
         "url": "file:///home/heifee/Dev/cuttlefish"
       },
@@ -636,6 +653,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "briefing-site": "briefing-site",
         "config-install": "config-install",
         "cuttlefish": "cuttlefish",
         "disko": "disko",

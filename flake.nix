@@ -29,9 +29,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    briefing-site = {
+    url = "git+ssh://git@github.com/Tonez3D/Briefing";
+    flake = false;
+    };
+
     private-flake = {
-      #url = "git+file:///home/heifee/private-flake";
-      url = "git+ssh://git@github.com/Tonez3D/private-flake.git?ref=main";
+      url = "git+file:///home/heifee/private-flake";
+      #url = "git+ssh://git@github.com/Tonez3D/private-flake.git?ref=main";
       flake = false;
     };
 
@@ -74,8 +79,8 @@
     };
 
     cuttlefish = {
-      #url = "git+file:///home/heifee/Dev/cuttlefish";
-      url = "git+ssh://git@github.com/Tonez3D/cuttlefish-flake.git?ref=main";
+      url = "git+file:///home/heifee/Dev/cuttlefish";
+      #url = "git+ssh://git@github.com/Tonez3D/cuttlefish-flake.git?ref=main";
       inputs.nixpkgs.follows = "nixpkgs";
 
     };
@@ -88,7 +93,7 @@
       nixpkgs,
       sops-nix,
       cuttlefish,
-
+      briefing-site,
       agenix,
       private-flake,
       disko,
@@ -145,7 +150,7 @@
       #formatter.aarch64-linux = crossPkgs.nixfmt-tree;
 
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs cluster-details; };
+        specialArgs = { inherit inputs cluster-details briefing-site; };
 
         modules = [
           cuttlefish.nixosModules.default
@@ -169,7 +174,7 @@
       };
 
       nixosConfigurations.homelab-1 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs cluster-details; };
+        specialArgs = { inherit inputs cluster-details briefing-site; };
 
         modules = [
           cuttlefish.nixosModules.default
