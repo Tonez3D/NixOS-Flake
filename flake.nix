@@ -162,7 +162,7 @@
       };
 
       nixosConfigurations.lenovo-laptop = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs cluster-details; };
+        specialArgs = { inherit inputs cluster-details briefing-site; };
 
         modules = [
           cuttlefish.nixosModules.default
@@ -188,7 +188,7 @@
 
       #packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab-1"];
       nixosConfigurations.error = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs cluster-details; };
+        specialArgs = { inherit inputs cluster-details briefing-site; };
 
         modules = [
           ./error/configuration.nix

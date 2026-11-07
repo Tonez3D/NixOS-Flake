@@ -97,15 +97,16 @@
       "locked": {
         "lastModified": 1794007770,
         "narHash": "sha256-eytODAw70HKZ2rvT9XdUgvc1qJ8VPnoWKJ4R7ycbIIQ=",
-        "ref": "refs/heads/main",
+        "ref": "main",
         "rev": "bf045ec7d8f3f9beb946c59718e93cf2529b8a6d",
         "revCount": 35,
         "type": "git",
-        "url": "file:///home/heifee/Dev/cuttlefish"
+        "url": "ssh://git@github.com/Tonez3D/cuttlefish-flake.git"
       },
       "original": {
+        "ref": "main",
         "type": "git",
-        "url": "file:///home/heifee/Dev/cuttlefish"
+        "url": "ssh://git@github.com/Tonez3D/cuttlefish-flake.git"
       }
     },
     "disko": {
@@ -619,15 +620,16 @@
       "locked": {
         "lastModified": 1793185722,
         "narHash": "sha256-+s6Rx3f4VXlbHrpWYGyujHppLsI/zwo+hgEJz3FkXEU=",
-        "ref": "refs/heads/main",
+        "ref": "main",
         "rev": "1e1b42afd352c83ad4d882d6e3faf5f5cf0998f1",
         "revCount": 10,
         "type": "git",
-        "url": "file:///home/heifee/private-flake"
+        "url": "ssh://git@github.com/Tonez3D/private-flake.git"
       },
       "original": {
+        "ref": "main",
         "type": "git",
-        "url": "file:///home/heifee/private-flake"
+        "url": "ssh://git@github.com/Tonez3D/private-flake.git"
       }
     },
     "quickshell": {
