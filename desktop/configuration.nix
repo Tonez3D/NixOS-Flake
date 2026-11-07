@@ -24,15 +24,22 @@ in
 
   _module.args = { inherit hostName; };
 
-  programs.ssh.knownHosts = {
-    "github.com" = {
-      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
-      hostNames = [ "github.com" ];
+  programs.ssh = {
+    knownHosts = {
+      "github.com" = {
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+        hostNames = [ "github.com" ];
+      };
+      "lenovo-laptop" = {
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfi4u0rZj7jdFMOkGmGbwFJXOH/kErjMa1US5YywkuY tonez3d@gmail.com";
+        hostNames = [ "lenovo-laptop" ];
+      };
     };
-    "lenovo-laptop" = {
-      publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfi4u0rZj7jdFMOkGmGbwFJXOH/kErjMa1US5YywkuY tonez3d@gmail.com";
-      hostNames = [ "lenovo-laptop" ];
-    };
+    extraConfig = ''
+      Host github.com
+        IdentityFile /home/heifee/.ssh/github-ssh
+        IdentitiesOnly yes
+    '';
   };
 
   ### SECTION [Bootloader] ###
@@ -46,10 +53,6 @@ in
 
     ];
   };
-  programs.git = {
-
-  config.core.sshCommand = "ssh -i /home/heifee/.ssh/github-ssh -o IdentitiesOnly=yes";
-};
 
   ### SECTION [Nix Settings] ###
   nix.settings = {

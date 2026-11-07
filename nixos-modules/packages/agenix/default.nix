@@ -86,7 +86,7 @@
     }
     # claude-work.age (secrets/secrets.nix) is only encrypted for nix-pc and
     # laptop's keys, so decrypting it anywhere else fails with "no identity
-    # matched any of the recipients" (hit on error/homelab-1 - neither key is
+    # matched any of the recipients" (hit on error/homelab - neither key is
     # a recipient).
     // lib.optionalAttrs (hostName == "nixos" || hostName == "lenovo-laptop") {
       claude-wkey = {

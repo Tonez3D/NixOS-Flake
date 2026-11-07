@@ -14,7 +14,7 @@
         ];
       })
       (lib.mkIf (hostName == "lenovo-laptop") { roles = [ "node" ]; })
-      (lib.mkIf (hostName == "homelab-1") { roles = [ "node" ]; })
+      (lib.mkIf (hostName == "homelab") { roles = [ "node" ]; })
     ]
   );
 }

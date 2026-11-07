@@ -173,7 +173,7 @@
         ];
       };
 
-      nixosConfigurations.homelab-1 = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.homelab = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs cluster-details briefing-site; };
 
         modules = [
@@ -186,7 +186,7 @@
         ];
       };
 
-      #packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab-1"];
+      #packages.x86_64-linux = inputs.config-install.lib.iso-installer self.nixosConfigurations ["homelab"];
       nixosConfigurations.error = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs cluster-details briefing-site; };
 
