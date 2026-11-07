@@ -18,8 +18,8 @@ in
     ./hardware-configuration.nix
     ../nixos-modules/packages/home-lab-pkgs.nix
     ../nixos-modules/kernel/kernel-version.nix
-        ../nixos-modules/networking
-        ../users
+    ../nixos-modules/networking
+    ../users
     ../nixos-modules/shares/share.nix
     ./disko.nix
     # ../nixos-modules/kernel/patches/dirty-flag.nix
@@ -31,7 +31,7 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "error"; 
+  networking.hostName = "error";
   # Enable networking
   networking.networkmanager.enable = true;
 
@@ -39,8 +39,7 @@ in
     enable = true;
     #settings = { };
   };
-  
- 
+
   time.timeZone = "America/Chicago";
 
   # Select internationalisation properties.

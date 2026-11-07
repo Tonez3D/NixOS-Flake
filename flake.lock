@@ -56,11 +56,11 @@
     "briefing-site": {
       "flake": false,
       "locked": {
-        "lastModified": 1794003728,
-        "narHash": "sha256-tL0KMQp2K0m4u5XFkb5s7twrciSpDYt/+6jnf+Z6cC8=",
+        "lastModified": 1794004337,
+        "narHash": "sha256-oD6OhQI6nNi+bzqZTShxbjNhLsukuIPGwWhfk+T4hRw=",
         "ref": "refs/heads/main",
-        "rev": "e30bedb31be98de9dba79781028bf73e16cc18c4",
-        "revCount": 1,
+        "rev": "827230746eb504ae6293aeba3fcb29f56b6537c9",
+        "revCount": 2,
         "type": "git",
         "url": "ssh://git@github.com/Tonez3D/Briefing"
       },
@@ -95,11 +95,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1794007770,
-        "narHash": "sha256-eytODAw70HKZ2rvT9XdUgvc1qJ8VPnoWKJ4R7ycbIIQ=",
+        "lastModified": 1794032514,
+        "narHash": "sha256-wXiInetW43HbPAXWrWGO1/0kDjZBVx1pEoljRTSTo6Q=",
         "ref": "main",
-        "rev": "bf045ec7d8f3f9beb946c59718e93cf2529b8a6d",
-        "revCount": 35,
+        "rev": "63991e78cb8f7b2988657fe57cae585a1e6438e8",
+        "revCount": 36,
         "type": "git",
         "url": "ssh://git@github.com/Tonez3D/cuttlefish-flake.git"
       },

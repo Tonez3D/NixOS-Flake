@@ -30,8 +30,8 @@
     };
 
     briefing-site = {
-    url = "git+ssh://git@github.com/Tonez3D/Briefing";
-    flake = false;
+      url = "git+ssh://git@github.com/Tonez3D/Briefing";
+      flake = false;
     };
 
     private-flake = {
@@ -114,7 +114,7 @@
         python313 = prev.python313.override {
           packageOverrides = pyfinal: pyprev: {
             imageio = pyprev.imageio.overridePythonAttrs (_: {
-             doCheck = false;
+              doCheck = false;
             });
           };
         };

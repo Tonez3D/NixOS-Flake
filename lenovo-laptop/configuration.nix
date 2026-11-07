@@ -320,20 +320,20 @@ in
   users.users = {
 
     ifeatud = {
-    isNormalUser = true;
-    description = "Ifeatu Dunu";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-      "video"
-      "hermit"
-      "usb"
-      "plugdev"
-      "docker"
-      "dialout"
-    ];
-    linger = true; 
-  };
+      isNormalUser = true;
+      description = "Ifeatu Dunu";
+      extraGroups = [
+        "networkmanager"
+        "wheel"
+        "video"
+        "hermit"
+        "usb"
+        "plugdev"
+        "docker"
+        "dialout"
+      ];
+      linger = true;
+    };
 
     watts = {
       isNormalUser = true;
@@ -346,7 +346,7 @@ in
         "video"
         "dialout"
       ];
-      linger = true; 
+      linger = true;
     };
   };
 

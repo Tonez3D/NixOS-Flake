@@ -3,7 +3,12 @@ let
   homelab = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJwfxlppSc6OXM8JIZb5gybwWXm0//ykPPwunDRzIFkN homelab@nixos";
   laptop = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfi4u0rZj7jdFMOkGmGbwFJXOH/kErjMa1US5YywkuY tonez3d@gmail.com";
   error = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP77eiXAOS7J3h3/k21iSHfdNeNZpp2wxdiUjTyepfgd error@error";
-  all = [ nix-pc homelab laptop error];
+  all = [
+    nix-pc
+    homelab
+    laptop
+    error
+  ];
 in
 {
   "timeslot.age" = {
@@ -48,7 +53,8 @@ in
   };
 
   "tailscale.age" = {
-    publicKeys = all;mor = true;
+    publicKeys = all;
+    mor = true;
   };
 
   "samba.age" = {

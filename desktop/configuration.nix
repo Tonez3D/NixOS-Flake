@@ -46,6 +46,10 @@ in
 
     ];
   };
+  programs.git = {
+
+  config.core.sshCommand = "ssh -i /home/heifee/.ssh/github-ssh -o IdentitiesOnly=yes";
+};
 
   ### SECTION [Nix Settings] ###
   nix.settings = {
