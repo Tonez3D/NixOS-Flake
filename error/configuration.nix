@@ -35,11 +35,6 @@ in
   # Enable networking
   networking.networkmanager.enable = true;
 
-  services.openssh = {
-    enable = true;
-    #settings = { };
-  };
-
   time.timeZone = "America/Chicago";
 
   # Select internationalisation properties.
@@ -62,7 +57,41 @@ in
     layout = "us";
     variant = "";
   };
+  programs.ssh = {
+    knownHosts = {
+      "github.com" = {
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+        hostNames = [ "github.com" ];
+      };
+      "personal" = {
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMAGsoEN/KRWCxv3bJAdGgHxfQep0nnIfcEE54OIsD0y hiefee";
+        hostNames = [
+          "lenovo-laptop"
+          "nixos"
+          "error"
+          "homelab"
+        ];
+      };
+    };
+    startAgent = true;
+  };
+  services.gnome.gcr-ssh-agent.enable = false;
+  nix.buildMachines = [
+    {
+      hostName = "100.118.87.0";
+      system = "x86_64-linux";
+      protocol = "ssh-ng";
+      maxJobs = 2;
+      speedFactor = 2;
+      supportedFeatures = [
+        "big-parallel"
+        "kvm"
+      ];
+      mandatoryFeatures = [ ];
+    }
+  ];
 
+  nix.distributedBuilds = true;
   users.users.error = {
     isNormalUser = true;
     description = "error";
@@ -84,6 +113,9 @@ in
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFABx8yt6E4tlqX0/vGELPKcuooKUwfPC7E4xhKroYZm tonez3d@gmail.com"
       ];
     };
+  };
+  services.openssh = {
+    enable = true;
   };
 
   nix.settings = {

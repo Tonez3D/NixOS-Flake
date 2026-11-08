@@ -30,22 +30,20 @@ in
         publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
         hostNames = [ "github.com" ];
       };
-      "lenovo-laptop" = {
-        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINfi4u0rZj7jdFMOkGmGbwFJXOH/kErjMa1US5YywkuY tonez3d@gmail.com";
-        hostNames = [ "lenovo-laptop" ];
+      "personal" = {
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMAGsoEN/KRWCxv3bJAdGgHxfQep0nnIfcEE54OIsD0y hiefee";
+        hostNames = [
+          "lenovo-laptop"
+          "nixos"
+          "error"
+          "homelab"
+        ];
       };
     };
-    extraConfig = ''
-      Host github.com
-        IdentityFile /home/heifee/.ssh/github-ssh
-        IdentitiesOnly yes
-    '';
+    startAgent = true;
   };
-
-  ### SECTION [Bootloader] ###
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  services.gnome.gcr-ssh-agent.enable = false;
+  services.openssh.enable = true;
 
   users.users."heifee".openssh = {
     authorizedKeys.keys = [
@@ -53,6 +51,11 @@ in
 
     ];
   };
+
+  ### SECTION [Bootloader] ###
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 
   ### SECTION [Nix Settings] ###
   nix.settings = {
@@ -120,9 +123,6 @@ in
 
   # Enable drivers?
   services.xserver.videoDrivers = [ "nvidia" ];
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Enable blueman for managing bluetooth devices
   services.blueman.enable = true;

@@ -3,6 +3,7 @@
   pkgs,
   inputs,
   lib,
+  tailnet-details,
   ...
 }:
 let
@@ -41,6 +42,26 @@ in
     # ];
 
   };
+  programs.ssh = {
+    knownHosts = {
+      "github.com" = {
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl";
+        hostNames = [ "github.com" ];
+      };
+      "personal" = {
+        publicKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMAGsoEN/KRWCxv3bJAdGgHxfQep0nnIfcEE54OIsD0y hiefee";
+        hostNames = [
+          "lenovo-laptop"
+          "nixos"
+          "error"
+          "homelab"
+        ];
+      };
+    };
+    startAgent = true;
+  };
+  services.gnome.gcr-ssh-agent.enable = false;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   zramSwap.enable = true;
@@ -113,7 +134,7 @@ in
 
       # Required
       glib
-      gtk2
+      #gtk2
 
       # Inspired by steam
       # https://github.com/NixOS/nixpkgs/blob/master/pkgs/by-name/st/steam/package.nix#L36-L85
@@ -138,9 +159,9 @@ in
       gnome2.GConf
       nspr
       nss
-      cups
+      #cups
       libcap
-      SDL2
+      #SDL2
       libusb1
       dbus-glib
       ffmpeg
@@ -148,10 +169,10 @@ in
       libudev0-shim
 
       # needed to run unity
-      gtk3
-      icu
-      libnotify
-      gsettings-desktop-schemas
+      #gtk3
+      #icu
+      #libnotify
+      #gsettings-desktop-schemas
       # https://github.com/NixOS/nixpkgs/issues/72282
       # https://github.com/NixOS/nixpkgs/blob/2e87260fafdd3d18aa1719246fd704b35e55b0f2/pkgs/applications/misc/joplin-desktop/default.nix#L16
       # log in /home/leo/.config/unity3d/Editor.log
@@ -160,15 +181,15 @@ in
       # other issue: (Unity:377230): GLib-GIO-CRITICAL **: 21:09:04.706: g_dbus_proxy_call_sync_internal: assertion 'G_IS_DBUS_PROXY (proxy)' failed
 
       # Verified games requirements
-      libXt
-      libXmu
-      libogg
-      libvorbis
-      SDL
-      SDL2_image
-      glew_1_10
-      libidn
-      tbb
+      #libXt
+      #libXmu
+      #libogg
+      #libvorbis
+      #SDL
+      #SDL2_image
+      #glew_1_10
+      #libidn
+      #tbb
 
       # Other things from runtime
       flac
@@ -299,7 +320,6 @@ in
     {
       hostName = "100.118.87.0";
       system = "x86_64-linux";
-      sshKey = "/root/.ssh/laptop-key";
       protocol = "ssh-ng";
       maxJobs = 2;
       speedFactor = 2;

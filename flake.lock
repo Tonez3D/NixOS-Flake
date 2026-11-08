@@ -618,11 +618,11 @@
     "private-flake": {
       "flake": false,
       "locked": {
-        "lastModified": 1793185722,
-        "narHash": "sha256-+s6Rx3f4VXlbHrpWYGyujHppLsI/zwo+hgEJz3FkXEU=",
+        "lastModified": 1794163561,
+        "narHash": "sha256-IWGWnasKJb/hp5mxxlim3uT+HjYKmyiDSglclGoLPiQ=",
         "ref": "main",
-        "rev": "1e1b42afd352c83ad4d882d6e3faf5f5cf0998f1",
-        "revCount": 10,
+        "rev": "431d845e2d41fed78d8bcc3403f92f74d8559147",
+        "revCount": 11,
         "type": "git",
         "url": "ssh://git@github.com/Tonez3D/private-flake.git"
       },

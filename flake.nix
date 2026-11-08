@@ -106,6 +106,8 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       cluster-details = import "${inputs.private-flake}/cluster-details.nix";
+      tialnet-details = import "${inputs.private-flake}/tailnet-details.nix";
+      claude-details = import "${inputs.private-flake}/claude-details.nix";
 
       crossPkgs = pkgs.pkgsCross.aarch64-multiplatform;
 
